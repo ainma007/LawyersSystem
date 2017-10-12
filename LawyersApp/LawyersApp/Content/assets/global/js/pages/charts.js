@@ -17,11 +17,11 @@ $(function () {
           {
             label: "My Second dataset",
             backgroundColor: "rgba(49, 157, 181,0.2)",
-            borderColor: "#319DB5",
-            pointBackgroundColor: "#319DB5",
+            borderColor: "#319db5",
+            pointBackgroundColor: "#319db5",
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "#319DB5",
+            pointHoverBorderColor: "#319db5",
             data: [28,48,40,19,96,27,100]
           }
         ]
@@ -67,11 +67,11 @@ $(function () {
           {
             label: "My Second dataset",
             backgroundColor : "rgba(49, 157, 181,0.2)",
-            borderColor : "#319DB5",
-            pointBackgroundColor : "#319DB5",
+            borderColor : "#319db5",
+            pointBackgroundColor : "#319db5",
             pointBorderColor : "#fff",
             pointHoverBackgroundColor : "#fff",
-            pointHoverBorderColor : "#319DB5",
+            pointHoverBorderColor : "#319db5",
             data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
           }
         ]

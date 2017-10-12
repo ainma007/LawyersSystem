@@ -1,0 +1,200 @@
+﻿@using LawyersApp.Models.Mediation
+@using System.Net;
+@{
+    ViewBag.Title = " الوساطة";
+}
+
+<script>
+    kendo.culture("en-GB");
+</script>
+@if (Session["UserId"] == null)
+{
+    Response.Redirect("~/Account/Login");
+    return;
+}
+@if ((string)Session["UserType"]=="1")
+{
+
+
+    <div class="col-lg-12 portlets">
+        <div class="panel">
+            <div class="panel-header ">
+                <h2><i class="fa fa-list-alt"></i> <strong>إدارة</strong> الوساطة</h2>
+                @(Html.Kendo().Grid<MediationViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.MediationID).Width(50).Title("رقم المركز").Locked(true);
+        columns.Bound(p => p.MediationDate).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ الورود  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ الورود ").Locked(true);
+        columns.Bound(p => p.FirstSideName).Width(200).Title("اسم الطرف الأول").Locked(true);
+        columns.Bound(p => p.FirstSideName).Width(70).Title("الجنس").Locked(true);
+        columns.Bound(p => p.FirstSideName).Width(70).Title("العمر").Locked(true);
+
+        columns.Bound(p => p.FirstSideIDNumber).Width(150).Title("رقم هوية الطرف الأول");
+        columns.Bound(p => p.FirstSidePhone).Width(150).Title("رقم هاتف الطرف الأول");
+        columns.Bound(p => p.FirstSocialstatus).Width(200).Title("الحالة الاجتماعية للطرف الأول ");
+        columns.Bound(p => p.FirstSideAddress).Width(200).Title("عنوان  للطرف الأول ");
+
+        columns.Bound(p => p.SecondSideName).Width(200).Title("اسم الطرف الثاني").Locked(true);
+        columns.Bound(p => p.SecondSideIDNumber).Width(150).Title("رقم هوية الطرف الثاني");
+        columns.Bound(p => p.SecondSidePhone).Width(150).Title("رقم هاتف الطرف الثاني");
+        columns.Bound(p => p.SecondSocialstatus).Width(200).Title("الحالة الاجتماعية للطرف الثاني ");
+        columns.Bound(p => p.SecondSideAddress).Width(200).Title("عنوان  للطرف الثاني ");
+        columns.Bound(p => p.MediatorName).Width(200).Title("الوسيط ");
+        columns.Bound(p => p.MediatorPhone).Width(200).Title("رقم هاتف الوسيط ");
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["IssuesType"], "IssuesTypeID", "IssuesTypename")
+  .Title("النوعية ").Width(150);
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["DiligenceType"], "DiligenceTypeID", "DiligenceTypeName")
+  .Title("نوع الجهد").Width(150);
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName")
+   .Title("مدخل البيانات").Width(200);
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(200);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة وساطة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات الوساطة").Width(500).Height(500).Scrollable(true)).TemplateName("MediationEdit"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.MediationID);
+            model.Field(p => p.MediationID).Editable(false);
+            model.Field(p => p.UserID).Editable(false);
+            model.Field(p => p.ProjectID).Editable(false);
+            model.Field(p => p.IssuesTypeID).DefaultValue(1);
+            model.Field(p => p.DiligenceTypeID).DefaultValue(1);
+
+            model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"]
+.ToString()));
+            string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+            string[] words = currentUrlPage.Split('=');
+            string s = "";
+            foreach (string word in words)
+            {
+                s = word.ToString();
+            }
+            int x = int.Parse(s);
+            model.Field(p => p.ProjectID).DefaultValue(x);
+
+        })
+
+        .Read(read => read.Action("db_Read", "Mediation"))
+        .Update(update => update.Action("db_Update", "Mediation"))
+        .Create(create => create.Action("db_Create", "Mediation"))
+        .Destroy(destroy => destroy.Action("db_Destroy", "Mediation"))
+    )
+
+                )
+            </div>
+        </div>
+    </div>
+
+}
+
+else if ((string)Session["UserType"]=="2")
+{
+
+    <div class="col-lg-12 portlets">
+        <div class="panel">
+            <div class="panel-header ">
+                <h2><i class="fa fa-list-alt"></i> <strong>إدارة</strong> الوساطة</h2>
+                @(Html.Kendo().Grid<MediationViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.MediationID).Width(50).Title("رقم المركز").Locked(true);
+        columns.Bound(p => p.MediationDate).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ الورود  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ الورود ").Locked(true);
+        columns.Bound(p => p.FirstSideName).Width(200).Title("اسم الطرف الأول").Locked(true);
+        columns.Bound(p => p.FirstSideName).Width(70).Title("الجنس").Locked(true);
+        columns.Bound(p => p.FirstSideName).Width(70).Title("العمر").Locked(true);
+
+        columns.Bound(p => p.FirstSideIDNumber).Width(150).Title("رقم هوية الطرف الأول");
+        columns.Bound(p => p.FirstSidePhone).Width(150).Title("رقم هاتف الطرف الأول");
+        columns.Bound(p => p.FirstSocialstatus).Width(200).Title("الحالة الاجتماعية للطرف الأول ");
+        columns.Bound(p => p.FirstSideAddress).Width(200).Title("عنوان  للطرف الأول ");
+
+        columns.Bound(p => p.SecondSideName).Width(200).Title("اسم الطرف الثاني").Locked(true);
+        columns.Bound(p => p.SecondSideIDNumber).Width(150).Title("رقم هوية الطرف الثاني");
+        columns.Bound(p => p.SecondSidePhone).Width(150).Title("رقم هاتف الطرف الثاني");
+        columns.Bound(p => p.SecondSocialstatus).Width(200).Title("الحالة الاجتماعية للطرف الثاني ");
+        columns.Bound(p => p.SecondSideAddress).Width(200).Title("عنوان  للطرف الثاني ");
+        columns.Bound(p => p.MediatorName).Width(200).Title("الوسيط ");
+        columns.Bound(p => p.MediatorPhone).Width(200).Title("رقم هاتف الوسيط ");
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["IssuesType"], "IssuesTypeID", "IssuesTypename")
+.Title("النوعية ").Width(150);
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["DiligenceType"], "DiligenceTypeID", "DiligenceTypeName")
+  .Title("نوع الجهد").Width(150);
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName")
+   .Title("مدخل البيانات").Width(200);
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(200);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة وساطة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات الوساطة").Width(500).Height(500).Scrollable(true)).TemplateName("MediationEdit"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.MediationID);
+            model.Field(p => p.MediationID).Editable(false);
+            model.Field(p => p.UserID).Editable(false);
+            model.Field(p => p.ProjectID).Editable(false);
+            model.Field(p => p.IssuesTypeID).DefaultValue(1);
+            model.Field(p => p.DiligenceTypeID).DefaultValue(1);
+            model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"]
+.ToString()));
+
+            string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+            string[] words = currentUrlPage.Split('=');
+            string s = "";
+            foreach (string word in words)
+            {
+                s = word.ToString();
+            }
+            int x = int.Parse(s);
+            model.Field(p => p.ProjectID).DefaultValue(x);
+        })
+
+        .Read(read => read.Action("Userdb_Read", "Mediation"))
+        .Update(update => update.Action("db_Update", "Mediation"))
+        .Create(create => create.Action("db_Create", "Mediation"))
+        .Destroy(destroy => destroy.Action("db_Destroy", "Mediation"))
+    )
+
+                )
+            </div>
+        </div>
+    </div>
+}

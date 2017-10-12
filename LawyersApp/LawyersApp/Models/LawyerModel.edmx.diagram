@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44ae06a5a79c49b7bb9665c99f876a73" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="LawyersModel.Achievements_Table" Width="1.5" PointX="9" PointY="33.5" />
+        <EntityTypeShape EntityType="LawyersModel.Advocacyactivities_Table" Width="1.5" PointX="12" PointY="33.25" />
+        <EntityTypeShape EntityType="LawyersModel.Arbitration_Table" Width="1.5" PointX="9" PointY="27.375" />
+        <EntityTypeShape EntityType="LawyersModel.AwarenessWorkshops_Table" Width="1.5" PointX="6" PointY="39.125" />
+        <EntityTypeShape EntityType="LawyersModel.Consulting_Table" Width="1.5" PointX="3" PointY="27.625" />
+        <EntityTypeShape EntityType="LawyersModel.Courses_Table" Width="1.5" PointX="3" PointY="33" />
+        <EntityTypeShape EntityType="LawyersModel.Courts_Table" Width="1.5" PointX="6.75" PointY="44" />
+        <EntityTypeShape EntityType="LawyersModel.DiligenceType_Table" Width="1.5" PointX="3.75" PointY="46" />
+        <EntityTypeShape EntityType="LawyersModel.FamilyForum_Table" Width="1.5" PointX="12" PointY="27.5" />
+        <EntityTypeShape EntityType="LawyersModel.IssuesType_Table" Width="1.5" PointX="0.75" PointY="25.75" />
+        <EntityTypeShape EntityType="LawyersModel.Lawyer_Table" Width="1.5" PointX="0.75" PointY="38.625" />
+        <EntityTypeShape EntityType="LawyersModel.LegalIssues_Table" Width="1.5" PointX="12" PointY="38.125" />
+        <EntityTypeShape EntityType="LawyersModel.Media_Table" Width="1.5" PointX="3" PointY="38.125" />
+        <EntityTypeShape EntityType="LawyersModel.Mediation_Table" Width="1.5" PointX="6" PointY="31.875" />
+        <EntityTypeShape EntityType="LawyersModel.MediaType_Table" Width="1.5" PointX="0.75" PointY="45" />
+        <EntityTypeShape EntityType="LawyersModel.Project_Table" Width="1.5" PointX="3.75" PointY="21.75" />
+        <EntityTypeShape EntityType="LawyersModel.ProjectControl_Table" Width="1.5" PointX="3" PointY="42.75" />
+        <EntityTypeShape EntityType="LawyersModel.SystemicIssues_Table" Width="1.5" PointX="9" PointY="37" />
+        <EntityTypeShape EntityType="LawyersModel.TargetGroup_Table" Width="1.5" PointX="0.75" PointY="42" />
+        <EntityTypeShape EntityType="LawyersModel.TypeOfCase_Table" Width="1.5" PointX="0.75" PointY="28.5" />
+        <EntityTypeShape EntityType="LawyersModel.Users_Table" Width="1.5" PointX="0.75" PointY="32.5" />
+        <EntityTypeShape EntityType="LawyersModel.Versions_Table" Width="1.5" PointX="6" PointY="27.25" />
+        <AssociationConnector Association="LawyersModel.FK_Achievements_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Achievements_Table_Users_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Advocacyactivities_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Advocacyactivities_Table_Users_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Arbitration_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Arbitration_Table_Users_Table" />
+        <AssociationConnector Association="LawyersModel.FK_AwarenessWorkshops_Table_AwarenessWorkshops_Table" />
+        <AssociationConnector Association="LawyersModel.FK_AwarenessWorkshops_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Consulting_Table_IssuesType_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Consulting_Table_Lawyer_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Consulting_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Consulting_Table_TypeOfCase_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Consulting_Table_Users_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Courses_Table_Courses_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Courses_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Courses_Table_TargetGroup_Table" />
+        <AssociationConnector Association="LawyersModel.FK_LegalIssues_Table_Courts_Table" />
+        <AssociationConnector Association="LawyersModel.FK_SystemicIssues_Table_Courts_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Mediation_Table_DiligenceType_Table" />
+        <AssociationConnector Association="LawyersModel.FK_FamilyForum_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_FamilyForum_Table_Users_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Mediation_Table_IssuesType_Table" />
+        <AssociationConnector Association="LawyersModel.FK_TypeOfCase_Table_IssuesType_Table" />
+        <AssociationConnector Association="LawyersModel.FK_LegalIssues_Table_Lawyer_Table" />
+        <AssociationConnector Association="LawyersModel.FK_SystemicIssues_Table_Lawyer_Table" />
+        <AssociationConnector Association="LawyersModel.FK_LegalIssues_Table_TypeOfCase_Table" />
+        <AssociationConnector Association="LawyersModel.FK_LegalIssues_Table_Users_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Media_Table_MediaType_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Media_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Media_Table_Users_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Mediation_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Mediation_Table_Users_Table" />
+        <AssociationConnector Association="LawyersModel.FK_ProjectControl_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_SystemicIssues_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Versions_Table_Project_Table" />
+        <AssociationConnector Association="LawyersModel.FK_ProjectControl_Table_Users_Table" />
+        <AssociationConnector Association="LawyersModel.FK_SystemicIssues_Table_TypeOfCaseSyIsuues_Table" />
+        <AssociationConnector Association="LawyersModel.FK_SystemicIssues_Table_Users_Table" />
+        <AssociationConnector Association="LawyersModel.FK_Versions_Table_Users_Table" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

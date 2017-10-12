@@ -18,6 +18,17 @@
 /* Summernote */
 /******* THEMES *******/
 /* Mixin */
+
+@import url(http://fonts.googleapis.com/earlyaccess/amiri.css);
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+@import url(http://fonts.googleapis.com/earlyaccess/lateef.css); 
+@import url(http://fonts.googleapis.com/earlyaccess/scheherazade.css);
+@import url(http://fonts.googleapis.com/earlyaccess/thabit.css);
+  font-family: 'Droid Arabic Kufi','Times New Roman', serif;
+
+
+.droid-arabic-naskh{font-family: 'Droid Arabic Kufi', serif;}
 .col-xlg-1,
 .col-xlg-2,
 .col-xlg-3,
@@ -640,7 +651,7 @@
   border: 1px solid #efefef !important;
 }
 .border-primary {
-  border-color: #319DB5;
+  border-color: #319db5;
 }
 .border-gray {
   border: 1px solid #efefef;
@@ -675,7 +686,7 @@
   border-left: 3px solid #c9625f;
 }
 .bd-blue {
-  border-left: 3px solid #319DB5;
+  border-left: 3px solid #319db5;
 }
 .bd-t-red {
   border-top: 4px solid #c9625f;
@@ -714,7 +725,7 @@
   border-bottom: 4px solid #18a689;
 }
 .bd-b-blue {
-  border-bottom: 4px solid #319DB5;
+  border-bottom: 4px solid #319db5;
 }
 .bd-b-dark {
   border-bottom: 4px solid #2B2E33;
@@ -847,27 +858,27 @@ i.bg-blue2::before {
   color: #fff !important;
 }
 .bg-primary:not(i) {
-  background-color: #319DB5 !important;
+  background-color: #319db5 !important;
   color: #fff !important;
 }
 i.bg-primary::before {
-  background-color: #319DB5 !important;
+  background-color: #319db5 !important;
   color: #fff !important;
 }
 .bg-primary.form-control:focus {
-  background-color: #319DB5 !important;
+  background-color: #319db5 !important;
   color: #fff !important;
 }
 .background-primary:not(i) {
-  background-color: #319DB5;
+  background-color: #319db5;
   color: #fff;
 }
 i.background-primary::before {
-  background-color: #319DB5;
+  background-color: #319db5;
   color: #fff;
 }
 .background-primary.form-control:focus {
-  background-color: #319DB5;
+  background-color: #319db5;
   color: #fff;
 }
 .bg-primary-dark:not(i) {
@@ -2012,7 +2023,7 @@ fieldset[disabled].btn-inverse.active {
   width: 11px;
 }
 .alert {
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -2679,7 +2690,7 @@ ul.list-unstyled {
   z-index: 2;
 }
 .modal-image .modal-footer p {
-  font-family: 'Lato', arial;
+  font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   font-weight: 100;
   font-size: 16px;
 }
@@ -3236,10 +3247,10 @@ legend {
   font-size: 12px;
 }
 .input-group-btn:last-child > .btn {
-  font-family: arial;
+  font-family: 'Droid Arabic Kufi','Times New Roman', serif;
 }
 .input-group-btn:last-child > .btn-group {
-  font-family: arial;
+  font-family: 'Droid Arabic Kufi','Times New Roman', serif;
 }
 .input-group-btn:first-child > .btn.btn-white {
   border-right: 0 !important;
@@ -3624,7 +3635,7 @@ textarea.form-success.form-control:focus {
   top: 0;
 }
 .switch-input:checked ~ .switch-label {
-  background: #319DB5;
+  background: #319db5;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
 }
 .switch-input:checked ~ .switch-handle {
@@ -3860,7 +3871,7 @@ label.ios-switch:last-of-type {
   color: #fff;
   display: block;
   float: left;
-  font-family: Trebuchet, Arial, sans-serif;
+font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   font-size: 14px;
   font-weight: 700;
   height: 30px;
@@ -3951,7 +3962,7 @@ label.ios-switch:last-of-type {
   content: "ON";
   display: block;
   float: left;
-  font-family: Trebuchet, Arial, sans-serif;
+font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   font-size: 14px;
   font-weight: 700;
   height: 24px;
@@ -3970,7 +3981,7 @@ label.ios-switch:last-of-type {
   content: "OFF";
   display: block;
   float: left;
-  font-family: Trebuchet, Arial, sans-serif;
+font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   font-size: 14px;
   font-weight: 700;
   height: 24px;
@@ -4082,7 +4093,7 @@ label.ios-switch:last-of-type {
 }
 .select2-container .select2-choice .select2-arrow b:before {
   content: "\f0d7";
-  font-family: 'FontAwesome';
+font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   font-size: 12px;
   position: relative;
   right: 5px;
@@ -5490,7 +5501,7 @@ body.DTTT_Print {
 .tabs-linetriangle .nav.nav-tabs > li > a {
   background: none;
   color: #A2A4A6;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   font-size: 13px;
   font-weight: 600;
   padding: 12px 22px 16px;
@@ -5674,7 +5685,7 @@ body.DTTT_Print {
   color: #838F99;
   content: "-";
   float: right;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   width: 24px;
   height: 24px;
   text-align: center;
@@ -5687,7 +5698,7 @@ body.DTTT_Print {
   color: #7E7E7E;
   content: "+";
   float: right;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   width: 24px;
   height: 24px;
   text-align: center;
@@ -6231,20 +6242,20 @@ table.dataTable thead .sorting:before {
   color: #DDDDDD;
   content: "\f0dc";
   float: right;
-  font-family: fontAwesome;
+font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   padding-left: 10px;
 }
 table.dataTable thead .sorting_desc:before {
   color: #383838;
   content: "\f0dd";
   float: right;
-  font-family: fontAwesome;
+font-family: 'Droid Arabic Kufi','Times New Roman', serif;
 }
 table.dataTable thead .sorting_asc:before {
   color: #383838;
   content: "\f0de";
   float: right;
-  font-family: fontAwesome;
+font-family: 'Droid Arabic Kufi','Times New Roman', serif;
 }
 .table-red .pagination > .active > a,
 .table-red .pagination > .active > span,
@@ -7062,7 +7073,7 @@ div.dataTables_info {
   box-sizing: border-box;
   color: #cccccc;
   display: none;
-  font-family: Menlo, Monaco, monospace, sans-serif;
+font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   font-size: 14px;
   margin-bottom: 0;
   padding: 10px;
@@ -7448,7 +7459,7 @@ div.dataTables_info {
 }
 .note-dialog .note-help-dialog .note-shortcut-key {
   color: #dddd00;
-  font-family: "Courier New";
+font-family: 'Droid Arabic Kufi','Times New Roman', serif;
   text-align: right;
 }
 .note-handle .note-control-selection {

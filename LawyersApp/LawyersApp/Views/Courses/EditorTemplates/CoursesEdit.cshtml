@@ -1,0 +1,131 @@
+﻿@model LawyersApp.Models.Courses.CoursesViewModel
+    <style type="text/css">
+        div.k-edit-form-container {
+            width: 100%;
+        }
+
+            div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+                width: 100%;
+                max-width: none;
+            }
+    </style>
+    <div class="k-edit-form-container" style="margin:auto;" >
+        
+            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.CoursesName)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.CoursesName)@Html.ValidationMessageFor(model => model.CoursesName)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                    
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.CoursesStartDate)</label>
+                                    <div >
+                                        @Html.Kendo().DatePickerFor(model => model.CoursesStartDate)@Html.ValidationMessageFor(model => model.CoursesStartDate)
+                                    </div>
+                                </div>
+                            </div>
+
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CoursesEndDate)</label>
+                <div>
+                    @Html.Kendo().DatePickerFor(model => model.CoursesEndDate)@Html.ValidationMessageFor(model => model.CoursesEndDate)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.TrainingHours)</label>
+                <div>
+                    @Html.Kendo().NumericTextBoxFor(model => model.TrainingHours)@Html.ValidationMessageFor(model => model.TrainingHours)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.TotalBeneficiaries)</label>
+                <div>
+                    @Html.Kendo().NumericTextBoxFor(model => model.TotalBeneficiaries)@Html.ValidationMessageFor(model => model.TotalBeneficiaries)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.Males)</label>
+                <div>
+                    @Html.Kendo().NumericTextBoxFor(model => model.Males)@Html.ValidationMessageFor(model => model.Males)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.Females)</label>
+                <div>
+                    @Html.Kendo().NumericTextBoxFor(model => model.Females)@Html.ValidationMessageFor(model => model.Females)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.TargetGroupID)</label>
+                <div>
+                    @(Html.Kendo().DropDownListFor(model => model.TargetGroupID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+    .DataTextField("TargetGroupName")
+    .DataValueField("TargetGroupID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetTargetGroup", "Courses");
+        })
+        .ServerFiltering(false);
+    })
+
+
+                    )
+                    @Html.ValidationMessageFor(model => model.TargetGroupID)
+                </div>
+            </div>
+        </div>
+
+
+             
+                     
+                          
+                       
+
+
+                          
+         
+                  
+
+                         
+                           
+       
+                            
+                
+
+                    
+
+
+
+                        </div>
+
+      

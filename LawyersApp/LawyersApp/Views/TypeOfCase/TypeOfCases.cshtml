@@ -1,0 +1,62 @@
+﻿@using LawyersApp.Models.TypeOfCase;
+@using System.Net;
+@{
+    ViewBag.Title = "ادارة انواع القضايا";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+
+}
+@if ((string)Session["UserType"] != "1")
+{
+    Response.Redirect("~/Account/Login");
+    return;
+}
+<div class="col-lg-12 portlets">
+    <div class="panel">
+        <div class="panel-header ">
+            <h2><i class="fa fa-folder"></i> <strong>إدارة</strong> أنواع القضايا</h2>
+            @(Html.Kendo().Grid<TypeOfCaseViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.TypeOfCaseID).Width(50).Hidden();
+        columns.Bound(p => p.TypeOfCase).Width(300).Title("نوع  القضية");
+        columns.ForeignKey(p => p.IssuesTypeID, (System.Collections.IEnumerable)ViewData["IssuesType"], "IssuesTypeID", "IssuesTypename")
+                              .Title("النوعية").Width(170);
+
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(150);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة نوع قضية");
+    })
+   .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات النموذج").Width(400).Height(250)).TemplateName("TypeOfCasesEditor"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.TypeOfCaseID);
+            model.Field(p => p.TypeOfCaseID).Editable(false);
+        })
+        .Read(read => read.Action("TypeOfCases_Read", "TypeOfCase"))
+        .Update(update => update.Action("TypeOfCases_Update", "TypeOfCase"))
+        .Create(create => create.Action("TypeOfCases_Create", "TypeOfCase"))
+        .Destroy(destroy => destroy.Action("TypeOfCases_Destroy", "TypeOfCase"))
+    )
+
+            )
+        </div>
+    </div>
+</div>

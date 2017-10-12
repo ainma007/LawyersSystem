@@ -1,0 +1,200 @@
+﻿@model LawyersApp.Models.Arbitration.ArbitrationViewModel
+    <style type="text/css">
+        div.k-edit-form-container {
+            width: 100%;
+        }
+
+            div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+                width: 100%;
+                max-width: none;
+            }
+    </style>
+    <div class="k-edit-form-container" style="margin:auto;" >
+        
+            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ArbitrationNumber)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ArbitrationNumber)@Html.ValidationMessageFor(model => model.ArbitrationNumber)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                    
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ArbitrationDate)</label>
+                                    <div >
+                                        @Html.Kendo().DatePickerFor(model => model.ArbitrationDate)@Html.ValidationMessageFor(model => model.ArbitrationDate)
+                                    </div>
+                                </div>
+                            </div>
+
+                      
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.FirstSideName)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.FirstSideName)@Html.ValidationMessageFor(model => model.FirstSideName)
+                                        <i class="icon-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.FirstSideIDNumber)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.FirstSideIDNumber)@Html.ValidationMessageFor(model => model.FirstSideIDNumber)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.FirstSidePhone)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.FirstSidePhone)@Html.ValidationMessageFor(model => model.FirstSidePhone)
+                                        <i class="icon-screen-smartphone"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.FirstSocialstatus)</label>
+                                    <div>
+
+                                        @(Html.Kendo().DropDownListFor(model => model.FirstSocialstatus)
+          .Name("FirstSocialstatus")
+          .BindTo(new List<string>() {
+              "متزوج",
+             "أعزب",
+              "مطلق",
+              "أرمل"
+
+          })
+                                        )
+                                        @Html.ValidationMessageFor(model => model.FirstSocialstatus)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.FirstSideAddress)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.FirstSideAddress)@Html.ValidationMessageFor(model => model.FirstSideAddress)
+                                        <i class="fa fa-map-marker"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.SecondSideName)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.SecondSideName)@Html.ValidationMessageFor(model => model.SecondSideName)
+                                        <i class="icon-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.SecondSideIDNumber)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.SecondSideIDNumber)@Html.ValidationMessageFor(model => model.SecondSideIDNumber)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.SecondSidePhone)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.SecondSidePhone)@Html.ValidationMessageFor(model => model.SecondSidePhone)
+                                        <i class="icon-screen-smartphone"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.SecondSocialstatus)</label>
+                                    <div>
+
+                                        @(Html.Kendo().DropDownListFor(model => model.SecondSocialstatus)
+          .Name("SecondSocialstatus")
+          .BindTo(new List<string>() {
+              "متزوج",
+             "أعزب",
+              "مطلق",
+              "أرمل"
+
+          })
+                                        )
+                                        @Html.ValidationMessageFor(model => model.SecondSideAddress)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.SecondSideAddress)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.SecondSideAddress)@Html.ValidationMessageFor(model => model.SecondSideAddress)
+                                        <i class="fa fa-map-marker"></i>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                       
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ArbitrationName)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ArbitrationName)@Html.ValidationMessageFor(model => model.ArbitrationName)
+                                        <i class="icon-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ArbitrationPhone)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ArbitrationPhone)@Html.ValidationMessageFor(model => model.ArbitrationPhone)
+                                        <i class="icon-screen-smartphone"></i>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                  
+
+                         
+                           
+        <div class="col-sm-12" ">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.ArbitrationDecision)</label>
+                <div class="append-icon">
+                    @Html.Kendo().EditorFor(model => model.ArbitrationDecision)@Html.ValidationMessageFor(model => model.ArbitrationDecision)
+                    <i class="fa fa-map-marker"></i>
+                </div>
+            </div>
+        </div>
+
+                            
+                
+
+                    
+
+
+
+                        </div>
+
+      

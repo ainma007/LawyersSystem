@@ -1,0 +1,235 @@
+﻿@model LawyersApp.Models.SystemicIssues.SystemicIssuesViewModel
+    <style type="text/css">
+        div.k-edit-form-container {
+            width: 100%;
+        }
+
+            div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+                width: 100%;
+                max-width: none;
+            }
+    </style>
+    <div class="k-edit-form-container" style="margin:auto;" >
+    <div class="panel panel-default no-bd">
+        
+        <div class="panel-body bg-white">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <form role="form" class="form-validation">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.CenterNumber)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.CenterNumber)@Html.ValidationMessageFor(model => model.CenterNumber)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.CourtsNumber)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.CourtsNumber)@Html.ValidationMessageFor(model => model.CourtsNumber)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.DateOfCase)</label>
+                                    <div >
+                                        @Html.Kendo().DatePickerFor(model => model.DateOfCase)@Html.ValidationMessageFor(model => model.DateOfCase)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.DepositDate)</label>
+                                    <div>
+                                        @Html.Kendo().DatePickerFor(model => model.DepositDate)@Html.ValidationMessageFor(model => model.DepositDate)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ClientName)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ClientName)@Html.ValidationMessageFor(model => model.ClientName)
+                                        <i class="icon-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ClientIDNumber)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ClientIDNumber)@Html.ValidationMessageFor(model => model.ClientIDNumber)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ClientPhone)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ClientPhone)@Html.ValidationMessageFor(model => model.ClientPhone)
+                                        <i class="icon-screen-smartphone"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ClientAddress)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ClientAddress)@Html.ValidationMessageFor(model => model.ClientAddress)
+                                        <i class="fa fa-map-marker"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.AdversaryName)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.AdversaryName)@Html.ValidationMessageFor(model => model.AdversaryName)
+                                        <i class="icon-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.AdversaryIDNumber)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.AdversaryIDNumber)@Html.ValidationMessageFor(model => model.AdversaryIDNumber)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.AdversaryPhone)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.AdversaryPhone)@Html.ValidationMessageFor(model => model.AdversaryPhone)
+                                        <i class="icon-screen-smartphone"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.AdversaryAddress)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.AdversaryAddress)@Html.ValidationMessageFor(model => model.AdversaryAddress)
+                                        <i class="fa fa-map-marker"></i>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.TypeOfCaseID)</label>
+                                    <div>
+                                        @(Html.Kendo().DropDownListFor(model => model.TypeOfCaseID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+    .DataTextField("TypeOfCase")
+    .DataValueField("TypeOfCaseID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetTypeOfCase", "LegalIssues");
+        })
+       .ServerFiltering(true);
+    })
+
+
+                                        )        
+                                        @Html.ValidationMessageFor(model => model.TypeOfCaseID)
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                           
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.CourtsID)</label>
+                                    <div>
+                                        @(Html.Kendo().DropDownListFor(model => model.CourtsID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+    .DataTextField("CourtsName")
+    .DataValueField("CourtsID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetCourts", "LegalIssues");
+        })
+       .ServerFiltering(true);
+    })
+
+
+                                        )
+                                        @Html.ValidationMessageFor(model => model.CourtsID)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.LawyerID)</label>
+                                    <div>
+                                        @(Html.Kendo().DropDownListFor(model => model.LawyerID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+    .DataTextField("LawyerName")
+    .DataValueField("LawyerID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetLawyer", "LegalIssues");
+        })
+       .ServerFiltering(true);
+    })
+
+
+                                        )
+                                        @Html.ValidationMessageFor(model => model.LawyerID)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.DateOfClosure)</label>
+                                    <div>
+                                        @Html.Kendo().DatePickerFor(model => model.DateOfClosure)@Html.ValidationMessageFor(model => model.DateOfClosure)
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

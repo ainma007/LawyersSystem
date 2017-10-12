@@ -1,0 +1,55 @@
+﻿@model LawyersApp.Models.TypeOfCase.TypeOfCaseViewModel
+
+<style type="text/css">
+    div.k-edit-form-container {
+        width: 80%;
+    }
+
+        div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+            width: 100%;
+            max-width: none;
+        }
+</style>
+<div class="k-edit-form-container" style="margin:auto;">
+    <div class="grid-body no-border">
+
+        <div class="row">
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.TypeOfCase)
+
+                @Html.Kendo().TextBoxFor(model => model.TypeOfCase)
+                @Html.ValidationMessageFor(model => model.TypeOfCase)
+
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.IssuesTypeID)
+
+                @(Html.Kendo().DropDownListFor(model => model.IssuesTypeID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+     .DataTextField("IssuesTypename")
+          .DataValueField("IssuesTypeID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetIssuesType", "TypeOfCase");
+        })
+        .ServerFiltering(false);
+    })
+                )
+
+                @Html.ValidationMessageFor(model => model.IssuesTypeID)
+
+
+            </div>
+</div>
+</div>
+</div>

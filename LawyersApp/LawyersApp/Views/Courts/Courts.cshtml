@@ -1,0 +1,61 @@
+﻿@using LawyersApp.Models.Courts
+@using System.Net;
+@{
+    ViewBag.Title = "Courts";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+
+}
+@if ((string)Session["UserType"] != "1")
+{
+    Response.Redirect("~/Account/Login");
+    return;
+}
+
+<div class="col-lg-12 portlets">
+    <div class="panel">
+        <div class="panel-header ">
+            <h2><i class="fa fa-bank"></i> <strong>إدارة</strong> المحاكم</h2>
+            @(Html.Kendo().Grid<CourtsViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.CourtsID).Width(50).Hidden();
+        columns.Bound(p => p.CourtsName).Width(300).Title("اسم المحكمة");
+       
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(150);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة محكمة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات المحكمة").Width(400).Scrollable(true)))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.CourtsID);
+            model.Field(p => p.CourtsID).Editable(false);
+        })
+        .Read(read => read.Action("Courts_Read", "Courts"))
+        .Update(update => update.Action("Courts_Update", "Courts"))
+        .Create(create => create.Action("Courts_Create", "Courts"))
+        .Destroy(destroy => destroy.Action("Courts_Destroy", "Courts"))
+    )
+
+            )
+        </div>
+    </div>
+</div>

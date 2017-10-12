@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
+using LawyersApp.Models;
+using LawyersApp.Models.Project;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -27,6 +31,22 @@ namespace LawyersApp.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        private ProjectService ProjectService;
+        public HomeController()
+        {
+            ProjectService = new ProjectService(new LawyersEntities());
+
+        }
+
+        public ActionResult ProjectMainAdmin_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(ProjectService.Read().ToDataSourceResult(request));
+        }
+
+        public ActionResult ProjectMainUser_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(ProjectService.UserDread().Where(e=> e.UserID==int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
         }
     }
 }

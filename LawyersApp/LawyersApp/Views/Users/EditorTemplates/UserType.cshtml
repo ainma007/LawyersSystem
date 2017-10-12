@@ -1,0 +1,24 @@
+﻿@model string
+
+
+
+@(Html.Kendo().DropDownListFor(m => m)
+          .Name("UserType")
+          .DataTextField("Text")
+          .DataValueField("Value")
+          .BindTo(new List<SelectListItem>() {
+              new SelectListItem() {
+                  Text = "مدير",
+                  Value = "1"
+              },
+              new SelectListItem() {
+                  Text = "محامي",
+                  Value = "2"
+              }
+
+          })
+          .Value("1")
+          .HtmlAttributes(new { style = "width: 100%" })
+)
+
+@Html.ValidationMessageFor(m => m)

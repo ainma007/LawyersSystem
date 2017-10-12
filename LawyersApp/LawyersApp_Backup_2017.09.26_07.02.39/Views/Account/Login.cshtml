@@ -1,0 +1,83 @@
+﻿
+@{
+    Layout = null;
+}
+@model LawyersApp.Models.Users_Table
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>الأرشيف الالكتروني للمحامين</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="description" />
+    <meta content="themes-lab" name="author" />
+    <link rel="shortcut icon" href="@Url.Content("~/Content/assets/global/images/favicon.png")">
+    <link href="@Url.Content("~/Content/assets/global/css/style.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/global/css/ui.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/global/plugins/bootstrap-loading/lada.min.css")" rel="stylesheet" />
+
+</head>
+<body class="rtl account2" data-page="login">
+    <!-- BEGIN LOGIN BOX -->
+    @using (Html.BeginForm())
+            {
+        @Html.AntiForgeryToken()
+        <div class="container" id="login-block">
+            <i class="user-img icons-faces-users-03"></i>
+            <div class="account-info" style="text-align:center">
+                <img src="@Url.Content("~/Content/assets/global/images/logo.png")" alt="" data-src="@Url.Content("~/Content/assets/global/images/logo.png")" width="150" height="150" />
+
+                <h5>المركز الفلسطيني للديمقراطية وحل النزاعات</h5>
+                <h5>The Palestinian Center For Democracy And Conflict Resolution</h5>
+
+                <ul>
+                    <li><i class="icon-layers"></i>الأرشيف الالكتروني للمحامين</li>
+                </ul>
+            </div>
+
+
+            <div class="account-form">
+                <form class="form-signin" role="form">
+                    <h3><strong>شاشة-</strong>تسجيل الدخول</h3>
+                    @Html.ValidationSummary(true, "خطأ في اسم المستخدم او كلمة المرور", new { @class = "text-danger" })
+
+
+                    <div class="append-icon">
+                        <input type="text" name="UserName" id="UserName" class="form-control form-white username" placeholder="اسم المستخدم" required>
+
+                        <i class="icon-user"></i>
+                    </div>
+                    <div class="append-icon m-b-20">
+                        <input type="Password" name="Password" class="form-control form-white password" placeholder="كلمة المرور" required>
+                        <i class="icon-lock"></i>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-dark btn-rounded ladda-button k-button k-primary" data-style="expand-left">تسجيل الدخول</button>
+                    
+                </form>
+
+            </div>
+
+        </div>
+    }
+    <!-- END LOCKSCREEN BOX -->
+    <p class="account-copyright">
+        <span>@ViewBag.PM </span>
+    </p>
+    <script src="@Url.Content("~/Content/global/plugins/jquery/jquery-3.1.0.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/global/plugins/jquery/jquery-migrate-3.0.0.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/global/plugins/gsap/main-gsap.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/global/plugins/tether/js/tether.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/global/plugins/bootstrap/js/bootstrap.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/global/plugins/backstretch/backstretch.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/global/plugins/bootstrap-loading/lada.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/aassets/global/js/pages/login-v2.js")"></script>
+
+</body>
+</html>

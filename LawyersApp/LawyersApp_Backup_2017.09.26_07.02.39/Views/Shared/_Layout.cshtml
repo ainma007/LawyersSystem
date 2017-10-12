@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="rtl" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="admin-themes-lab">
+    <meta name="author" content="themes-lab">
+    <link rel="shortcut icon" href="@Url.Content("~/Content/assets/global/images/favicon.png")" type="image/png">
+    <title>الأرشيف الالكتروني لقسم المحاماة</title>
+    	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/jquery.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/jszip.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/modernizr-2.6.2.js")"></script>
+<link href="@Url.Content("~/Content/assets/global/css/style.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/global/css/theme.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/global/css/ui.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/admin/layout1/css/layout.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/global/plugins/metrojs/metrojs.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/global/plugins/maps-amcharts/ammap/ammap.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Content/assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js")"></script>
+    <!-- Kendo -->
+    <link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.rtl.min.css")" rel="stylesheet" type="text/css" />
+
+    	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.bootstrap.mobile.min.css")" rel="stylesheet" type="text/css" />
+
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.uniform.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.dataviz.uniform.min.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Content/assets/admin/layout1/js/layout.js")"></script>
+
+
+    	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/kendo.all.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/kendo.aspnetmvc.min.js")"></script>
+<script src="@Url.Content("~/Scripts/cultures/kendo.culture.en-GB.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.all.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/kendo.aspnetmvc.min.js")"></script>
+
+    <script>
+    kendo.culture("en-GB");
+    </script>
+</head>
+
+<!-- BEGIN BODY -->
+<body class="rtl fixed-topbar fixed-sidebar theme-sdtl color-default dashboard">
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <section>
+        <!-- BEGIN SIDEBAR -->
+        <div class="sidebar">
+            <div class="logopanel">
+                <h1>
+                    <a href="dashboard.html"></a>
+                </h1>
+            </div>
+            <div class="sidebar-inner">
+                <div class="sidebar-top">
+
+                    <div class="userlogged clearfix">
+                        <i class="icon icons-faces-users-01"></i>
+                        <div class="user-details">
+                            <h5 style="color:white">@Session["UserName"]</h5>
+                            <div class="dropdown user-login">
+                                <button class="btn btn-xs dropdown-toggle btn-rounded" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300">
+                                    <i class="online"></i><span>متصل</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-title">
+                    القائمة
+
+                </div>
+                <ul class="nav nav-sidebar">
+                    <li class="nav-active active"><a href="@Url.Action("Index", "Home")"><i class="icon-home"></i><span>الرئيسية</span></a></li>
+                    <li class="nav-parent">
+                        <a href="#"><i class="fa fa-list-alt"></i><span>القضايا</span> <span class="fa arrow"></span></a>
+                        <ul class="children collapse">
+                            <li><a href="@Url.Action("LegalIssues", "LegalIssues")"> القضايا الشرعية</a></li>
+                            <li><a href="@Url.Action("SystemicIssues", "SystemicIssues")"> القضايا النظامية</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-parent">
+                        <a href="#"><i class="icon-bulb"></i><span>التحكيم والوساطة</span> <span class="fa arrow"></span></a>
+                        <ul class="children collapse">
+                            <li><a href="@Url.Action("Mediation", "Mediation")"> الوساطة</a></li>
+                            <li><a href="@Url.Action("Arbitration", "Arbitration")"> التحكيم</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-parent">
+                        <a href="#"><i class="icon-folder"></i><span> الأرشيف</span> <span class="fa arrow"></span></a>
+                        <ul class="children collapse">
+                            <li><a href="@Url.Action("Consulting", "Consulting")"> الاستشارات</a></li>
+                            <li><a href="@Url.Action("Courses", "Courses")"> الدورات التدريبة</a></li>
+                            <li><a href="@Url.Action("الملتقى الاسري", "الملتقى الاسري")"> الملتقى الاسري</a></li>
+
+                            <li><a href="@Url.Action("Courses", "ان")"> انجازات المركز</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+                <!-- SIDEBAR WIDGET FOLDERS -->
+                <div class="sidebar-widgets">
+                    <p class="menu-title widget-title" >قسم الادارة <span class="pull-right"></span></p>
+                    <ul class="folders">
+                        <li>
+                            <a href="@Url.Action("UserManegment", "Users")"><i class="fa fa-group c-primary"></i>إدارة المستخدمين</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Courts", "Courts")"><i class="fa fa-bank c-red"></i>ادارة اسماء المحاكم</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("TypeOfCases", "TypeOfCase")"><i class="fa fa-folder c-green"></i>إدارة اسماء القضايا</a>
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("Lawyer", "Lawyer")"><i class="icon-user"></i>إدارة اسماء المحامين</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="sidebar-footer clearfix">
+
+                    <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen">
+                        <i class="icon-size-fullscreen"></i>
+                    </a>
+
+                    <a class="pull-left btn-effect" href="@Url.Action("LogOff", "Account")" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
+                        <i class="icon-power"></i>
+                    </a>
+</div>
+            </div>
+        </div>
+        <!-- END SIDEBAR -->
+        <div class="main-content k-rtl " style="margin:auto" >
+            <!-- BEGIN TOPBAR -->
+            <div class="topbar">
+                <div class="header-left">
+                    <div class="topnav">
+                        <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
+                        <ul class="nav nav-icons">
+                            <li><a href="#" class="toggle-sidebar-top"><span class="icon-user-following"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="header-menu nav navbar-nav">
+                        <!-- BEGIN USER DROPDOWN -->
+                        <!-- BEGIN USER DROPDOWN -->
+                        <li class="dropdown" id="user-header">
+                            <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <img src="@Url.Content("~/Content/assets/global/images/avatars/user1.png")" alt="user image">
+                                <span class="username">مرحبا, @Session["UserName"]</span>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li>
+                                    <a href="@Url.Action("LogOff", "Account")" class="elements"><i class="icon-logout"></i><span>تسجيل خروج</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- END USER DROPDOWN -->
+                    <!-- CHAT BAR ICON -->
+
+                </div>
+                <!-- header-right -->
+
+            </div>
+
+            <!-- END TOPBAR -->
+
+@if (Session["UserId"] != null)
+{
+            <div class="page-content page-thin">
+                <div class="row">
+                   
+
+                            @RenderSection("featured", required: false)
+                            <section class="content-wrapper main-content clear-fix">
+                                @RenderBody()
+                            </section>
+                
+                            
+                        </div>
+                    </div>
+}
+else {
+
+    Response.Redirect("~/Account/Login");
+}
+                </div>
+
+                <!-- BEGIN QUICKVIEW SIDEBAR -->
+                <!-- END QUICKVIEW SIDEBAR -->
+                <!-- BEGIN PRELOADER -->
+
+
+
+
+
+        <!-- END MAIN CONTENT -->
+        <!-- BEGIN BUILDER -->
+
+    </section>
+
+    <!-- END PRELOADER -->
+
+    <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
+
+
+   
+    <script src="@Url.Content("~/Content/assets/global/plugins/jquery/jquery-migrate-3.0.0.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/assets/global/plugins/jquery-ui/jquery-ui.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/gsap/main-gsap.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/bootstrap/js/bootstrap.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/assets/global/plugins/appear/jquery.appear.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/jquery-cookies/jquery.cookies.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/jquery-block-ui/jquery.blockUI.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/charts-sparkline/sparkline.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/charts-sparkline/sparkline.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/retina/retina.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/select2/select2.full.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/backstretch/backstretch.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/js/builder.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/js/sidebar_hover.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/js/application.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/js/plugins.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/js/widgets/notes.js")"></script>
+    <script src="@Url.Content("~/Content/assets/global/js/quickview.js")"></script>
+   
+    <!-- BEGIN PAGE SCRIPT -->
+
+   
+
+    
+    <!-- END PAGE SCRIPT -->
+</body>
+</html>
+

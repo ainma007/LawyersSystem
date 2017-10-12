@@ -1,0 +1,197 @@
+﻿@using LawyersApp.Models.SystemicIssues
+@using System.Net;
+@{
+    ViewBag.Title = "القضايا النظامية";
+}
+
+<script>
+    kendo.culture("en-GB");
+</script>
+@if (Session["UserId"] == null)
+{
+    Response.Redirect("~/Account/Login");
+    return;
+}
+@if ((string)Session["UserType"]=="1")
+{
+
+
+    <div class="col-lg-12 portlets">
+        <div class="panel">
+            <div class="panel-header ">
+                <h2><i class="fa fa-list-alt"></i> <strong>إدارة</strong> القضايا النظامية</h2>
+                @(Html.Kendo().Grid<SystemicIssuesViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.SystemicIssuesID).Width(50).Title("رقم المركز").Locked(true);
+        columns.Bound(p => p.CourtsNumber).Width(150).Title("رقم المحكمة").Locked(true);
+        columns.Bound(p => p.DateOfCase).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ الورود  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ الورود ").Locked(true);
+        columns.Bound(p => p.DepositDate).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ الايداع  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ الايداع ").Locked(true);
+        columns.Bound(p => p.ClientName).Width(200).Title("اسم الموكل").Locked(true);
+        columns.Bound(p => p.ClientGendr).Width(100).Title("الجنس").Locked(true);
+
+        columns.Bound(p => p.ClientIDNumber).Width(150).Title("رقم هوية الموكل");
+        columns.Bound(p => p.ClientPhone).Width(150).Title("رقم هاتف الموكل");
+        columns.Bound(p => p.ClientAddress).Width(200).Title("عنوان الموكل");
+        columns.Bound(p => p.AdversaryName).Width(200).Title("اسم الخصم");
+        columns.Bound(p => p.AdversaryIDNumber).Width(150).Title("رقم هوية الخصم");
+        columns.Bound(p => p.AdversaryPhone).Width(150).Title("رقم هاتف الخصم");
+        columns.Bound(p => p.AdversaryAddress).Width(200).Title("عنوان الخصم");
+
+        columns.ForeignKey(p => p.TypeOfCaseID, (System.Collections.IEnumerable)ViewData["typeOfcase"], "TypeOfCaseID", "TypeOfCase")
+   .Title("نوع القضية").Width(200);
+        columns.ForeignKey(p => p.CourtsID, (System.Collections.IEnumerable)ViewData["Courts"], "CourtsID", "CourtsName")
+   .Title("المحكمة").Width(200);
+        columns.ForeignKey(p => p.LawyerID, (System.Collections.IEnumerable)ViewData["Lawyer"], "LawyerID", "LawyerName")
+   .Title("المحامي").Width(200);
+
+        columns.Bound(p => p.DateOfClosure).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ اغلاق الملف  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ اغلاق الملف ");
+
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName")
+   .Title("مدخل البيانات").Width(200);
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(200);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة قضية نظامية");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات القضية النظامية").Width(400).Height(400).Scrollable(true)).TemplateName("LegalEdit"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.SystemicIssuesID);
+            model.Field(p => p.SystemicIssuesID).Editable(false);
+            model.Field(p => p.ProjectID).Editable(false);
+            model.Field(p => p.UserID).Editable(false);
+            model.Field(p => p.TypeOfCaseID).DefaultValue(1);
+            model.Field(p => p.CourtsID).DefaultValue(1);
+            model.Field(p => p.LawyerID).DefaultValue(1);
+
+            model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"]
+            .ToString()));
+            string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+            string[] words = currentUrlPage.Split('=');
+            string s = "";
+            foreach (string word in words)
+            {
+                s = word.ToString();
+            }
+            int x = int.Parse(s);
+            model.Field(p => p.ProjectID).DefaultValue(x);
+
+
+
+        })
+
+       .Read(read => read.Action("Systemic_Read", "SystemicIssues"))
+        .Update(update => update.Action("Systemic_Update", "SystemicIssues"))
+        .Create(create => create.Action("Systemic_Create", "SystemicIssues"))
+        .Destroy(destroy => destroy.Action("Systemic_Destroy", "SystemicIssues"))
+    )
+
+                )
+            </div>
+        </div>
+    </div>
+
+}
+
+else if ((string)Session["UserType"]=="2")
+{
+    <div class="col-lg-12 portlets">
+        <div class="panel">
+            <div class="panel-header ">
+                <h2><i class="fa fa-list-alt"></i> <strong>إدارة</strong> القضايا النظامية</h2>
+                @(Html.Kendo().Grid<SystemicIssuesViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.SystemicIssuesID).Width(50).Title("رقم المركز").Locked(true);
+        columns.Bound(p => p.CourtsNumber).Width(150).Title("رقم المحكمة").Locked(true);
+        columns.Bound(p => p.DateOfCase).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ الورود  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ الورود ").Locked(true);
+        columns.Bound(p => p.DepositDate).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ الايداع  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ الايداع ").Locked(true);
+        columns.Bound(p => p.ClientName).Width(200).Title("اسم الموكل").Locked(true);
+        columns.Bound(p => p.ClientGendr).Width(100).Title("الجنس").Locked(true);
+
+        columns.Bound(p => p.ClientIDNumber).Width(150).Title("رقم هوية الموكل");
+        columns.Bound(p => p.ClientPhone).Width(150).Title("رقم هاتف الموكل");
+        columns.Bound(p => p.ClientAddress).Width(200).Title("عنوان الموكل");
+        columns.Bound(p => p.AdversaryName).Width(200).Title("اسم الخصم");
+        columns.Bound(p => p.AdversaryIDNumber).Width(150).Title("رقم هوية الخصم");
+        columns.Bound(p => p.AdversaryPhone).Width(150).Title("رقم هاتف الخصم");
+        columns.Bound(p => p.AdversaryAddress).Width(200).Title("عنوان الخصم");
+
+        columns.ForeignKey(p => p.TypeOfCaseID, (System.Collections.IEnumerable)ViewData["typeOfcase"], "TypeOfCaseID", "TypeOfCase")
+   .Title("نوع القضية").Width(200);
+        columns.ForeignKey(p => p.CourtsID, (System.Collections.IEnumerable)ViewData["Courts"], "CourtsID", "CourtsName")
+   .Title("المحكمة").Width(200);
+        columns.ForeignKey(p => p.LawyerID, (System.Collections.IEnumerable)ViewData["Lawyer"], "LawyerID", "LawyerName")
+   .Title("المحامي").Width(200);
+
+        columns.Bound(p => p.DateOfClosure).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ اغلاق الملف  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ اغلاق الملف ");
+
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName")
+   .Title("مدخل البيانات").Width(200);
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(200);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة قضية نظامية");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات القضية النظامية").Width(400).Height(400).Scrollable(true)).TemplateName("LegalEdit"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.SystemicIssuesID);
+            model.Field(p => p.SystemicIssuesID).Editable(false);
+            model.Field(p => p.TypeOfCaseID).DefaultValue(1);
+            model.Field(p => p.CourtsID).DefaultValue(1);
+            model.Field(p => p.LawyerID).DefaultValue(1);
+            model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"]
+.ToString()));
+
+
+        })
+
+        .Read(read => read.Action("UserSystemic_Read", "SystemicIssues"))
+        .Update(update => update.Action("Systemic_Update", "SystemicIssues"))
+        .Create(create => create.Action("Systemic_Create", "SystemicIssues"))
+        .Destroy(destroy => destroy.Action("Systemic_Destroy", "SystemicIssues"))
+    )
+
+                )
+            </div>
+        </div>
+    </div>
+
+}

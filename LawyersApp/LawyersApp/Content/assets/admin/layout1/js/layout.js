@@ -323,7 +323,7 @@ function resetStyle() {
         $('body').addClass('theme-sdtl').addClass('color-default');
         $('.builder .theme-color').removeClass('active');
         $('.theme-color').each(function() {
-            if ($(this).data('color') == '#319DB5') $(this).addClass('active');
+            if ($(this).data('color') == '#319db5') $(this).addClass('active');
         });
         $('.builder .theme').removeClass('active');
         $('.builder .theme-default').addClass('active');

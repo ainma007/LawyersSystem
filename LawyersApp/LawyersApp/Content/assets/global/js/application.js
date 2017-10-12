@@ -469,7 +469,7 @@ function sidebarWidgets() {
         var myvalues3 = [18, 14, 15, 14, 15, 12, 21, 16, 18, 14, 12, 15, 17, 19];
         var sparkline1 = $('.dynamicbar1').sparkline(myvalues1, {
             type: 'bar',
-            barColor: '#319DB5',
+            barColor: '#319db5',
             barWidth: 4,
             barSpacing: 1,
             height: '28px'

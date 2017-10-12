@@ -1,0 +1,67 @@
+﻿@using LawyersApp.Models.Project;
+@using System.Net;
+@{
+    ViewBag.Title = "ادارة انواع القضايا";
+
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+
+}
+@if (Session["UserId"] == null)
+{
+    Response.Redirect("~/Account/Login");
+    return;
+}
+
+<div class="col-lg-12 portlets">
+    <div class="panel">
+        <div class="panel-header ">
+            <h2><i class="fa fa-folder"></i> <strong>إدارة</strong> المشاريع</h2>
+            @(Html.Kendo().Grid<ProjectViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.ProjectID).Width(50).Hidden();
+        columns.Bound(p => p.ProjectName).Width(300).Title("اسم  المشروع");
+        columns.Bound(p => p.StartData).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ البداية " }).Width(170).Format("{0:dd/MM/yyyy}").Title("تاريخ البداية ");
+
+        columns.Bound(p => p.EndDate).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ الانتهاء " }).Width(170).Format("{0:dd/MM/yyyy}").Title("تاريخ الانتهاء ");
+        columns.Bound(p => p.Status).Width(110).HeaderHtmlAttributes(new { @title = "الحالة" }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Status ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
+
+
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(150);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة مشروع");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات المشروع").Width(400).Scrollable(true)))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.ProjectID);
+            model.Field(p => p.ProjectID).Editable(false);
+        })
+        .Read(read => read.Action("Project_Read", "Project"))
+        .Update(update => update.Action("Project_Update", "Project"))
+        .Create(create => create.Action("Project_Create", "Project"))
+        .Destroy(destroy => destroy.Action("Project_Destroy", "Project"))
+    )
+
+            )
+        </div>
+    </div>
+</div>

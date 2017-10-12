@@ -126,7 +126,7 @@ $(function () {
             },
             plotOptions: {
                 candlestick: {
-                    color: '#319DB5',
+                    color: '#319db5',
                     upColor: '#f15c80',
                     lineColor: '#ededed'
                 }

@@ -53,12 +53,15 @@
 /* Inline Edition X-Editable - OPTIONAL */
 /* Show Html Code - OPTIONAL */
 /* FONTS */
+
+
+
 @font-face {
-  font-family: 'weather';
-  src: url('icons/weather/artill_clean_icons-webfont.eot');
-  src: url('icons/weather/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'), url('icons/weather/artill_clean_icons-webfont.woff') format('woff'), url('icons/weather/artill_clean_icons-webfont.ttf') format('truetype'), url('icons/weather/weatherfont/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'DroidKufi-Regular';
+    src: url('DroidKufi-Regular.ttf') format('truetype');
+    font-weight:lighter;
+    font-style:normal;
+    font-size: 12px;
 }
 html {
   height: 100%;
@@ -67,7 +70,8 @@ body {
   height: 100%;
   background: #F5F5F5;
   color: #5B5B5B;
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif !important;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
+font-size:12px;
   line-height: 1.42857143;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -78,7 +82,7 @@ body > section {
   height: 100%;
 }
 body p strong {
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 600;
 }
 body > .pace > .pace-activity {
@@ -88,7 +92,7 @@ input,
 select,
 textarea {
   color: #636e7b;
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif !important;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
 }
 ol,
 ul {
@@ -103,7 +107,7 @@ pre {
   color: #121212;
 }
 a {
-  color: #319DB5;
+  color: #319db5;
   text-decoration: none;
 }
 a:hover {
@@ -118,7 +122,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
 }
 h1.light,
@@ -126,21 +130,21 @@ h2.light,
 h3.light,
 h4.light,
 h5.light {
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
 }
 h1,
 .h1 {
   font-size: 45px;
   margin-top: 0;
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
 }
 .font-nothing {
-  font-family: 'Nothing You Could Do', 'Arial', cursive;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
 }
 .font-nothing strong {
   font-weight: 600;
-  font-family: 'Nothing You Could Do', 'Arial', cursive;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
 }
 div,
 p,
@@ -155,7 +159,7 @@ h3 {
   font-size: 20px;
 }
 strong {
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 600;
 }
 p {
@@ -398,12 +402,12 @@ a.scrollup:hover {
   padding: 0;
 }
 .context-menu .dropdown-menu .dropdown-title {
-  background: #319DB5;
+  background: #319db5;
   padding: 4px 15px;
   text-transform: uppercase;
   color: #fff;
   font-size: 12px;
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   letter-spacing: 1.5px;
 }
@@ -422,7 +426,7 @@ a.scrollup:hover {
   margin-left: -20px;
   height: 80px;
   position: relative;
-  color: #319DB5;
+  color: #319db5;
   width: 80px;
 }
 .path {
@@ -804,7 +808,7 @@ a.scrollup:hover {
 }
 .topbar .header-left .topnav .mmenu p {
   color: #656565;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 13px;
 }
 .topbar .header-left .topnav .mmenu .half {
@@ -834,14 +838,14 @@ a.scrollup:hover {
 }
 .topbar .header-left .topnav .mmenu .title {
   border-bottom: 1px solid #efefef;
-  font-family: 'Lato', 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 14px;
   margin-top: 15px;
   padding-bottom: 10px;
   text-transform: uppercase;
 }
 .topbar .header-left .topnav .mmenu .title strong {
-  font-family: 'Lato', 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
 }
 .topbar .header-left .topnav .mmenu ul {
@@ -896,7 +900,7 @@ a.scrollup:hover {
   top: -2px;
 }
 .topbar .header-left .topnav ul > li .dropdown-menu > li > a:hover {
-  background: #319DB5 !important;
+  background: #319db5 !important;
   color: #ffffff !important;
 }
 .topbar .header-left .topnav > ul {
@@ -927,7 +931,7 @@ a.scrollup:hover {
   padding: 6px 10px;
 }
 .topbar .header-left .topnav > ul > li .dropdown-menu > li > a:hover {
-  background: #319DB5;
+  background: #319db5;
   color: #ffffff;
 }
 .topbar .header-left .topnav > ul > li > a {
@@ -1075,7 +1079,7 @@ a.scrollup:hover {
 .topbar .header-right .header-menu .dropdown-menu .dropdown-header {
   background: #2b2e33;
   color: #666666;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 15px;
   padding: 8px 15px;
 }
@@ -1087,7 +1091,7 @@ a.scrollup:hover {
 .topbar .header-right .header-menu .dropdown-menu .dropdown-header p {
   color: #E4E4E4 !important;
   color: #ffffff;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 13px;
   margin: 0;
 }
@@ -1138,7 +1142,7 @@ a.scrollup:hover {
   background: #F8F8F8;
   border-top: 1px solid #E2E2E2;
   color: #121212;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 12px;
   padding: 5px;
 }
@@ -1532,7 +1536,7 @@ body:not(.sidebar-collapsed) .topbar .header-left .topnav .menutoggle:hover .men
   margin-bottom: 3px;
 }
 .sidebar .badge {
-  font-family: verdana,arial;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 11px;
   margin-top: 4px;
 }
@@ -1557,7 +1561,7 @@ body:not(.sidebar-collapsed) .topbar .header-left .topnav .menutoggle:hover .men
 }
 .sidebar .logopanel h1 {
   color: #ffffff;
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-size: 30px;
   letter-spacing: -1.5px;
@@ -1758,7 +1762,7 @@ body:not(.sidebar-collapsed) .topbar .header-left .topnav .menutoggle:hover .men
   line-height: 24px;
   overflow: hidden;
   padding: 7px 20px 7px 49px;
-  font-family: "Open Sans", arial;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1976,7 +1980,7 @@ body:not(.sidebar-collapsed) .topbar .header-left .topnav .menutoggle:hover .men
   border-radius: 0;
   color: #ffffff;
   display: block;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 13px;
   letter-spacing: 0.6px;
   line-height: 21px;
@@ -2021,7 +2025,7 @@ body:not(.sidebar-collapsed) .topbar .header-left .topnav .menutoggle:hover .men
 }
 .sidebar .sidebar-inner .nav-sidebar.ui-sortable li i:before {
   content: "\e067" !important;
-  font-family: 'Simple-Line-Icons' !important;
+  font-family: 'DroidKufi-Regular','Times New Roman', serif;
 }
 .sidebar .sidebar-inner .nav-sidebar.remove-menu li i {
   font-size: 13px;
@@ -2086,7 +2090,7 @@ body:not(.sidebar-collapsed) .topbar .header-left .topnav .menutoggle:hover .men
 .sidebar .sidebar-inner .sidebar-widgets a {
   color: #ffffff;
   display: block;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 13px;
   letter-spacing: 0.4px;
   position: relative;
@@ -2147,7 +2151,7 @@ body:not(.sidebar-collapsed) .topbar .header-left .topnav .menutoggle:hover .men
 }
 .sidebar .sidebar-inner .sidebar-widgets .charts-sidebar .sidebar-charts-inner .sidebar-charts-left .sidebar-chart-number {
   color: #ffffff;
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 18px;
   margin-top: 0;
   margin-top: 9px;
@@ -2176,7 +2180,7 @@ body:not(.sidebar-collapsed) .topbar .header-left .topnav .menutoggle:hover .men
 .sidebar .sidebar-inner .sidebar-widgets .charts-sidebar.progress-chart .sidebar-chart-title {
   color: rgba(255, 255, 255, 0.6);
   float: left;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 13px;
   margin-bottom: 5px;
   margin-top: 0;
@@ -2464,7 +2468,7 @@ body:not(.sidebar-collapsed) .sidebar .sidebar-inner .nav-sidebar > li.nav-paren
   text-decoration: none !important;
 }
 .progress-chart .sidebar-chart-number {
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 13px;
   margin-bottom: 5px;
   margin-top: 0;
@@ -2740,7 +2744,7 @@ body:not(.sidebar-collapsed) .sidebar .sidebar-inner .nav-sidebar > li.nav-paren
   width: 240px;
 }
 .sidebar-hover .topnav .logopanel2 h1 {
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-size: 30px;
   letter-spacing: -1.5px;
@@ -3693,7 +3697,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 }
 #quickview-sidebar .quickview .tab-content #chat .chat-body .chat-groups .title {
   color: #526a82;
-  font-family: 'Lato', arial;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -3754,7 +3758,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 }
 #quickview-sidebar .quickview .tab-content .title {
   color: #526a82;
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 700;
   margin-bottom: 10px;
   margin-top: 30px;
@@ -3776,7 +3780,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 #quickview-sidebar .quickview .tab-content #settings .settings-chart .chart-title {
   color: rgba(0, 0, 0, 0.6);
   float: left;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 13px;
   margin-bottom: 5px;
   margin-top: 0;
@@ -3794,7 +3798,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   height: 6px;
 }
 #quickview-sidebar .quickview .tab-content #settings .progress-chart .settings-chart .chart-.number {
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 13px;
   margin-bottom: 5px;
   margin-top: 0;
@@ -3847,7 +3851,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   color: #3F3F3F;
   display: block;
   float: none;
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 700;
   margin-right: 10px;
   padding: 10px 20px;
@@ -3946,7 +3950,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 #quickview-sidebar .quickview .tab-content #notes .detail-note #note-detail .note-write textarea {
   background-color: #fefaed !important;
   border: none;
-  font-family: 'Lato', arial !important;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   font-size: 18px;
   height: 100%;
@@ -3992,7 +3996,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 }
 #quickview-sidebar .quickview-header {
   background-color: #292C35;
-  font-family: 'Lato', arial;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   font-size: 12px;
   height: 50px;
@@ -4009,7 +4013,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 #quickview-sidebar .quickview-header .nav > li > a {
   background: none;
   color: #909090;
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 700;
   padding: 16px 15px;
   text-transform: uppercase;
@@ -4216,7 +4220,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   height: 100%;
 }
 .main-content .page-content h3 {
-  font-family: 'Open Sans', sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 15px;
   margin-bottom: 15px;
   margin-top: 25px;
@@ -4292,7 +4296,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   background: #18a689;
 }
 .main-content .page-content .colors-list > li.blue {
-  background: #319DB5;
+  background: #319db5;
 }
 .main-content .page-content .colors-list > li.aero {
   background: #B9D5DB;
@@ -4340,7 +4344,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   display: table;
 }
 .main-content .page-content .panel .panel-content h1 {
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   font-size: 28px;
   margin-top: 0;
@@ -4369,7 +4373,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 .main-content .page-content .panel .panel-header h2 {
   color: #5b5b5b;
   display: block;
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 24px;
   font-weight: 100;
   line-height: normal;
@@ -4480,7 +4484,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 }
 .main-content .page-content .panel .panel-title {
   display: inline-block;
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 24px;
   font-weight: 100;
   margin: 5px;
@@ -4550,7 +4554,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   background-clip: padding-box;
 }
 .main-content .page-content .panel-content h3 {
-  font-family: 'Open Sans', sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 15px;
   margin-bottom: 15px;
   margin-top: 25px;
@@ -4690,13 +4694,13 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   padding: 0;
 }
 .main-content .page-content .breadcrumb li {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 700;
   font-size: 12px;
   text-transform: uppercase;
 }
 .main-content .page-content .breadcrumb li a {
-  color: #319DB5;
+  color: #319db5;
 }
 .main-content .page-content .breadcrumb li.active {
   color: #333333;
@@ -4714,7 +4718,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 .main-content .page-content > .header h2,
 .main-content .page-content > div > .header h2 {
   color: #1D2939;
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 28px;
   letter-spacing: -0.5px;
   margin: 0;
@@ -4792,7 +4796,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 }
 .main-content .page-content > .footer .copyright span.copyright,
 .main-content .page-content > div > .footer .copyright span.copyright {
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
 }
 .main-content .page-content > .footer.footer-absolute,
 .main-content .page-content > div > .footer.footer-absolute {
@@ -4829,7 +4833,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   opacity: 0.8;
 }
 .main-content .footer .copyright span.copyright {
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
 }
 .main-content .page-content[class^='bg-'].panel h1,
 .main-content .page-content[class*=' bg-'].panel h1,
@@ -5016,7 +5020,7 @@ body:not(.fixed-topbar) .main-content .page-content {
 }
 .todo-list li .todo-tags {
   display: inline;
-  font-family: "Open Sans";
+  font-family: 'DroidKufi-Regular','Times New Roman', serif;
   left: auto;
   position: absolute;
   right: 9px;
@@ -5103,7 +5107,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   border: none !important;
 }
 .widget-weather .weather {
-  background-color: #319DB5;
+  background-color: #319db5;
   margin-bottom: -151px;
   margin: 0 auto;
   text-align: center;
@@ -5351,7 +5355,7 @@ body:not(.fixed-topbar) .main-content .page-content {
 .widget-weather .weather .weather-location .weather-search-form:before {
   color: #ffffff;
   content: "\e090";
-  font-family: 'Simple-Line-Icons' !important;
+  font-family: 'DroidKufi-Regular','Times New Roman', serif;
   left: auto;
   opacity: 0.5;
   position: absolute;
@@ -5405,7 +5409,7 @@ body:not(.fixed-topbar) .main-content .page-content {
 .widget-weather .weather .weather-location strong {
   color: #ffffff;
   display: inline-block;
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 18px;
   font-weight: 100;
   height: 21px;
@@ -5681,7 +5685,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   z-index: 2;
 }
 .widget-slider-img .slide p {
-  font-family: 'Lato', arial;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
 }
 .widget-slider-img .text-top .text {
@@ -5704,7 +5708,7 @@ body:not(.fixed-topbar) .main-content .page-content {
 .widget-progress-bar .title {
   color: rgba(0, 0, 0, 0.6);
   float: left;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 13px;
   margin-bottom: 5px;
   margin-top: 0;
@@ -5714,7 +5718,7 @@ body:not(.fixed-topbar) .main-content .page-content {
 .widget-progress-bar .number {
   color: rgba(0, 0, 0, 0.5);
   float: right;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 11px;
   font-size: 13px;
   margin-bottom: 5px;
@@ -5844,7 +5848,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   padding-top: 5px;
 }
 .widget-small .title span {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   opacity: 0.7;
 }
@@ -6331,7 +6335,7 @@ body:not(.fixed-topbar) .main-content .page-content {
 }
 .bg-dark .ammapObjectList a:hover {
   background: rgba(32, 34, 38, 0.5);
-  color: #319DB5;
+  color: #319db5;
 }
 .map-marker {
   margin-left: -8px;
@@ -6432,7 +6436,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   font-size: 16px;
 }
 .font-animation a i {
-  color: #319DB5;
+  color: #319db5;
 }
 .font-animation a:hover {
   text-decoration: none;
@@ -6455,7 +6459,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   padding: 0;
 }
 .error-page h1 {
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 120px;
   font-weight: 600;
   height: 132px;
@@ -6691,7 +6695,7 @@ body:not(.fixed-topbar) .main-content .page-content {
 }
 .account #lockscreen-block h2 {
   color: #ffffff;
-  font-family: 'Lato', arial;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   margin-top: 0;
 }
@@ -6737,7 +6741,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   display: none;
 }
 .account2 .form-password h3 {
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   font-size: 15px;
   margin-bottom: 20px;
@@ -6790,7 +6794,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   border-top-right-radius: 2px;
 }
 .account2 .form-signin h3 {
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   font-size: 15px;
   margin-bottom: 20px;
@@ -6799,7 +6803,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   text-transform: uppercase;
 }
 .account2 .form-signin h3 strong {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
 }
 .account2 .form-signup input[type="password"] {
@@ -6807,7 +6811,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   border-top-right-radius: 2px;
 }
 .account2 .form-signup h3 {
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   font-size: 15px;
   margin-bottom: 20px;
@@ -6816,7 +6820,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   text-transform: uppercase;
 }
 .account2 .form-signup h3 strong {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
 }
 .account2 .form-footer {
@@ -6890,7 +6894,7 @@ body:not(.fixed-topbar) .main-content .page-content {
 .account-copyright {
   bottom: 10px;
   color: #BDBDBD;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   left: 0;
   position: absolute;
   right: 0;
@@ -6971,7 +6975,7 @@ body:not(.fixed-topbar) .main-content .page-content {
 }
 #account-builder h3 {
   float: left;
-  font-family: 'Open Sans', sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 16px;
   margin-top: 4px;
   padding-left: 8px;
@@ -6995,7 +6999,7 @@ body:not(.fixed-topbar) .main-content .page-content {
     width: 670px;
   }
   .account2 .account-info {
-    background: #319DB5;
+    background: #319db5;
     color: #ffffff;
     display: block;
     display: table-cell;
@@ -7006,7 +7010,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   }
   .account2 .account-info .logo {
     color: #ffffff;
-    font-family: 'Lato', arial, sans-serif;
+  font-family: 'DroidKufi-Regular','Times New Roman', serif;
     font-weight: 900;
     font-size: 25px;
     background: url(../images/logo/logo-white.png) no-repeat;
@@ -7015,7 +7019,7 @@ body:not(.fixed-topbar) .main-content .page-content {
     display: block;
   }
   .account2 .account-info h3 {
-    font-family: 'Open Sans';
+  font-family: 'DroidKufi-Regular','Times New Roman', serif;
     font-size: 17px;
     margin-top: 5px;
   }
@@ -7088,13 +7092,13 @@ body:not(.fixed-topbar) .main-content .page-content {
 }
 .layouts .toggle-layout > div {
   color: #4A4A4A;
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 14px;
   margin-top: 5px;
   text-decoration: none !important;
 }
 .layouts .toggle-layout > div strong {
-  font-family: 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 600;
 }
 .layout-options a {
@@ -7140,7 +7144,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   margin: auto;
 }
 .page-contact h3 {
-  font-family: 'Lato', arial;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-weight: 600;
 }
@@ -7395,7 +7399,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   vertical-align: middle;
 }
 .page-helper table.helper-margin tbody > tr > td > div {
-  background-color: #319DB5;
+  background-color: #319db5;
 }
 .page-helper table.helper-padding tbody > tr > td > div > div {
   background-color: #ffffff;
@@ -7498,7 +7502,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
 .form-wizard-style span,
 .form-wizard-nav a,
 .form-wizard-nav span {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   margin-right: 30px;
   text-transform: uppercase;
@@ -7565,7 +7569,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   padding: 15px 30px 15px 60px;
 }
 .page-profil .profil-header .name {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-size: 24px;
   padding-bottom: 8px;
@@ -7581,7 +7585,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   text-align: center;
 }
 .page-profil .profil-header .more-friends p {
-  font-family: 'Lato', arial;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   text-align: center;
 }
@@ -7592,7 +7596,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
 .page-profil .profil-header .profil-info {
   color: #A4A4A4;
   float: left;
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 16px;
   padding-right: 20px;
 }
@@ -7609,7 +7613,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   text-align: center;
 }
 .page-profil .profil-header .moments .num-moments {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-size: 24px;
   text-align: center;
@@ -7709,7 +7713,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   border-radius: 35px;
 }
 .page-profil .profil-content .item .user .name {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-size: 18px;
   margin-bottom: 10px;
@@ -7942,7 +7946,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   font-weight: 500;
 }
 .page-profil .profil-content .item.item-comment .user .name {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-size: 16px;
   margin-bottom: 3px;
@@ -8725,9 +8729,9 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   border-bottom: none;
 }
 .page-pricing-table .context-menu .dropdown-menu .dropdown-title {
-  background: #319DB5;
+  background: #319db5;
   color: #ffffff;
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-size: 12px;
   letter-spacing: 1.5px;
@@ -8747,7 +8751,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   transition: all 0.3s ease;
 }
 .page-pricing-table #modal-icons .modal-body .col-sm-2:hover {
-  color: #319DB5;
+  color: #319db5;
   opacity: 1;
 }
 .page-pricing-table #modal-icons .modal-body .col-sm-2 i {
@@ -8780,7 +8784,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   white-space: pre;
 }
 #modal-icons .modal-body .col-sm-2 i.active {
-  color: #319DB5;
+  color: #319db5;
   opacity: 1;
 }
 .page-pricing-table #modal-icons .modal-body[class*="fa-"],
@@ -8953,7 +8957,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
 }
 .pricing-table .plan .plan-header .title {
   color: #ffffff;
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 22px;
   font-weight: 100;
   margin-bottom: 15px;
@@ -9114,7 +9118,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   padding: 0;
 }
 .page-app.mailbox strong {
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 600;
 }
 .page-app.mailbox .icon-rounded {
@@ -9220,7 +9224,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   width: 220px;
 }
 .page-app.mailbox .message-item .subject .label {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   letter-spacing: 0.7px;
   margin-right: 6px;
@@ -9386,7 +9390,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   margin-bottom: 15px;
 }
 .emails-list .mailbox-page h1 {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-size: 32px;
 }
@@ -9411,7 +9415,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   padding-top: 4px;
 }
 .emails-list .nav-tabs a {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-size: 12px;
 }
@@ -9480,7 +9484,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   padding: 0;
 }
 .email-details .email-subject h1 {
-  font-family: 'Lato';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   font-size: 50px;
   margin-bottom: 9px;
@@ -9513,7 +9517,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   min-width: 110px;
 }
 .email-details .email-subject .dropdown-menu > li > a {
-  font-family: 'Lato', arial, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 900;
   font-size: 12px;
   padding: 5px 8px;
@@ -9542,7 +9546,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
 }
 .email-details .answers .answer-subject p {
   color: #7e7e7e;
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 14px;
 }
 .email-details .answers .answer-content ol {
@@ -9979,7 +9983,7 @@ a.message-item:hover {
 }
 .coming-soon .content h1 {
   color: #ffffff;
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 63px;
   font-weight: 100;
   line-height: 70px;
@@ -10063,7 +10067,7 @@ a.message-item:hover {
 .coming-soon #countdown {
   -webkit-font-smoothing: antialiased;
   color: rgba(255, 255, 255, 0.8);
-  font-family: 'Lato', 'Open Sans', Helvetica, sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   font-size: 48px;
   line-height: 1.4em;
@@ -10157,7 +10161,7 @@ a.message-item:hover {
 .coming-soon #coming-builder h3 {
   color: #2A2A2A;
   float: left;
-  font-family: 'Open Sans', sans-serif;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 16px;
   margin-top: 4px;
   padding-left: 8px;
@@ -10553,7 +10557,7 @@ thead .fc-widget-header {
   width: 80%;
 }
 .morphsearch.open .morphsearch-input {
-  font-family: 'Lato', arial !important;
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-weight: 100;
   font-size: 7em;
 }
@@ -10908,7 +10912,7 @@ thead .fc-widget-header {
   border-bottom: none;
 }
 #page-builder .tabs-linetriangle .nav-tabs li.active a::after {
-  border-bottom-color: #319DB5;
+  border-bottom-color: #319db5;
 }
 .sidebar-collapsed #page-builder {
   left: 50px;
@@ -10976,7 +10980,7 @@ thead .fc-widget-header {
   transition: all 0.15s ease-out;
 }
 .page-builder .placeholder-handle:hover {
-  background-color: #319DB5!important;
+  background-color: #319db5!important;
   cursor: move;
 }
 .page-builder .placeholder-handle i {
@@ -11246,7 +11250,7 @@ thead .fc-widget-header {
   padding: 20px;
 }
 .builder h4 {
-  font-family: 'Lato', 'Open Sans';
+font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 14px;
   font-weight: 900;
   margin-bottom: 10px;
@@ -11365,7 +11369,7 @@ thead .fc-widget-header {
   top: 3px;
 }
 .builder .background-primary {
-  background-color: #319DB5 !important;
+  background-color: #319db5 !important;
   color: #ffffff !important;
 }
 .builder .theme {
@@ -11519,7 +11523,7 @@ thead .fc-widget-header {
   -webkit-font-smoothing: antialiased;
   color: #D6D6D6;
   content: "\e023";
-  font-family: 'Simple-Line-Icons' !important;
+  font-family: 'DroidKufi-Regular','Times New Roman', serif;
   font-size: 20px;
   position: absolute;
   right: 0;
@@ -11931,7 +11935,7 @@ body.rtl {
   margin-right: 0;
 }
 .rtl .boxed.sidebar-collapsed .topbar .header-left .topnav .menutoggle {
-  background: #319DB5;
+  background: #319db5;
 }
 .rtl .main-content .footer.footer-absolute {
   left: 40px;
@@ -12387,7 +12391,7 @@ body.rtl {
 }
 .rtl .bd-blue {
   border-left: none;
-  border-right: 3px solid #319DB5;
+  border-right: 3px solid #319db5;
   padding-left: 0;
   padding-right: 20px;
 }

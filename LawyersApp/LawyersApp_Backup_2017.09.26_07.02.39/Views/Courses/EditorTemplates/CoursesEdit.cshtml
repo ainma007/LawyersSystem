@@ -1,0 +1,81 @@
+﻿@model LawyersApp.Models.Courses.CoursesViewModel
+    <style type="text/css">
+        div.k-edit-form-container {
+            width: 100%;
+        }
+
+            div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+                width: 100%;
+                max-width: none;
+            }
+    </style>
+    <div class="k-edit-form-container" style="margin:auto;" >
+        
+            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.CoursesNumber)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.CoursesNumber)@Html.ValidationMessageFor(model => model.CoursesNumber)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                    
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.CoursesStartDate)</label>
+                                    <div >
+                                        @Html.Kendo().DatePickerFor(model => model.CoursesStartDate)@Html.ValidationMessageFor(model => model.CoursesStartDate)
+                                    </div>
+                                </div>
+                            </div>
+
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CoursesEndDate)</label>
+                <div>
+                    @Html.Kendo().DatePickerFor(model => model.CoursesEndDate)@Html.ValidationMessageFor(model => model.CoursesEndDate)
+                </div>
+            </div>
+        </div>
+
+             
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CoursesSummary)</label>
+                <div class="append-icon">
+                    @Html.Kendo().EditorFor(model => model.CoursesSummary)@Html.ValidationMessageFor(model => model.CoursesSummary)
+                    <i class="fa fa-map-marker"></i>
+                </div>
+            </div>
+        </div>
+
+
+             
+                     
+                          
+                       
+
+
+                          
+         
+                  
+
+                         
+                           
+       
+                            
+                
+
+                    
+
+
+
+                        </div>
+
+      

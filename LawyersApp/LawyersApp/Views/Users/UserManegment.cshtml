@@ -1,0 +1,70 @@
+﻿@using LawyersApp.Models.Users
+@using System.Net;
+@{
+    ViewBag.Title = "UserManegment";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+
+}
+
+
+@if ((string)Session["UserType"] !="1")
+{
+    Response.Redirect("~/Account/Login");
+    return;
+}
+<div class="col-lg-12 portlets">
+    <div class="panel">
+        <div class="panel-header ">
+            <h2><i class="fa fa-group"></i> <strong>إدارة</strong> المستخدمين</h2>
+            @(Html.Kendo().Grid<UserViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.UserID).Width(50).Hidden();
+        columns.Bound(p => p.FullName).Width(100).Title("اسم الموظف");
+        columns.Bound(p => p.Username).Width(50).Title("اسم المستخدم");
+        columns.Bound(p => p.Password).Width(100).Hidden();
+        columns.Bound(p => p.UserType).Width(50).Title("نوع المستخدم"); ;
+        columns.Bound(p => p.userstatus).Width(30).ClientTemplate("<input type='checkbox' disabled='disabled' #= userstatus ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
+
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(100);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة مستخدم");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات المستخدم").Width(400).Scrollable(true)))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.UserID);
+            model.Field(p => p.UserID).Editable(false);
+            model.Field(p => p.UserType).DefaultValue("1");
+
+        })
+        .Read(read => read.Action("User_Read", "Users"))
+        .Update(update => update.Action("User_Update", "Users"))
+        .Create(create => create.Action("User_Create", "Users"))
+        .Destroy(destroy => destroy.Action("User_Destroy", "Users"))
+    )
+
+            )
+        </div>
+    </div>
+</div>
+
+

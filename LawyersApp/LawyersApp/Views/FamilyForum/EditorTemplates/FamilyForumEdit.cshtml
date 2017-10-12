@@ -1,0 +1,212 @@
+﻿@model LawyersApp.Models.FamilyForum.FamilyForumViewModel
+    <style type="text/css">
+        div.k-edit-form-container {
+            width: 100%;
+        }
+
+            div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+                width: 100%;
+                max-width: none;
+            }
+    </style>
+    <div class="k-edit-form-container" style="margin:auto;" >
+        
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.ViewingDate)</label>
+                <div>
+                    @Html.Kendo().DatePickerFor(model => model.ViewingDate)@Html.ValidationMessageFor(model => model.ViewingDate)
+                </div>
+            </div>
+        </div>
+            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ApplicantName)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ApplicantName)@Html.ValidationMessageFor(model => model.ApplicantName)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.ApplicantPhone)</label>
+                <div class="append-icon">
+                    @Html.EditorFor(model => model.ApplicantPhone)@Html.ValidationMessageFor(model => model.ApplicantPhone)
+                    <i class="fa fa-barcode"></i>
+                </div>
+            </div>
+        </div>
+
+                    
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.ApplicantSocialStatus)</label>
+                <div class="append-icon">
+
+                    @(Html.Kendo().DropDownListFor(model => model.ApplicantSocialStatus)
+          .Name("ApplicantSocialStatus")
+          .BindTo(new List<string>() {
+              "أعزب",
+             "متزوج",
+             "مطلق",
+             "أرمل",
+
+          })
+                    )
+                    @Html.ValidationMessageFor(model => model.ApplicantSocialStatus)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.ApplicantAddress)</label>
+                <div class="append-icon">
+                    @Html.EditorFor(model => model.ApplicantAddress)@Html.ValidationMessageFor(model => model.ApplicantAddress)
+                    <i class="fa fa-barcode"></i>
+                </div>
+            </div>
+        </div>    
+
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CustodialName)</label>
+                <div class="append-icon">
+                    @Html.EditorFor(model => model.CustodialName)@Html.ValidationMessageFor(model => model.CustodialName)
+                    <i class="fa fa-barcode"></i>
+                </div>
+            </div>
+        </div>    
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CustodialPhone)</label>
+                <div class="append-icon">
+                    @Html.EditorFor(model => model.CustodialPhone)@Html.ValidationMessageFor(model => model.CustodialPhone)
+                    <i class="fa fa-barcode"></i>
+                </div>
+            </div>
+        </div>    
+       
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CustodialSocialStatus)</label>
+                <div class="append-icon">
+
+                    @(Html.Kendo().DropDownListFor(model => model.CustodialSocialStatus)
+          .Name("CustodialSocialStatus")
+          .BindTo(new List<string>() {
+              "أعزب",
+             "متزوج",
+             "مطلق",
+             "أرمل",
+
+          })
+                    )
+                    @Html.ValidationMessageFor(model => model.CustodialSocialStatus)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CustodialAddress)</label>
+                <div class="append-icon">
+                    @Html.EditorFor(model => model.CustodialAddress)@Html.ValidationMessageFor(model => model.CustodialAddress)
+                    <i class="fa fa-barcode"></i>
+                </div>
+            </div>
+        </div>    
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.ViewingHours)</label>
+                <div>
+                    @Html.Kendo().NumericTextBoxFor(model => model.ViewingHours)@Html.ValidationMessageFor(model => model.ViewingHours)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.ChildrenNumberMale)</label>
+                <div>
+                    @Html.Kendo().NumericTextBoxFor(model => model.ChildrenNumberMale).Format("0")@Html.ValidationMessageFor(model => model.ChildrenNumberMale)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.ChildrenNumberFemale)</label>
+                <div>
+                    @Html.Kendo().NumericTextBoxFor(model => model.ChildrenNumberFemale).Format("0")@Html.ValidationMessageFor(model => model.ChildrenNumberFemale)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CaseType)</label>
+                <div class="append-icon">
+
+                    @(Html.Kendo().DropDownListFor(model => model.CaseType)
+          .Name("CaseType")
+          .BindTo(new List<string>() {
+              "مشاهدة",
+             "استضافة",
+
+          })
+                    )
+                    @Html.ValidationMessageFor(model => model.CaseType)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.ViewingPlace)</label>
+                <div class="append-icon">
+
+                    @(Html.Kendo().DropDownListFor(model => model.ViewingPlace)
+          .Name("ViewingPlace")
+          .BindTo(new List<string>() {
+              "المركز",
+             "البيت",
+
+          })
+                    )
+                    @Html.ValidationMessageFor(model => model.ViewingPlace)
+                </div>
+            </div>
+        </div>
+
+      
+
+
+             
+                     
+                          
+                       
+
+
+                          
+         
+                  
+
+                         
+                           
+       
+                            
+                
+
+                    
+
+
+
+                        </div>
+
+      

@@ -1,0 +1,141 @@
+﻿@using LawyersApp.Models.Consulting
+@using System.Net;
+@{
+    ViewBag.Title = " الاستشارات";
+}
+
+<script>
+    kendo.culture("en-GB");
+</script>
+@if (Session["UserType"].Equals("1"))
+{
+
+
+    <div class="col-lg-12 portlets">
+        <div class="panel">
+            <div class="panel-header ">
+                <h2><i class="fa fa-list-alt"></i> <strong>إدارة</strong> الاستشارات</h2>
+                @(Html.Kendo().Grid<ConsultingViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.ConsultingID).Width(50).Hidden();
+        columns.Bound(p => p.ConsultingNumber).Width(150).Title("رقم المركز");
+        columns.Bound(p => p.ConsultingDate).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ الورود  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ الورود ");
+        columns.Bound(p => p.ConsultantName).Width(200).Title("اسم المستشير");
+        columns.Bound(p => p.ConsultingProvider).Width(200).Title("مقدم الاستشارة");
+        columns.Bound(p => p.CounselingStatus).Width(170).Title("مآل الاستشارة  ");
+      
+
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName")
+   .Title("مدخل البيانات").Width(200);
+        columns.Command(command =>
+        {
+            command.Edit().Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(200);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة استشارة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات الاستشارة").Width(500).Height(500).Scrollable(true)).TemplateName("ConsultingEdit"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.ConsultingID);
+            model.Field(p => p.ConsultingID).Editable(false);
+            model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"]
+.ToString()));
+
+
+        })
+
+        .Read(read => read.Action("db_Read", "Consulting"))
+        .Update(update => update.Action("db_Update", "Consulting"))
+        .Create(create => create.Action("db_Create", "Consulting"))
+        .Destroy(destroy => destroy.Action("db_Destroy", "Consulting"))
+    )
+
+                )
+            </div>
+        </div>
+    </div>
+
+}
+
+else if (Session["UserType"].Equals("2"))
+{
+
+    <div class="col-lg-12 portlets">
+        <div class="panel">
+            <div class="panel-header ">
+                <h2><i class="fa fa-list-alt"></i> <strong>إدارة</strong> الاستشارات</h2>
+                @(Html.Kendo().Grid<ConsultingViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.ConsultingID).Width(50).Hidden();
+        columns.Bound(p => p.ConsultingNumber).Width(150).Title("رقم المركز");
+        columns.Bound(p => p.ConsultingDate).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ الورود  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ الورود ");
+        columns.Bound(p => p.ConsultantName).Width(200).Title("اسم المستشير");
+        columns.Bound(p => p.ConsultingProvider).Width(200).Title("مقدم الاستشارة");
+        columns.Bound(p => p.CounselingStatus).Width(170).Title("مآل الاستشارة  ");
+
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName")
+   .Title("مدخل البيانات").Width(200);
+        columns.Command(command =>
+        {
+            command.Edit().Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(200);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة استشارة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات الاستشارة").Width(500).Height(500).Scrollable(true)).TemplateName("ConsultingEdit"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.ConsultingID);
+            model.Field(p => p.ConsultingID).Editable(false);
+            model.Field(p => p.UserID).Editable(false);
+
+            model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"]
+.ToString()));
+
+
+        })
+
+        .Read(read => read.Action("Userdb_Read", "Consulting"))
+        .Update(update => update.Action("db_Update", "Consulting"))
+        .Create(create => create.Action("db_Create", "Consulting"))
+        .Destroy(destroy => destroy.Action("db_Destroy", "Consulting"))
+    )
+
+                )
+            </div>
+        </div>
+    </div>
+}

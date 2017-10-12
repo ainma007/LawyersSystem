@@ -1,0 +1,98 @@
+﻿@model LawyersApp.Models.Versions.VersionsViewModel
+    <style type="text/css">
+        div.k-edit-form-container {
+            width: 100%;
+        }
+
+            div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+                width: 100%;
+                max-width: none;
+            }
+    </style>
+    <div class="k-edit-form-container" style="margin:auto;" >
+        
+            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.VersionsName)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.VersionsName)@Html.ValidationMessageFor(model => model.VersionsName)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                    
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.VersionsDate)</label>
+                                    <div >
+                                        @Html.Kendo().DatePickerFor(model => model.VersionsDate).Format("{0:dd/MM/yyyy}")@Html.ValidationMessageFor(model => model.VersionsDate)
+                                    </div>
+                                </div>
+                            </div>
+       
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.PartnerName)</label>
+                <div class="append-icon">
+                    @Html.EditorFor(model => model.PartnerName)@Html.ValidationMessageFor(model => model.PartnerName)
+                    <i class="fa fa-barcode"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.VersionsNumbers)</label>
+                <div>
+                    @Html.Kendo().NumericTextBoxFor(model => model.VersionsNumbers).Format("0")@Html.ValidationMessageFor(model => model.VersionsNumbers)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.TypesOfCopies)</label>
+                <div>
+                    @Html.Kendo().NumericTextBoxFor(model => model.TypesOfCopies).Format("0")@Html.ValidationMessageFor(model => model.TypesOfCopies)
+                </div>
+            </div>
+        </div>
+
+     
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.url)</label>
+                <div class="append-icon">
+                    @Html.EditorFor(model => model.url)@Html.ValidationMessageFor(model => model.url)
+                    <i class="fa fa-barcode"></i>
+                </div>
+            </div>
+        </div>
+
+             
+                     
+                          
+                       
+
+
+                          
+         
+                  
+
+                         
+                           
+       
+                            
+                
+
+                    
+
+
+
+                        </div>
+
+      

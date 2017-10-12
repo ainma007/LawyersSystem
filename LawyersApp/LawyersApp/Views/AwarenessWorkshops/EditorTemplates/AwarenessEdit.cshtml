@@ -1,0 +1,92 @@
+﻿@model LawyersApp.Models.AwarenessWorkshops.AwarenessWorkshopsViewModel
+<style type="text/css">
+    div.k-edit-form-container {
+        width: 100%;
+    }
+
+        div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+            width: 100%;
+            max-width: none;
+        }
+</style>
+<div class="k-edit-form-container" style="margin:auto;">
+
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.AwarenessName)</label>
+            <div class="append-icon">
+                @Html.EditorFor(model => model.AwarenessName)@Html.ValidationMessageFor(model => model.AwarenessName)
+                <i class="fa fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.AwarenessDate)</label>
+            <div>
+                @Html.Kendo().DatePickerFor(model => model.AwarenessDate)@Html.ValidationMessageFor(model => model.AwarenessDate)
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.TotalHours)</label>
+            <div>
+                @Html.Kendo().NumericTextBoxFor(model => model.TotalHours)@Html.ValidationMessageFor(model => model.TotalHours)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.TotalBeneficiaries)</label>
+            <div>
+                @Html.Kendo().NumericTextBoxFor(model => model.TotalBeneficiaries)@Html.ValidationMessageFor(model => model.TotalBeneficiaries)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.Males)</label>
+            <div>
+                @Html.Kendo().NumericTextBoxFor(model => model.Males)@Html.ValidationMessageFor(model => model.Males)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.Females)</label>
+            <div>
+                @Html.Kendo().NumericTextBoxFor(model => model.Females)@Html.ValidationMessageFor(model => model.Females)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.Boy)</label>
+            <div>
+                @Html.Kendo().NumericTextBoxFor(model => model.Boy)@Html.ValidationMessageFor(model => model.Boy)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.Girl)</label>
+            <div>
+                @Html.Kendo().NumericTextBoxFor(model => model.Girl)@Html.ValidationMessageFor(model => model.Girl)
+            </div>
+        </div>
+    </div>
+
+</div>
+

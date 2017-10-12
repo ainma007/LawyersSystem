@@ -417,7 +417,7 @@ body.rtl {
   margin-right: 0;
 }
 .rtl .boxed.sidebar-collapsed .topbar .header-left .topnav .menutoggle {
-  background: #319DB5;
+  background: #319db5;
 }
 .rtl .main-content .footer.footer-absolute {
   left: 40px;
@@ -873,7 +873,7 @@ body.rtl {
 }
 .rtl .bd-blue {
   border-left: none;
-  border-right: 3px solid #319DB5;
+  border-right: 3px solid #319db5;
   padding-left: 0;
   padding-right: 20px;
 }

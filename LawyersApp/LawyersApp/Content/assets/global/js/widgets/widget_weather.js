@@ -257,7 +257,7 @@ function widgetWeather(){
     }).mouseleave(function() {
         clearTimeout(myTimeout);
         $('.weather, .widget-weather .panel-header').animate({
-          backgroundColor: '#319DB5'
+          backgroundColor: '#319db5'
         }, 400);
     });
 

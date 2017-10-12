@@ -1,0 +1,187 @@
+﻿@using LawyersApp.Models.FamilyForum
+@using System.Net;
+@{
+    ViewBag.Title = " الدورات";
+}
+
+<script>
+    kendo.culture("en-GB");
+</script>
+@if (Session["UserId"] == null)
+{
+    Response.Redirect("~/Account/Login");
+    return;
+}
+@if ((string)Session["UserType"]=="1")
+{
+
+
+    <div class="col-lg-12 portlets">
+        <div class="panel">
+            <div class="panel-header ">
+                <h2><i class="fa fa-list-alt"></i> <strong>إدارة</strong> الدورات</h2>
+                @(Html.Kendo().Grid<FamilyForumViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.FamilyForumID).Width(50).Hidden();
+        columns.Bound(p => p.ViewingDate).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ المشاهدة  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ المشاهدة ");
+        columns.Bound(p => p.ApplicantName).Width(150).Title("طالب المشاهدة");
+        columns.Bound(p => p.ApplicantPhone).Width(150).Title("رقم الهاتف");
+        columns.Bound(p => p.ApplicantSocialStatus).Width(150).Title("الحالة الاجتماعية");
+        columns.Bound(p => p.ApplicantAddress).Width(150).Title("مكان السكن");
+        columns.Bound(p => p.CustodialName).Width(150).Title("اسم الحاضن");
+        columns.Bound(p => p.CustodialPhone).Width(150).Title("رقم الهاتف");
+        columns.Bound(p => p.CustodialSocialStatus).Width(150).Title("الحالة الاجتماعية");
+        columns.Bound(p => p.CustodialAddress).Width(150).Title("مكان السكن");
+        columns.Bound(p => p.ChildrenNumberMale).Width(150).Title("عدد الأطفال ذكور ");
+        columns.Bound(p => p.ChildrenNumberFemale).Width(150).Title("عدد الأطفال اناث ");
+        columns.Bound(p => p.CaseType).Width(150).Title("نوع القضية");
+        columns.Bound(p => p.ViewingHours).Width(150).Title(" ساعات المشاهدة");
+        columns.Bound(p => p.ViewingPlace).Width(150).Title("المكان");
+
+
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName").Title("مدخل البيانات").Width(200);
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(200);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة مشاهدة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات المشاهدة").Width(500).Height(500).Scrollable(true)).TemplateName("FamilyForumEdit"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.FamilyForumID);
+
+            model.Field(p => p.FamilyForumID).Editable(false);
+            model.Field(p => p.ProjectID).Editable(false);
+            model.Field(p => p.UserID).Editable(false);
+
+            model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"]
+.ToString()));
+            string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+            string[] words = currentUrlPage.Split('=');
+            string s = "";
+            foreach (string word in words)
+            {
+                s = word.ToString();
+            }
+            int x = int.Parse(s);
+            model.Field(p => p.ProjectID).DefaultValue(x);
+
+        })
+
+        .Read(read => read.Action("db_Read", "FamilyForum"))
+        .Update(update => update.Action("db_Update", "FamilyForum"))
+        .Create(create => create.Action("db_Create", "FamilyForum"))
+        .Destroy(destroy => destroy.Action("db_Destroy", "FamilyForum"))
+    )
+
+                )
+            </div>
+        </div>
+    </div>
+
+}
+
+else if ((string)Session["UserType"]=="2")
+{
+
+    <div class="col-lg-12 portlets">
+        <div class="panel">
+            <div class="panel-header ">
+                <h2><i class="fa fa-list-alt"></i> <strong>إدارة</strong> المشهادات</h2>
+                @(Html.Kendo().Grid<FamilyForumViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.FamilyForumID).Width(50).Hidden();
+        columns.Bound(p => p.ViewingDate).Width(170).HeaderHtmlAttributes(new { @title = "تاريخ المشاهدة  " }).Format("{0:dd/MM/yyyy}").Title("تاريخ المشاهدة ");
+        columns.Bound(p => p.ApplicantName).Width(150).Title("طالب المشاهدة");
+        columns.Bound(p => p.ApplicantPhone).Width(150).Title("رقم الهاتف");
+        columns.Bound(p => p.ApplicantSocialStatus).Width(150).Title("الحالة الاجتماعية");
+        columns.Bound(p => p.ApplicantAddress).Width(150).Title("مكان السكن");
+        columns.Bound(p => p.CustodialName).Width(150).Title("اسم الحاضن");
+        columns.Bound(p => p.CustodialPhone).Width(150).Title("رقم الهاتف");
+        columns.Bound(p => p.CustodialSocialStatus).Width(150).Title("الحالة الاجتماعية");
+        columns.Bound(p => p.CustodialAddress).Width(150).Title("مكان السكن");
+        columns.Bound(p => p.ChildrenNumberMale).Width(150).Title("عدد الأطفال ذكور ");
+        columns.Bound(p => p.ChildrenNumberFemale).Width(150).Title("عدد الأطفال اناث ");
+        columns.Bound(p => p.CaseType).Width(150).Title("نوع القضية");
+        columns.Bound(p => p.ViewingHours).Width(150).Title(" ساعات المشاهدة");
+        columns.Bound(p => p.ViewingPlace).Width(150).Title("المكان");
+
+
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName")
+   .Title("مدخل البيانات").Width(200);
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(200);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة مشاهدة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات المشاهدة").Width(500).Height(500).Scrollable(true)).TemplateName("FamilyForumEdit"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.FamilyForumID);
+
+            model.Field(p => p.FamilyForumID).Editable(false);
+            model.Field(p => p.UserID).Editable(false);
+            model.Field(p => p.ProjectID).Editable(false);
+            model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"]
+.ToString()));
+            string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+            string[] words = currentUrlPage.Split('=');
+            string s = "";
+            foreach (string word in words)
+            {
+                s = word.ToString();
+            }
+            int x = int.Parse(s);
+            model.Field(p => p.ProjectID).DefaultValue(x);
+
+        })
+
+        .Read(read => read.Action("Userdb_Read", "FamilyForum"))
+        .Update(update => update.Action("db_Update", "FamilyForum"))
+        .Create(create => create.Action("db_Create", "FamilyForum"))
+        .Destroy(destroy => destroy.Action("db_Destroy", "FamilyForum"))
+    )
+
+                )
+            </div>
+        </div>
+    </div>
+}

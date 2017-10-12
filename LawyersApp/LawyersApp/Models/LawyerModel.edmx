@@ -1,0 +1,2355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LawyersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Achievements_Table">
+          <Key>
+            <PropertyRef Name="AchievementID" />
+          </Key>
+          <Property Name="AchievementID" Type="int" Nullable="false" />
+          <Property Name="AchievementsName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AchievementsDate" Type="datetime" />
+          <Property Name="AchievementsAbstract" Type="ntext" />
+          <Property Name="url" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+        </EntityType>
+        <EntityType Name="Advocacyactivities_Table">
+          <Key>
+            <PropertyRef Name="AdvocacyactivitiesID" />
+          </Key>
+          <Property Name="AdvocacyactivitiesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="AdvocacyDate" Type="datetime" />
+          <Property Name="executingagency" Type="nvarchar" MaxLength="50" />
+          <Property Name="beneficiary" Type="nvarchar" MaxLength="50" />
+          <Property Name="GeographicArea" Type="nvarchar" MaxLength="50" />
+          <Property Name="url" Type="nvarchar(max)" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Arbitration_Table">
+          <Key>
+            <PropertyRef Name="ArbitrationID" />
+          </Key>
+          <Property Name="ArbitrationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArbitrationNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArbitrationDate" Type="datetime" />
+          <Property Name="FirstSideName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstSideIDNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstSidePhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstSocialstatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstSideAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="SecondSideName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondSideIDNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondSidePhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondSocialstatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondSideAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="ArbitrationName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArbitrationPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArbitrationDecision" Type="ntext" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+        </EntityType>
+        <EntityType Name="AwarenessWorkshops_Table">
+          <Key>
+            <PropertyRef Name="AwarenessID" />
+          </Key>
+          <Property Name="AwarenessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AwarenessName" Type="nvarchar(max)" />
+          <Property Name="AwarenessDate" Type="datetime" />
+          <Property Name="TotalHours" Type="int" />
+          <Property Name="TotalBeneficiaries" Type="int" />
+          <Property Name="Males" Type="int" />
+          <Property Name="Females" Type="int" />
+          <Property Name="Boy" Type="int" />
+          <Property Name="Girl" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+        </EntityType>
+        <EntityType Name="Consulting_Table">
+          <Key>
+            <PropertyRef Name="ConsultingID" />
+          </Key>
+          <Property Name="ConsultingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConsultingDate" Type="datetime" />
+          <Property Name="ConsultantName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="CounselingRequired" Type="ntext" />
+          <Property Name="CounselingRendered" Type="ntext" />
+          <Property Name="LawyerID" Type="int" />
+          <Property Name="CounselingStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="TypeOfCaseID" Type="int" />
+          <Property Name="IssuesTypeID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+        </EntityType>
+        <EntityType Name="Courses_Table">
+          <Key>
+            <PropertyRef Name="CoursesID" />
+          </Key>
+          <Property Name="CoursesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CoursesName" Type="nvarchar(max)" />
+          <Property Name="CoursesStartDate" Type="datetime" />
+          <Property Name="CoursesEndDate" Type="datetime" />
+          <Property Name="TrainingHours" Type="int" />
+          <Property Name="TotalBeneficiaries" Type="int" />
+          <Property Name="Males" Type="int" />
+          <Property Name="Females" Type="int" />
+          <Property Name="TargetGroupID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+        </EntityType>
+        <EntityType Name="Courts_Table">
+          <Key>
+            <PropertyRef Name="CourtsID" />
+          </Key>
+          <Property Name="CourtsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourtsName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DiligenceType_Table">
+          <Key>
+            <PropertyRef Name="DiligenceTypeID" />
+          </Key>
+          <Property Name="DiligenceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiligenceTypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FamilyForum_Table">
+          <Key>
+            <PropertyRef Name="FamilyForumID" />
+          </Key>
+          <Property Name="FamilyForumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ViewingDate" Type="datetime" />
+          <Property Name="ApplicantName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplicantPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplicantSocialStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplicantAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="CustodialName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustodialPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustodialSocialStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustodialAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChildrenNumberMale" Type="int" />
+          <Property Name="ChildrenNumberFemale" Type="int" />
+          <Property Name="CaseType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ViewingHours" Type="float" />
+          <Property Name="ViewingPlace" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+        </EntityType>
+        <EntityType Name="IssuesType_Table">
+          <Key>
+            <PropertyRef Name="IssuesTypeID" />
+          </Key>
+          <Property Name="IssuesTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IssuesTypename" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Lawyer_Table">
+          <Key>
+            <PropertyRef Name="LawyerID" />
+          </Key>
+          <Property Name="LawyerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LawyerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LawyerPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="LawyerAddress" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LegalIssues_Table">
+          <Key>
+            <PropertyRef Name="LegalIssuesID" />
+          </Key>
+          <Property Name="LegalIssuesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourtsNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfCase" Type="datetime" />
+          <Property Name="DepositDate" Type="datetime" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientIDNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientGender" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="AdversaryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdversaryIDNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdversaryPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdversaryAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="CourtsID" Type="int" />
+          <Property Name="LawyerID" Type="int" />
+          <Property Name="DateOfClosure" Type="datetime" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="TypeOfCaseID" Type="int" />
+        </EntityType>
+        <EntityType Name="Media_Table">
+          <Key>
+            <PropertyRef Name="MediaID" />
+          </Key>
+          <Property Name="MediaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MediaName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MediaDate" Type="datetime" />
+          <Property Name="PartnerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MediaNumber" Type="int" />
+          <Property Name="minutes" Type="int" />
+          <Property Name="url" Type="ntext" />
+          <Property Name="MediaTypeID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Mediation_Table">
+          <Key>
+            <PropertyRef Name="MediationID" />
+          </Key>
+          <Property Name="MediationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MediationDate" Type="datetime" />
+          <Property Name="FirstSideName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstSideGender" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstSideAge" Type="int" />
+          <Property Name="FirstSideIDNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstSidePhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstSocialstatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstSideAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="SecondSideName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondSideIDNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondSidePhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondSocialstatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondSideAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="MediatorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MediatorPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Agreement" Type="ntext" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="IssuesTypeID" Type="int" />
+          <Property Name="DiligenceTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="MediaType_Table">
+          <Key>
+            <PropertyRef Name="MediaTypeID" />
+          </Key>
+          <Property Name="MediaTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MediaTypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Project_Table">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="100" />
+          <Property Name="StartData" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProjectControl_Table">
+          <Key>
+            <PropertyRef Name="ProjectControlID" />
+          </Key>
+          <Property Name="ProjectControlID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="SystemicIssues_Table">
+          <Key>
+            <PropertyRef Name="SystemicIssuesID" />
+          </Key>
+          <Property Name="SystemicIssuesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourtsNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfCase" Type="datetime" />
+          <Property Name="DepositDate" Type="datetime" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientIDNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientGendr" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="AdversaryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdversaryIDNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdversaryPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdversaryAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="CourtsID" Type="int" />
+          <Property Name="LawyerID" Type="int" />
+          <Property Name="TypeOfCase_ID" Type="int" />
+          <Property Name="DateOfClosure" Type="datetime" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+        </EntityType>
+        <EntityType Name="TargetGroup_Table">
+          <Key>
+            <PropertyRef Name="TargetGroupID" />
+          </Key>
+          <Property Name="TargetGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TargetGroupName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TypeOfCase_Table">
+          <Key>
+            <PropertyRef Name="TypeOfCase_ID" />
+          </Key>
+          <Property Name="TypeOfCase_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeOfCaseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssuesTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="Users_Table">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Versions_Table">
+          <Key>
+            <PropertyRef Name="VersionsID" />
+          </Key>
+          <Property Name="VersionsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartnerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="VersionsName" Type="nvarchar" MaxLength="100" />
+          <Property Name="VersionsDate" Type="datetime" />
+          <Property Name="VersionsNumbers" Type="int" />
+          <Property Name="TypesOfCopies" Type="int" />
+          <Property Name="url" Type="ntext" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Achievements_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="Achievements_Table" Type="Self.Achievements_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Achievements_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Achievements_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="Achievements_Table" Type="Self.Achievements_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Achievements_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Advocacyactivities_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="Advocacyactivities_Table" Type="Self.Advocacyactivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Advocacyactivities_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Advocacyactivities_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="Advocacyactivities_Table" Type="Self.Advocacyactivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Advocacyactivities_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arbitration_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="Arbitration_Table" Type="Self.Arbitration_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Arbitration_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arbitration_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="Arbitration_Table" Type="Self.Arbitration_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Arbitration_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AwarenessWorkshops_Table_AwarenessWorkshops_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="AwarenessWorkshops_Table" Type="Self.AwarenessWorkshops_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AwarenessWorkshops_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AwarenessWorkshops_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="AwarenessWorkshops_Table" Type="Self.AwarenessWorkshops_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="AwarenessWorkshops_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Table_IssuesType_Table">
+          <End Role="IssuesType_Table" Type="Self.IssuesType_Table" Multiplicity="0..1" />
+          <End Role="Consulting_Table" Type="Self.Consulting_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IssuesType_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Principal>
+            <Dependent Role="Consulting_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Table_Lawyer_Table">
+          <End Role="Lawyer_Table" Type="Self.Lawyer_Table" Multiplicity="0..1" />
+          <End Role="Consulting_Table" Type="Self.Consulting_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lawyer_Table">
+              <PropertyRef Name="LawyerID" />
+            </Principal>
+            <Dependent Role="Consulting_Table">
+              <PropertyRef Name="LawyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="Consulting_Table" Type="Self.Consulting_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Consulting_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Table_TypeOfCase_Table">
+          <End Role="TypeOfCase_Table" Type="Self.TypeOfCase_Table" Multiplicity="0..1" />
+          <End Role="Consulting_Table" Type="Self.Consulting_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfCase_Table">
+              <PropertyRef Name="TypeOfCase_ID" />
+            </Principal>
+            <Dependent Role="Consulting_Table">
+              <PropertyRef Name="TypeOfCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="Consulting_Table" Type="Self.Consulting_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Consulting_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Table_Courses_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="Courses_Table" Type="Self.Courses_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Courses_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="Courses_Table" Type="Self.Courses_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Courses_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Table_TargetGroup_Table">
+          <End Role="TargetGroup_Table" Type="Self.TargetGroup_Table" Multiplicity="0..1" />
+          <End Role="Courses_Table" Type="Self.Courses_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetGroup_Table">
+              <PropertyRef Name="TargetGroupID" />
+            </Principal>
+            <Dependent Role="Courses_Table">
+              <PropertyRef Name="TargetGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyForum_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="FamilyForum_Table" Type="Self.FamilyForum_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="FamilyForum_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyForum_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="FamilyForum_Table" Type="Self.FamilyForum_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FamilyForum_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalIssues_Table_Courts_Table">
+          <End Role="Courts_Table" Type="Self.Courts_Table" Multiplicity="0..1" />
+          <End Role="LegalIssues_Table" Type="Self.LegalIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courts_Table">
+              <PropertyRef Name="CourtsID" />
+            </Principal>
+            <Dependent Role="LegalIssues_Table">
+              <PropertyRef Name="CourtsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalIssues_Table_Lawyer_Table">
+          <End Role="Lawyer_Table" Type="Self.Lawyer_Table" Multiplicity="0..1" />
+          <End Role="LegalIssues_Table" Type="Self.LegalIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lawyer_Table">
+              <PropertyRef Name="LawyerID" />
+            </Principal>
+            <Dependent Role="LegalIssues_Table">
+              <PropertyRef Name="LawyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalIssues_Table_TypeOfCase_Table">
+          <End Role="TypeOfCase_Table" Type="Self.TypeOfCase_Table" Multiplicity="0..1" />
+          <End Role="LegalIssues_Table" Type="Self.LegalIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfCase_Table">
+              <PropertyRef Name="TypeOfCase_ID" />
+            </Principal>
+            <Dependent Role="LegalIssues_Table">
+              <PropertyRef Name="TypeOfCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalIssues_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="LegalIssues_Table" Type="Self.LegalIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LegalIssues_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Media_Table_MediaType_Table">
+          <End Role="MediaType_Table" Type="Self.MediaType_Table" Multiplicity="0..1" />
+          <End Role="Media_Table" Type="Self.Media_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MediaType_Table">
+              <PropertyRef Name="MediaTypeID" />
+            </Principal>
+            <Dependent Role="Media_Table">
+              <PropertyRef Name="MediaTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Media_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="Media_Table" Type="Self.Media_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Media_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Media_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="Media_Table" Type="Self.Media_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Media_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mediation_Table_DiligenceType_Table">
+          <End Role="DiligenceType_Table" Type="Self.DiligenceType_Table" Multiplicity="0..1" />
+          <End Role="Mediation_Table" Type="Self.Mediation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiligenceType_Table">
+              <PropertyRef Name="DiligenceTypeID" />
+            </Principal>
+            <Dependent Role="Mediation_Table">
+              <PropertyRef Name="DiligenceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mediation_Table_IssuesType_Table">
+          <End Role="IssuesType_Table" Type="Self.IssuesType_Table" Multiplicity="0..1" />
+          <End Role="Mediation_Table" Type="Self.Mediation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IssuesType_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Principal>
+            <Dependent Role="Mediation_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mediation_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="Mediation_Table" Type="Self.Mediation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Mediation_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mediation_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="Mediation_Table" Type="Self.Mediation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Mediation_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectControl_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="ProjectControl_Table" Type="Self.ProjectControl_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="ProjectControl_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectControl_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="ProjectControl_Table" Type="Self.ProjectControl_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ProjectControl_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemicIssues_Table_Courts_Table">
+          <End Role="Courts_Table" Type="Self.Courts_Table" Multiplicity="0..1" />
+          <End Role="SystemicIssues_Table" Type="Self.SystemicIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courts_Table">
+              <PropertyRef Name="CourtsID" />
+            </Principal>
+            <Dependent Role="SystemicIssues_Table">
+              <PropertyRef Name="CourtsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemicIssues_Table_Lawyer_Table">
+          <End Role="Lawyer_Table" Type="Self.Lawyer_Table" Multiplicity="0..1" />
+          <End Role="SystemicIssues_Table" Type="Self.SystemicIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lawyer_Table">
+              <PropertyRef Name="LawyerID" />
+            </Principal>
+            <Dependent Role="SystemicIssues_Table">
+              <PropertyRef Name="LawyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemicIssues_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="SystemicIssues_Table" Type="Self.SystemicIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="SystemicIssues_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemicIssues_Table_TypeOfCaseSyIsuues_Table">
+          <End Role="TypeOfCase_Table" Type="Self.TypeOfCase_Table" Multiplicity="0..1" />
+          <End Role="SystemicIssues_Table" Type="Self.SystemicIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfCase_Table">
+              <PropertyRef Name="TypeOfCase_ID" />
+            </Principal>
+            <Dependent Role="SystemicIssues_Table">
+              <PropertyRef Name="TypeOfCase_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemicIssues_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="SystemicIssues_Table" Type="Self.SystemicIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SystemicIssues_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypeOfCase_Table_IssuesType_Table">
+          <End Role="IssuesType_Table" Type="Self.IssuesType_Table" Multiplicity="0..1" />
+          <End Role="TypeOfCase_Table" Type="Self.TypeOfCase_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IssuesType_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Principal>
+            <Dependent Role="TypeOfCase_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Versions_Table_Project_Table">
+          <End Role="Project_Table" Type="Self.Project_Table" Multiplicity="0..1" />
+          <End Role="Versions_Table" Type="Self.Versions_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Versions_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Versions_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="Versions_Table" Type="Self.Versions_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Versions_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LawyersModelStoreContainer">
+          <EntitySet Name="Achievements_Table" EntityType="Self.Achievements_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Advocacyactivities_Table" EntityType="Self.Advocacyactivities_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Arbitration_Table" EntityType="Self.Arbitration_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AwarenessWorkshops_Table" EntityType="Self.AwarenessWorkshops_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consulting_Table" EntityType="Self.Consulting_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses_Table" EntityType="Self.Courses_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courts_Table" EntityType="Self.Courts_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiligenceType_Table" EntityType="Self.DiligenceType_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamilyForum_Table" EntityType="Self.FamilyForum_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IssuesType_Table" EntityType="Self.IssuesType_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lawyer_Table" EntityType="Self.Lawyer_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LegalIssues_Table" EntityType="Self.LegalIssues_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Media_Table" EntityType="Self.Media_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mediation_Table" EntityType="Self.Mediation_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MediaType_Table" EntityType="Self.MediaType_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project_Table" EntityType="Self.Project_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectControl_Table" EntityType="Self.ProjectControl_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemicIssues_Table" EntityType="Self.SystemicIssues_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TargetGroup_Table" EntityType="Self.TargetGroup_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfCase_Table" EntityType="Self.TypeOfCase_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_Table" EntityType="Self.Users_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Versions_Table" EntityType="Self.Versions_Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Achievements_Table_Project_Table" Association="Self.FK_Achievements_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Achievements_Table" EntitySet="Achievements_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Achievements_Table_Users_Table" Association="Self.FK_Achievements_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Achievements_Table" EntitySet="Achievements_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Advocacyactivities_Table_Project_Table" Association="Self.FK_Advocacyactivities_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Advocacyactivities_Table" EntitySet="Advocacyactivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Advocacyactivities_Table_Users_Table" Association="Self.FK_Advocacyactivities_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Advocacyactivities_Table" EntitySet="Advocacyactivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arbitration_Table_Project_Table" Association="Self.FK_Arbitration_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Arbitration_Table" EntitySet="Arbitration_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arbitration_Table_Users_Table" Association="Self.FK_Arbitration_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Arbitration_Table" EntitySet="Arbitration_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AwarenessWorkshops_Table_AwarenessWorkshops_Table" Association="Self.FK_AwarenessWorkshops_Table_AwarenessWorkshops_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="AwarenessWorkshops_Table" EntitySet="AwarenessWorkshops_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AwarenessWorkshops_Table_Project_Table" Association="Self.FK_AwarenessWorkshops_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="AwarenessWorkshops_Table" EntitySet="AwarenessWorkshops_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Table_IssuesType_Table" Association="Self.FK_Consulting_Table_IssuesType_Table">
+            <End Role="IssuesType_Table" EntitySet="IssuesType_Table" />
+            <End Role="Consulting_Table" EntitySet="Consulting_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Table_Lawyer_Table" Association="Self.FK_Consulting_Table_Lawyer_Table">
+            <End Role="Lawyer_Table" EntitySet="Lawyer_Table" />
+            <End Role="Consulting_Table" EntitySet="Consulting_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Table_Project_Table" Association="Self.FK_Consulting_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Consulting_Table" EntitySet="Consulting_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Table_TypeOfCase_Table" Association="Self.FK_Consulting_Table_TypeOfCase_Table">
+            <End Role="TypeOfCase_Table" EntitySet="TypeOfCase_Table" />
+            <End Role="Consulting_Table" EntitySet="Consulting_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Table_Users_Table" Association="Self.FK_Consulting_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Consulting_Table" EntitySet="Consulting_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Table_Courses_Table" Association="Self.FK_Courses_Table_Courses_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Courses_Table" EntitySet="Courses_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Table_Project_Table" Association="Self.FK_Courses_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Courses_Table" EntitySet="Courses_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Table_TargetGroup_Table" Association="Self.FK_Courses_Table_TargetGroup_Table">
+            <End Role="TargetGroup_Table" EntitySet="TargetGroup_Table" />
+            <End Role="Courses_Table" EntitySet="Courses_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyForum_Table_Project_Table" Association="Self.FK_FamilyForum_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="FamilyForum_Table" EntitySet="FamilyForum_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyForum_Table_Users_Table" Association="Self.FK_FamilyForum_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="FamilyForum_Table" EntitySet="FamilyForum_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalIssues_Table_Courts_Table" Association="Self.FK_LegalIssues_Table_Courts_Table">
+            <End Role="Courts_Table" EntitySet="Courts_Table" />
+            <End Role="LegalIssues_Table" EntitySet="LegalIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalIssues_Table_Lawyer_Table" Association="Self.FK_LegalIssues_Table_Lawyer_Table">
+            <End Role="Lawyer_Table" EntitySet="Lawyer_Table" />
+            <End Role="LegalIssues_Table" EntitySet="LegalIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalIssues_Table_TypeOfCase_Table" Association="Self.FK_LegalIssues_Table_TypeOfCase_Table">
+            <End Role="TypeOfCase_Table" EntitySet="TypeOfCase_Table" />
+            <End Role="LegalIssues_Table" EntitySet="LegalIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalIssues_Table_Users_Table" Association="Self.FK_LegalIssues_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="LegalIssues_Table" EntitySet="LegalIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Media_Table_MediaType_Table" Association="Self.FK_Media_Table_MediaType_Table">
+            <End Role="MediaType_Table" EntitySet="MediaType_Table" />
+            <End Role="Media_Table" EntitySet="Media_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Media_Table_Project_Table" Association="Self.FK_Media_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Media_Table" EntitySet="Media_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Media_Table_Users_Table" Association="Self.FK_Media_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Media_Table" EntitySet="Media_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mediation_Table_DiligenceType_Table" Association="Self.FK_Mediation_Table_DiligenceType_Table">
+            <End Role="DiligenceType_Table" EntitySet="DiligenceType_Table" />
+            <End Role="Mediation_Table" EntitySet="Mediation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mediation_Table_IssuesType_Table" Association="Self.FK_Mediation_Table_IssuesType_Table">
+            <End Role="IssuesType_Table" EntitySet="IssuesType_Table" />
+            <End Role="Mediation_Table" EntitySet="Mediation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mediation_Table_Project_Table" Association="Self.FK_Mediation_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Mediation_Table" EntitySet="Mediation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mediation_Table_Users_Table" Association="Self.FK_Mediation_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Mediation_Table" EntitySet="Mediation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectControl_Table_Project_Table" Association="Self.FK_ProjectControl_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="ProjectControl_Table" EntitySet="ProjectControl_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectControl_Table_Users_Table" Association="Self.FK_ProjectControl_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="ProjectControl_Table" EntitySet="ProjectControl_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemicIssues_Table_Courts_Table" Association="Self.FK_SystemicIssues_Table_Courts_Table">
+            <End Role="Courts_Table" EntitySet="Courts_Table" />
+            <End Role="SystemicIssues_Table" EntitySet="SystemicIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemicIssues_Table_Lawyer_Table" Association="Self.FK_SystemicIssues_Table_Lawyer_Table">
+            <End Role="Lawyer_Table" EntitySet="Lawyer_Table" />
+            <End Role="SystemicIssues_Table" EntitySet="SystemicIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemicIssues_Table_Project_Table" Association="Self.FK_SystemicIssues_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="SystemicIssues_Table" EntitySet="SystemicIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemicIssues_Table_TypeOfCaseSyIsuues_Table" Association="Self.FK_SystemicIssues_Table_TypeOfCaseSyIsuues_Table">
+            <End Role="TypeOfCase_Table" EntitySet="TypeOfCase_Table" />
+            <End Role="SystemicIssues_Table" EntitySet="SystemicIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemicIssues_Table_Users_Table" Association="Self.FK_SystemicIssues_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="SystemicIssues_Table" EntitySet="SystemicIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypeOfCase_Table_IssuesType_Table" Association="Self.FK_TypeOfCase_Table_IssuesType_Table">
+            <End Role="IssuesType_Table" EntitySet="IssuesType_Table" />
+            <End Role="TypeOfCase_Table" EntitySet="TypeOfCase_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Versions_Table_Project_Table" Association="Self.FK_Versions_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Versions_Table" EntitySet="Versions_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Versions_Table_Users_Table" Association="Self.FK_Versions_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Versions_Table" EntitySet="Versions_Table" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LawyersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="LawyersEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Achievements_Table" EntityType="LawyersModel.Achievements_Table" />
+          <EntitySet Name="Advocacyactivities_Table" EntityType="LawyersModel.Advocacyactivities_Table" />
+          <EntitySet Name="Arbitration_Table" EntityType="LawyersModel.Arbitration_Table" />
+          <EntitySet Name="AwarenessWorkshops_Table" EntityType="LawyersModel.AwarenessWorkshops_Table" />
+          <EntitySet Name="Consulting_Table" EntityType="LawyersModel.Consulting_Table" />
+          <EntitySet Name="Courses_Table" EntityType="LawyersModel.Courses_Table" />
+          <EntitySet Name="Courts_Table" EntityType="LawyersModel.Courts_Table" />
+          <EntitySet Name="DiligenceType_Table" EntityType="LawyersModel.DiligenceType_Table" />
+          <EntitySet Name="FamilyForum_Table" EntityType="LawyersModel.FamilyForum_Table" />
+          <EntitySet Name="IssuesType_Table" EntityType="LawyersModel.IssuesType_Table" />
+          <EntitySet Name="Lawyer_Table" EntityType="LawyersModel.Lawyer_Table" />
+          <EntitySet Name="LegalIssues_Table" EntityType="LawyersModel.LegalIssues_Table" />
+          <EntitySet Name="Media_Table" EntityType="LawyersModel.Media_Table" />
+          <EntitySet Name="Mediation_Table" EntityType="LawyersModel.Mediation_Table" />
+          <EntitySet Name="MediaType_Table" EntityType="LawyersModel.MediaType_Table" />
+          <EntitySet Name="Project_Table" EntityType="LawyersModel.Project_Table" />
+          <EntitySet Name="ProjectControl_Table" EntityType="LawyersModel.ProjectControl_Table" />
+          <EntitySet Name="SystemicIssues_Table" EntityType="LawyersModel.SystemicIssues_Table" />
+          <EntitySet Name="TargetGroup_Table" EntityType="LawyersModel.TargetGroup_Table" />
+          <EntitySet Name="TypeOfCase_Table" EntityType="LawyersModel.TypeOfCase_Table" />
+          <EntitySet Name="Users_Table" EntityType="LawyersModel.Users_Table" />
+          <EntitySet Name="Versions_Table" EntityType="LawyersModel.Versions_Table" />
+          <AssociationSet Name="FK_Achievements_Table_Project_Table" Association="LawyersModel.FK_Achievements_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Achievements_Table" EntitySet="Achievements_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Achievements_Table_Users_Table" Association="LawyersModel.FK_Achievements_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Achievements_Table" EntitySet="Achievements_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Advocacyactivities_Table_Project_Table" Association="LawyersModel.FK_Advocacyactivities_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Advocacyactivities_Table" EntitySet="Advocacyactivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Advocacyactivities_Table_Users_Table" Association="LawyersModel.FK_Advocacyactivities_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Advocacyactivities_Table" EntitySet="Advocacyactivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arbitration_Table_Project_Table" Association="LawyersModel.FK_Arbitration_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Arbitration_Table" EntitySet="Arbitration_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arbitration_Table_Users_Table" Association="LawyersModel.FK_Arbitration_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Arbitration_Table" EntitySet="Arbitration_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AwarenessWorkshops_Table_AwarenessWorkshops_Table" Association="LawyersModel.FK_AwarenessWorkshops_Table_AwarenessWorkshops_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="AwarenessWorkshops_Table" EntitySet="AwarenessWorkshops_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AwarenessWorkshops_Table_Project_Table" Association="LawyersModel.FK_AwarenessWorkshops_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="AwarenessWorkshops_Table" EntitySet="AwarenessWorkshops_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Table_IssuesType_Table" Association="LawyersModel.FK_Consulting_Table_IssuesType_Table">
+            <End Role="IssuesType_Table" EntitySet="IssuesType_Table" />
+            <End Role="Consulting_Table" EntitySet="Consulting_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Table_Lawyer_Table" Association="LawyersModel.FK_Consulting_Table_Lawyer_Table">
+            <End Role="Lawyer_Table" EntitySet="Lawyer_Table" />
+            <End Role="Consulting_Table" EntitySet="Consulting_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Table_Project_Table" Association="LawyersModel.FK_Consulting_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Consulting_Table" EntitySet="Consulting_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Table_TypeOfCase_Table" Association="LawyersModel.FK_Consulting_Table_TypeOfCase_Table">
+            <End Role="TypeOfCase_Table" EntitySet="TypeOfCase_Table" />
+            <End Role="Consulting_Table" EntitySet="Consulting_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Table_Users_Table" Association="LawyersModel.FK_Consulting_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Consulting_Table" EntitySet="Consulting_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Table_Courses_Table" Association="LawyersModel.FK_Courses_Table_Courses_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Courses_Table" EntitySet="Courses_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Table_Project_Table" Association="LawyersModel.FK_Courses_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Courses_Table" EntitySet="Courses_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Table_TargetGroup_Table" Association="LawyersModel.FK_Courses_Table_TargetGroup_Table">
+            <End Role="TargetGroup_Table" EntitySet="TargetGroup_Table" />
+            <End Role="Courses_Table" EntitySet="Courses_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalIssues_Table_Courts_Table" Association="LawyersModel.FK_LegalIssues_Table_Courts_Table">
+            <End Role="Courts_Table" EntitySet="Courts_Table" />
+            <End Role="LegalIssues_Table" EntitySet="LegalIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemicIssues_Table_Courts_Table" Association="LawyersModel.FK_SystemicIssues_Table_Courts_Table">
+            <End Role="Courts_Table" EntitySet="Courts_Table" />
+            <End Role="SystemicIssues_Table" EntitySet="SystemicIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mediation_Table_DiligenceType_Table" Association="LawyersModel.FK_Mediation_Table_DiligenceType_Table">
+            <End Role="DiligenceType_Table" EntitySet="DiligenceType_Table" />
+            <End Role="Mediation_Table" EntitySet="Mediation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyForum_Table_Project_Table" Association="LawyersModel.FK_FamilyForum_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="FamilyForum_Table" EntitySet="FamilyForum_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyForum_Table_Users_Table" Association="LawyersModel.FK_FamilyForum_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="FamilyForum_Table" EntitySet="FamilyForum_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mediation_Table_IssuesType_Table" Association="LawyersModel.FK_Mediation_Table_IssuesType_Table">
+            <End Role="IssuesType_Table" EntitySet="IssuesType_Table" />
+            <End Role="Mediation_Table" EntitySet="Mediation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypeOfCase_Table_IssuesType_Table" Association="LawyersModel.FK_TypeOfCase_Table_IssuesType_Table">
+            <End Role="IssuesType_Table" EntitySet="IssuesType_Table" />
+            <End Role="TypeOfCase_Table" EntitySet="TypeOfCase_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalIssues_Table_Lawyer_Table" Association="LawyersModel.FK_LegalIssues_Table_Lawyer_Table">
+            <End Role="Lawyer_Table" EntitySet="Lawyer_Table" />
+            <End Role="LegalIssues_Table" EntitySet="LegalIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemicIssues_Table_Lawyer_Table" Association="LawyersModel.FK_SystemicIssues_Table_Lawyer_Table">
+            <End Role="Lawyer_Table" EntitySet="Lawyer_Table" />
+            <End Role="SystemicIssues_Table" EntitySet="SystemicIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalIssues_Table_TypeOfCase_Table" Association="LawyersModel.FK_LegalIssues_Table_TypeOfCase_Table">
+            <End Role="TypeOfCase_Table" EntitySet="TypeOfCase_Table" />
+            <End Role="LegalIssues_Table" EntitySet="LegalIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalIssues_Table_Users_Table" Association="LawyersModel.FK_LegalIssues_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="LegalIssues_Table" EntitySet="LegalIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Media_Table_MediaType_Table" Association="LawyersModel.FK_Media_Table_MediaType_Table">
+            <End Role="MediaType_Table" EntitySet="MediaType_Table" />
+            <End Role="Media_Table" EntitySet="Media_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Media_Table_Project_Table" Association="LawyersModel.FK_Media_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Media_Table" EntitySet="Media_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Media_Table_Users_Table" Association="LawyersModel.FK_Media_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Media_Table" EntitySet="Media_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mediation_Table_Project_Table" Association="LawyersModel.FK_Mediation_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Mediation_Table" EntitySet="Mediation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mediation_Table_Users_Table" Association="LawyersModel.FK_Mediation_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Mediation_Table" EntitySet="Mediation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectControl_Table_Project_Table" Association="LawyersModel.FK_ProjectControl_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="ProjectControl_Table" EntitySet="ProjectControl_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemicIssues_Table_Project_Table" Association="LawyersModel.FK_SystemicIssues_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="SystemicIssues_Table" EntitySet="SystemicIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Versions_Table_Project_Table" Association="LawyersModel.FK_Versions_Table_Project_Table">
+            <End Role="Project_Table" EntitySet="Project_Table" />
+            <End Role="Versions_Table" EntitySet="Versions_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectControl_Table_Users_Table" Association="LawyersModel.FK_ProjectControl_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="ProjectControl_Table" EntitySet="ProjectControl_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemicIssues_Table_TypeOfCaseSyIsuues_Table" Association="LawyersModel.FK_SystemicIssues_Table_TypeOfCaseSyIsuues_Table">
+            <End Role="TypeOfCase_Table" EntitySet="TypeOfCase_Table" />
+            <End Role="SystemicIssues_Table" EntitySet="SystemicIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemicIssues_Table_Users_Table" Association="LawyersModel.FK_SystemicIssues_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="SystemicIssues_Table" EntitySet="SystemicIssues_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Versions_Table_Users_Table" Association="LawyersModel.FK_Versions_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="Versions_Table" EntitySet="Versions_Table" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Achievements_Table">
+          <Key>
+            <PropertyRef Name="AchievementID" />
+          </Key>
+          <Property Name="AchievementID" Type="Int32" Nullable="false" />
+          <Property Name="AchievementsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AchievementsDate" Type="DateTime" Precision="3" />
+          <Property Name="AchievementsAbstract" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_Achievements_Table_Project_Table" FromRole="Achievements_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_Achievements_Table_Users_Table" FromRole="Achievements_Table" ToRole="Users_Table" />
+        </EntityType>
+        <EntityType Name="Advocacyactivities_Table">
+          <Key>
+            <PropertyRef Name="AdvocacyactivitiesID" />
+          </Key>
+          <Property Name="AdvocacyactivitiesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AdvocacyDate" Type="DateTime" Precision="3" />
+          <Property Name="executingagency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="beneficiary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GeographicArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_Advocacyactivities_Table_Project_Table" FromRole="Advocacyactivities_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_Advocacyactivities_Table_Users_Table" FromRole="Advocacyactivities_Table" ToRole="Users_Table" />
+        </EntityType>
+        <EntityType Name="Arbitration_Table">
+          <Key>
+            <PropertyRef Name="ArbitrationID" />
+          </Key>
+          <Property Name="ArbitrationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArbitrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArbitrationDate" Type="DateTime" Precision="3" />
+          <Property Name="FirstSideName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstSideIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstSidePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstSocialstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstSideAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SecondSideName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondSideIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondSidePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondSocialstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondSideAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ArbitrationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArbitrationPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArbitrationDecision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_Arbitration_Table_Project_Table" FromRole="Arbitration_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_Arbitration_Table_Users_Table" FromRole="Arbitration_Table" ToRole="Users_Table" />
+        </EntityType>
+        <EntityType Name="AwarenessWorkshops_Table">
+          <Key>
+            <PropertyRef Name="AwarenessID" />
+          </Key>
+          <Property Name="AwarenessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AwarenessName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AwarenessDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalHours" Type="Int32" />
+          <Property Name="TotalBeneficiaries" Type="Int32" />
+          <Property Name="Males" Type="Int32" />
+          <Property Name="Females" Type="Int32" />
+          <Property Name="Boy" Type="Int32" />
+          <Property Name="Girl" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_AwarenessWorkshops_Table_AwarenessWorkshops_Table" FromRole="AwarenessWorkshops_Table" ToRole="Users_Table" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_AwarenessWorkshops_Table_Project_Table" FromRole="AwarenessWorkshops_Table" ToRole="Project_Table" />
+        </EntityType>
+        <EntityType Name="Consulting_Table">
+          <Key>
+            <PropertyRef Name="ConsultingID" />
+          </Key>
+          <Property Name="ConsultingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsultingDate" Type="DateTime" Precision="3" />
+          <Property Name="ConsultantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="CounselingRequired" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CounselingRendered" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LawyerID" Type="Int32" />
+          <Property Name="CounselingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="TypeOfCaseID" Type="Int32" />
+          <Property Name="IssuesTypeID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <NavigationProperty Name="IssuesType_Table" Relationship="LawyersModel.FK_Consulting_Table_IssuesType_Table" FromRole="Consulting_Table" ToRole="IssuesType_Table" />
+          <NavigationProperty Name="Lawyer_Table" Relationship="LawyersModel.FK_Consulting_Table_Lawyer_Table" FromRole="Consulting_Table" ToRole="Lawyer_Table" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_Consulting_Table_Project_Table" FromRole="Consulting_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="TypeOfCase_Table" Relationship="LawyersModel.FK_Consulting_Table_TypeOfCase_Table" FromRole="Consulting_Table" ToRole="TypeOfCase_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_Consulting_Table_Users_Table" FromRole="Consulting_Table" ToRole="Users_Table" />
+        </EntityType>
+        <EntityType Name="Courses_Table">
+          <Key>
+            <PropertyRef Name="CoursesID" />
+          </Key>
+          <Property Name="CoursesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CoursesName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CoursesStartDate" Type="DateTime" Precision="3" />
+          <Property Name="CoursesEndDate" Type="DateTime" Precision="3" />
+          <Property Name="TrainingHours" Type="Int32" />
+          <Property Name="TotalBeneficiaries" Type="Int32" />
+          <Property Name="Males" Type="Int32" />
+          <Property Name="Females" Type="Int32" />
+          <Property Name="TargetGroupID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_Courses_Table_Courses_Table" FromRole="Courses_Table" ToRole="Users_Table" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_Courses_Table_Project_Table" FromRole="Courses_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="TargetGroup_Table" Relationship="LawyersModel.FK_Courses_Table_TargetGroup_Table" FromRole="Courses_Table" ToRole="TargetGroup_Table" />
+        </EntityType>
+        <EntityType Name="Courts_Table">
+          <Key>
+            <PropertyRef Name="CourtsID" />
+          </Key>
+          <Property Name="CourtsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourtsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LegalIssues_Table" Relationship="LawyersModel.FK_LegalIssues_Table_Courts_Table" FromRole="Courts_Table" ToRole="LegalIssues_Table" />
+          <NavigationProperty Name="SystemicIssues_Table" Relationship="LawyersModel.FK_SystemicIssues_Table_Courts_Table" FromRole="Courts_Table" ToRole="SystemicIssues_Table" />
+        </EntityType>
+        <EntityType Name="DiligenceType_Table">
+          <Key>
+            <PropertyRef Name="DiligenceTypeID" />
+          </Key>
+          <Property Name="DiligenceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiligenceTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Mediation_Table" Relationship="LawyersModel.FK_Mediation_Table_DiligenceType_Table" FromRole="DiligenceType_Table" ToRole="Mediation_Table" />
+        </EntityType>
+        <EntityType Name="FamilyForum_Table">
+          <Key>
+            <PropertyRef Name="FamilyForumID" />
+          </Key>
+          <Property Name="FamilyForumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ViewingDate" Type="DateTime" Precision="3" />
+          <Property Name="ApplicantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantSocialStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CustodialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustodialPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustodialSocialStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustodialAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ChildrenNumberMale" Type="Int32" />
+          <Property Name="ChildrenNumberFemale" Type="Int32" />
+          <Property Name="CaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ViewingHours" Type="Double" />
+          <Property Name="ViewingPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_FamilyForum_Table_Project_Table" FromRole="FamilyForum_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_FamilyForum_Table_Users_Table" FromRole="FamilyForum_Table" ToRole="Users_Table" />
+        </EntityType>
+        <EntityType Name="IssuesType_Table">
+          <Key>
+            <PropertyRef Name="IssuesTypeID" />
+          </Key>
+          <Property Name="IssuesTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IssuesTypename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Consulting_Table" Relationship="LawyersModel.FK_Consulting_Table_IssuesType_Table" FromRole="IssuesType_Table" ToRole="Consulting_Table" />
+          <NavigationProperty Name="Mediation_Table" Relationship="LawyersModel.FK_Mediation_Table_IssuesType_Table" FromRole="IssuesType_Table" ToRole="Mediation_Table" />
+          <NavigationProperty Name="TypeOfCase_Table" Relationship="LawyersModel.FK_TypeOfCase_Table_IssuesType_Table" FromRole="IssuesType_Table" ToRole="TypeOfCase_Table" />
+        </EntityType>
+        <EntityType Name="Lawyer_Table">
+          <Key>
+            <PropertyRef Name="LawyerID" />
+          </Key>
+          <Property Name="LawyerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LawyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LawyerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LawyerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Consulting_Table" Relationship="LawyersModel.FK_Consulting_Table_Lawyer_Table" FromRole="Lawyer_Table" ToRole="Consulting_Table" />
+          <NavigationProperty Name="LegalIssues_Table" Relationship="LawyersModel.FK_LegalIssues_Table_Lawyer_Table" FromRole="Lawyer_Table" ToRole="LegalIssues_Table" />
+          <NavigationProperty Name="SystemicIssues_Table" Relationship="LawyersModel.FK_SystemicIssues_Table_Lawyer_Table" FromRole="Lawyer_Table" ToRole="SystemicIssues_Table" />
+        </EntityType>
+        <EntityType Name="LegalIssues_Table">
+          <Key>
+            <PropertyRef Name="LegalIssuesID" />
+          </Key>
+          <Property Name="LegalIssuesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourtsNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfCase" Type="DateTime" Precision="3" />
+          <Property Name="DepositDate" Type="DateTime" Precision="3" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientGender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AdversaryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdversaryIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdversaryPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdversaryAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CourtsID" Type="Int32" />
+          <Property Name="LawyerID" Type="Int32" />
+          <Property Name="DateOfClosure" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <Property Name="TypeOfCaseID" Type="Int32" />
+          <NavigationProperty Name="Courts_Table" Relationship="LawyersModel.FK_LegalIssues_Table_Courts_Table" FromRole="LegalIssues_Table" ToRole="Courts_Table" />
+          <NavigationProperty Name="Lawyer_Table" Relationship="LawyersModel.FK_LegalIssues_Table_Lawyer_Table" FromRole="LegalIssues_Table" ToRole="Lawyer_Table" />
+          <NavigationProperty Name="TypeOfCase_Table" Relationship="LawyersModel.FK_LegalIssues_Table_TypeOfCase_Table" FromRole="LegalIssues_Table" ToRole="TypeOfCase_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_LegalIssues_Table_Users_Table" FromRole="LegalIssues_Table" ToRole="Users_Table" />
+        </EntityType>
+        <EntityType Name="Media_Table">
+          <Key>
+            <PropertyRef Name="MediaID" />
+          </Key>
+          <Property Name="MediaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MediaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MediaDate" Type="DateTime" Precision="3" />
+          <Property Name="PartnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MediaNumber" Type="Int32" />
+          <Property Name="minutes" Type="Int32" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MediaTypeID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="MediaType_Table" Relationship="LawyersModel.FK_Media_Table_MediaType_Table" FromRole="Media_Table" ToRole="MediaType_Table" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_Media_Table_Project_Table" FromRole="Media_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_Media_Table_Users_Table" FromRole="Media_Table" ToRole="Users_Table" />
+        </EntityType>
+        <EntityType Name="Mediation_Table">
+          <Key>
+            <PropertyRef Name="MediationID" />
+          </Key>
+          <Property Name="MediationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MediationDate" Type="DateTime" Precision="3" />
+          <Property Name="FirstSideName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstSideGender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstSideAge" Type="Int32" />
+          <Property Name="FirstSideIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstSidePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstSocialstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstSideAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SecondSideName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondSideIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondSidePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondSocialstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondSideAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MediatorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MediatorPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Agreement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <Property Name="IssuesTypeID" Type="Int32" />
+          <Property Name="DiligenceTypeID" Type="Int32" />
+          <NavigationProperty Name="DiligenceType_Table" Relationship="LawyersModel.FK_Mediation_Table_DiligenceType_Table" FromRole="Mediation_Table" ToRole="DiligenceType_Table" />
+          <NavigationProperty Name="IssuesType_Table" Relationship="LawyersModel.FK_Mediation_Table_IssuesType_Table" FromRole="Mediation_Table" ToRole="IssuesType_Table" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_Mediation_Table_Project_Table" FromRole="Mediation_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_Mediation_Table_Users_Table" FromRole="Mediation_Table" ToRole="Users_Table" />
+        </EntityType>
+        <EntityType Name="MediaType_Table">
+          <Key>
+            <PropertyRef Name="MediaTypeID" />
+          </Key>
+          <Property Name="MediaTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MediaTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Media_Table" Relationship="LawyersModel.FK_Media_Table_MediaType_Table" FromRole="MediaType_Table" ToRole="Media_Table" />
+        </EntityType>
+        <EntityType Name="Project_Table">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StartData" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Achievements_Table" Relationship="LawyersModel.FK_Achievements_Table_Project_Table" FromRole="Project_Table" ToRole="Achievements_Table" />
+          <NavigationProperty Name="Advocacyactivities_Table" Relationship="LawyersModel.FK_Advocacyactivities_Table_Project_Table" FromRole="Project_Table" ToRole="Advocacyactivities_Table" />
+          <NavigationProperty Name="Arbitration_Table" Relationship="LawyersModel.FK_Arbitration_Table_Project_Table" FromRole="Project_Table" ToRole="Arbitration_Table" />
+          <NavigationProperty Name="AwarenessWorkshops_Table" Relationship="LawyersModel.FK_AwarenessWorkshops_Table_Project_Table" FromRole="Project_Table" ToRole="AwarenessWorkshops_Table" />
+          <NavigationProperty Name="Consulting_Table" Relationship="LawyersModel.FK_Consulting_Table_Project_Table" FromRole="Project_Table" ToRole="Consulting_Table" />
+          <NavigationProperty Name="Courses_Table" Relationship="LawyersModel.FK_Courses_Table_Project_Table" FromRole="Project_Table" ToRole="Courses_Table" />
+          <NavigationProperty Name="FamilyForum_Table" Relationship="LawyersModel.FK_FamilyForum_Table_Project_Table" FromRole="Project_Table" ToRole="FamilyForum_Table" />
+          <NavigationProperty Name="Media_Table" Relationship="LawyersModel.FK_Media_Table_Project_Table" FromRole="Project_Table" ToRole="Media_Table" />
+          <NavigationProperty Name="Mediation_Table" Relationship="LawyersModel.FK_Mediation_Table_Project_Table" FromRole="Project_Table" ToRole="Mediation_Table" />
+          <NavigationProperty Name="ProjectControl_Table" Relationship="LawyersModel.FK_ProjectControl_Table_Project_Table" FromRole="Project_Table" ToRole="ProjectControl_Table" />
+          <NavigationProperty Name="SystemicIssues_Table" Relationship="LawyersModel.FK_SystemicIssues_Table_Project_Table" FromRole="Project_Table" ToRole="SystemicIssues_Table" />
+          <NavigationProperty Name="Versions_Table" Relationship="LawyersModel.FK_Versions_Table_Project_Table" FromRole="Project_Table" ToRole="Versions_Table" />
+        </EntityType>
+        <EntityType Name="ProjectControl_Table">
+          <Key>
+            <PropertyRef Name="ProjectControlID" />
+          </Key>
+          <Property Name="ProjectControlID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_ProjectControl_Table_Project_Table" FromRole="ProjectControl_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_ProjectControl_Table_Users_Table" FromRole="ProjectControl_Table" ToRole="Users_Table" />
+        </EntityType>
+        <EntityType Name="SystemicIssues_Table">
+          <Key>
+            <PropertyRef Name="SystemicIssuesID" />
+          </Key>
+          <Property Name="SystemicIssuesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourtsNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfCase" Type="DateTime" Precision="3" />
+          <Property Name="DepositDate" Type="DateTime" Precision="3" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientGendr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AdversaryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdversaryIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdversaryPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdversaryAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CourtsID" Type="Int32" />
+          <Property Name="LawyerID" Type="Int32" />
+          <Property Name="TypeOfCase_ID" Type="Int32" />
+          <Property Name="DateOfClosure" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <NavigationProperty Name="Courts_Table" Relationship="LawyersModel.FK_SystemicIssues_Table_Courts_Table" FromRole="SystemicIssues_Table" ToRole="Courts_Table" />
+          <NavigationProperty Name="Lawyer_Table" Relationship="LawyersModel.FK_SystemicIssues_Table_Lawyer_Table" FromRole="SystemicIssues_Table" ToRole="Lawyer_Table" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_SystemicIssues_Table_Project_Table" FromRole="SystemicIssues_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="TypeOfCase_Table" Relationship="LawyersModel.FK_SystemicIssues_Table_TypeOfCaseSyIsuues_Table" FromRole="SystemicIssues_Table" ToRole="TypeOfCase_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_SystemicIssues_Table_Users_Table" FromRole="SystemicIssues_Table" ToRole="Users_Table" />
+        </EntityType>
+        <EntityType Name="TargetGroup_Table">
+          <Key>
+            <PropertyRef Name="TargetGroupID" />
+          </Key>
+          <Property Name="TargetGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TargetGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Courses_Table" Relationship="LawyersModel.FK_Courses_Table_TargetGroup_Table" FromRole="TargetGroup_Table" ToRole="Courses_Table" />
+        </EntityType>
+        <EntityType Name="TypeOfCase_Table">
+          <Key>
+            <PropertyRef Name="TypeOfCase_ID" />
+          </Key>
+          <Property Name="TypeOfCase_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOfCaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IssuesTypeID" Type="Int32" />
+          <NavigationProperty Name="Consulting_Table" Relationship="LawyersModel.FK_Consulting_Table_TypeOfCase_Table" FromRole="TypeOfCase_Table" ToRole="Consulting_Table" />
+          <NavigationProperty Name="IssuesType_Table" Relationship="LawyersModel.FK_TypeOfCase_Table_IssuesType_Table" FromRole="TypeOfCase_Table" ToRole="IssuesType_Table" />
+          <NavigationProperty Name="LegalIssues_Table" Relationship="LawyersModel.FK_LegalIssues_Table_TypeOfCase_Table" FromRole="TypeOfCase_Table" ToRole="LegalIssues_Table" />
+          <NavigationProperty Name="SystemicIssues_Table" Relationship="LawyersModel.FK_SystemicIssues_Table_TypeOfCaseSyIsuues_Table" FromRole="TypeOfCase_Table" ToRole="SystemicIssues_Table" />
+        </EntityType>
+        <EntityType Name="Users_Table">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Achievements_Table" Relationship="LawyersModel.FK_Achievements_Table_Users_Table" FromRole="Users_Table" ToRole="Achievements_Table" />
+          <NavigationProperty Name="Advocacyactivities_Table" Relationship="LawyersModel.FK_Advocacyactivities_Table_Users_Table" FromRole="Users_Table" ToRole="Advocacyactivities_Table" />
+          <NavigationProperty Name="Arbitration_Table" Relationship="LawyersModel.FK_Arbitration_Table_Users_Table" FromRole="Users_Table" ToRole="Arbitration_Table" />
+          <NavigationProperty Name="AwarenessWorkshops_Table" Relationship="LawyersModel.FK_AwarenessWorkshops_Table_AwarenessWorkshops_Table" FromRole="Users_Table" ToRole="AwarenessWorkshops_Table" />
+          <NavigationProperty Name="Consulting_Table" Relationship="LawyersModel.FK_Consulting_Table_Users_Table" FromRole="Users_Table" ToRole="Consulting_Table" />
+          <NavigationProperty Name="Courses_Table" Relationship="LawyersModel.FK_Courses_Table_Courses_Table" FromRole="Users_Table" ToRole="Courses_Table" />
+          <NavigationProperty Name="FamilyForum_Table" Relationship="LawyersModel.FK_FamilyForum_Table_Users_Table" FromRole="Users_Table" ToRole="FamilyForum_Table" />
+          <NavigationProperty Name="LegalIssues_Table" Relationship="LawyersModel.FK_LegalIssues_Table_Users_Table" FromRole="Users_Table" ToRole="LegalIssues_Table" />
+          <NavigationProperty Name="Media_Table" Relationship="LawyersModel.FK_Media_Table_Users_Table" FromRole="Users_Table" ToRole="Media_Table" />
+          <NavigationProperty Name="Mediation_Table" Relationship="LawyersModel.FK_Mediation_Table_Users_Table" FromRole="Users_Table" ToRole="Mediation_Table" />
+          <NavigationProperty Name="ProjectControl_Table" Relationship="LawyersModel.FK_ProjectControl_Table_Users_Table" FromRole="Users_Table" ToRole="ProjectControl_Table" />
+          <NavigationProperty Name="SystemicIssues_Table" Relationship="LawyersModel.FK_SystemicIssues_Table_Users_Table" FromRole="Users_Table" ToRole="SystemicIssues_Table" />
+          <NavigationProperty Name="Versions_Table" Relationship="LawyersModel.FK_Versions_Table_Users_Table" FromRole="Users_Table" ToRole="Versions_Table" />
+        </EntityType>
+        <EntityType Name="Versions_Table">
+          <Key>
+            <PropertyRef Name="VersionsID" />
+          </Key>
+          <Property Name="VersionsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VersionsName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VersionsDate" Type="DateTime" Precision="3" />
+          <Property Name="VersionsNumbers" Type="Int32" />
+          <Property Name="TypesOfCopies" Type="Int32" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Project_Table" Relationship="LawyersModel.FK_Versions_Table_Project_Table" FromRole="Versions_Table" ToRole="Project_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="LawyersModel.FK_Versions_Table_Users_Table" FromRole="Versions_Table" ToRole="Users_Table" />
+        </EntityType>
+        <Association Name="FK_Achievements_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Achievements_Table" Role="Achievements_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Achievements_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Achievements_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Achievements_Table" Role="Achievements_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Achievements_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Advocacyactivities_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Advocacyactivities_Table" Role="Advocacyactivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Advocacyactivities_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Advocacyactivities_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Advocacyactivities_Table" Role="Advocacyactivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Advocacyactivities_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arbitration_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Arbitration_Table" Role="Arbitration_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Arbitration_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arbitration_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Arbitration_Table" Role="Arbitration_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Arbitration_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AwarenessWorkshops_Table_AwarenessWorkshops_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.AwarenessWorkshops_Table" Role="AwarenessWorkshops_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AwarenessWorkshops_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AwarenessWorkshops_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.AwarenessWorkshops_Table" Role="AwarenessWorkshops_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="AwarenessWorkshops_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Table_IssuesType_Table">
+          <End Type="LawyersModel.IssuesType_Table" Role="IssuesType_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Consulting_Table" Role="Consulting_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IssuesType_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Principal>
+            <Dependent Role="Consulting_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Table_Lawyer_Table">
+          <End Type="LawyersModel.Lawyer_Table" Role="Lawyer_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Consulting_Table" Role="Consulting_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lawyer_Table">
+              <PropertyRef Name="LawyerID" />
+            </Principal>
+            <Dependent Role="Consulting_Table">
+              <PropertyRef Name="LawyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Consulting_Table" Role="Consulting_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Consulting_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Table_TypeOfCase_Table">
+          <End Type="LawyersModel.TypeOfCase_Table" Role="TypeOfCase_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Consulting_Table" Role="Consulting_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfCase_Table">
+              <PropertyRef Name="TypeOfCase_ID" />
+            </Principal>
+            <Dependent Role="Consulting_Table">
+              <PropertyRef Name="TypeOfCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Consulting_Table" Role="Consulting_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Consulting_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Table_Courses_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Courses_Table" Role="Courses_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Courses_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Courses_Table" Role="Courses_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Courses_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Table_TargetGroup_Table">
+          <End Type="LawyersModel.TargetGroup_Table" Role="TargetGroup_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Courses_Table" Role="Courses_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetGroup_Table">
+              <PropertyRef Name="TargetGroupID" />
+            </Principal>
+            <Dependent Role="Courses_Table">
+              <PropertyRef Name="TargetGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalIssues_Table_Courts_Table">
+          <End Type="LawyersModel.Courts_Table" Role="Courts_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.LegalIssues_Table" Role="LegalIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courts_Table">
+              <PropertyRef Name="CourtsID" />
+            </Principal>
+            <Dependent Role="LegalIssues_Table">
+              <PropertyRef Name="CourtsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemicIssues_Table_Courts_Table">
+          <End Type="LawyersModel.Courts_Table" Role="Courts_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.SystemicIssues_Table" Role="SystemicIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courts_Table">
+              <PropertyRef Name="CourtsID" />
+            </Principal>
+            <Dependent Role="SystemicIssues_Table">
+              <PropertyRef Name="CourtsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mediation_Table_DiligenceType_Table">
+          <End Type="LawyersModel.DiligenceType_Table" Role="DiligenceType_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Mediation_Table" Role="Mediation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiligenceType_Table">
+              <PropertyRef Name="DiligenceTypeID" />
+            </Principal>
+            <Dependent Role="Mediation_Table">
+              <PropertyRef Name="DiligenceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyForum_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.FamilyForum_Table" Role="FamilyForum_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="FamilyForum_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyForum_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.FamilyForum_Table" Role="FamilyForum_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FamilyForum_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mediation_Table_IssuesType_Table">
+          <End Type="LawyersModel.IssuesType_Table" Role="IssuesType_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Mediation_Table" Role="Mediation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IssuesType_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Principal>
+            <Dependent Role="Mediation_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypeOfCase_Table_IssuesType_Table">
+          <End Type="LawyersModel.IssuesType_Table" Role="IssuesType_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.TypeOfCase_Table" Role="TypeOfCase_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IssuesType_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Principal>
+            <Dependent Role="TypeOfCase_Table">
+              <PropertyRef Name="IssuesTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalIssues_Table_Lawyer_Table">
+          <End Type="LawyersModel.Lawyer_Table" Role="Lawyer_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.LegalIssues_Table" Role="LegalIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lawyer_Table">
+              <PropertyRef Name="LawyerID" />
+            </Principal>
+            <Dependent Role="LegalIssues_Table">
+              <PropertyRef Name="LawyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemicIssues_Table_Lawyer_Table">
+          <End Type="LawyersModel.Lawyer_Table" Role="Lawyer_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.SystemicIssues_Table" Role="SystemicIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lawyer_Table">
+              <PropertyRef Name="LawyerID" />
+            </Principal>
+            <Dependent Role="SystemicIssues_Table">
+              <PropertyRef Name="LawyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalIssues_Table_TypeOfCase_Table">
+          <End Type="LawyersModel.TypeOfCase_Table" Role="TypeOfCase_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.LegalIssues_Table" Role="LegalIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfCase_Table">
+              <PropertyRef Name="TypeOfCase_ID" />
+            </Principal>
+            <Dependent Role="LegalIssues_Table">
+              <PropertyRef Name="TypeOfCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalIssues_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.LegalIssues_Table" Role="LegalIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LegalIssues_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Media_Table_MediaType_Table">
+          <End Type="LawyersModel.MediaType_Table" Role="MediaType_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Media_Table" Role="Media_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MediaType_Table">
+              <PropertyRef Name="MediaTypeID" />
+            </Principal>
+            <Dependent Role="Media_Table">
+              <PropertyRef Name="MediaTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Media_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Media_Table" Role="Media_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Media_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Media_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Media_Table" Role="Media_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Media_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mediation_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Mediation_Table" Role="Mediation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Mediation_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mediation_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Mediation_Table" Role="Mediation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Mediation_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectControl_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.ProjectControl_Table" Role="ProjectControl_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="ProjectControl_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemicIssues_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.SystemicIssues_Table" Role="SystemicIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="SystemicIssues_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Versions_Table_Project_Table">
+          <End Type="LawyersModel.Project_Table" Role="Project_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Versions_Table" Role="Versions_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Table">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Versions_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectControl_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.ProjectControl_Table" Role="ProjectControl_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ProjectControl_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemicIssues_Table_TypeOfCaseSyIsuues_Table">
+          <End Type="LawyersModel.TypeOfCase_Table" Role="TypeOfCase_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.SystemicIssues_Table" Role="SystemicIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfCase_Table">
+              <PropertyRef Name="TypeOfCase_ID" />
+            </Principal>
+            <Dependent Role="SystemicIssues_Table">
+              <PropertyRef Name="TypeOfCase_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemicIssues_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.SystemicIssues_Table" Role="SystemicIssues_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SystemicIssues_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Versions_Table_Users_Table">
+          <End Type="LawyersModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="LawyersModel.Versions_Table" Role="Versions_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Versions_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LawyersModelStoreContainer" CdmEntityContainer="LawyersEntities">
+          <EntitySetMapping Name="Achievements_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Achievements_Table">
+              <MappingFragment StoreEntitySet="Achievements_Table">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="AchievementsAbstract" ColumnName="AchievementsAbstract" />
+                <ScalarProperty Name="AchievementsDate" ColumnName="AchievementsDate" />
+                <ScalarProperty Name="AchievementsName" ColumnName="AchievementsName" />
+                <ScalarProperty Name="AchievementID" ColumnName="AchievementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Advocacyactivities_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Advocacyactivities_Table">
+              <MappingFragment StoreEntitySet="Advocacyactivities_Table">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="GeographicArea" ColumnName="GeographicArea" />
+                <ScalarProperty Name="beneficiary" ColumnName="beneficiary" />
+                <ScalarProperty Name="executingagency" ColumnName="executingagency" />
+                <ScalarProperty Name="AdvocacyDate" ColumnName="AdvocacyDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AdvocacyactivitiesID" ColumnName="AdvocacyactivitiesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Arbitration_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Arbitration_Table">
+              <MappingFragment StoreEntitySet="Arbitration_Table">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ArbitrationDecision" ColumnName="ArbitrationDecision" />
+                <ScalarProperty Name="ArbitrationPhone" ColumnName="ArbitrationPhone" />
+                <ScalarProperty Name="ArbitrationName" ColumnName="ArbitrationName" />
+                <ScalarProperty Name="SecondSideAddress" ColumnName="SecondSideAddress" />
+                <ScalarProperty Name="SecondSocialstatus" ColumnName="SecondSocialstatus" />
+                <ScalarProperty Name="SecondSidePhone" ColumnName="SecondSidePhone" />
+                <ScalarProperty Name="SecondSideIDNumber" ColumnName="SecondSideIDNumber" />
+                <ScalarProperty Name="SecondSideName" ColumnName="SecondSideName" />
+                <ScalarProperty Name="FirstSideAddress" ColumnName="FirstSideAddress" />
+                <ScalarProperty Name="FirstSocialstatus" ColumnName="FirstSocialstatus" />
+                <ScalarProperty Name="FirstSidePhone" ColumnName="FirstSidePhone" />
+                <ScalarProperty Name="FirstSideIDNumber" ColumnName="FirstSideIDNumber" />
+                <ScalarProperty Name="FirstSideName" ColumnName="FirstSideName" />
+                <ScalarProperty Name="ArbitrationDate" ColumnName="ArbitrationDate" />
+                <ScalarProperty Name="ArbitrationNumber" ColumnName="ArbitrationNumber" />
+                <ScalarProperty Name="ArbitrationID" ColumnName="ArbitrationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AwarenessWorkshops_Table">
+            <EntityTypeMapping TypeName="LawyersModel.AwarenessWorkshops_Table">
+              <MappingFragment StoreEntitySet="AwarenessWorkshops_Table">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Girl" ColumnName="Girl" />
+                <ScalarProperty Name="Boy" ColumnName="Boy" />
+                <ScalarProperty Name="Females" ColumnName="Females" />
+                <ScalarProperty Name="Males" ColumnName="Males" />
+                <ScalarProperty Name="TotalBeneficiaries" ColumnName="TotalBeneficiaries" />
+                <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+                <ScalarProperty Name="AwarenessDate" ColumnName="AwarenessDate" />
+                <ScalarProperty Name="AwarenessName" ColumnName="AwarenessName" />
+                <ScalarProperty Name="AwarenessID" ColumnName="AwarenessID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consulting_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Consulting_Table">
+              <MappingFragment StoreEntitySet="Consulting_Table">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="IssuesTypeID" ColumnName="IssuesTypeID" />
+                <ScalarProperty Name="TypeOfCaseID" ColumnName="TypeOfCaseID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CounselingStatus" ColumnName="CounselingStatus" />
+                <ScalarProperty Name="LawyerID" ColumnName="LawyerID" />
+                <ScalarProperty Name="CounselingRendered" ColumnName="CounselingRendered" />
+                <ScalarProperty Name="CounselingRequired" ColumnName="CounselingRequired" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ConsultantName" ColumnName="ConsultantName" />
+                <ScalarProperty Name="ConsultingDate" ColumnName="ConsultingDate" />
+                <ScalarProperty Name="ConsultingID" ColumnName="ConsultingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Courses_Table">
+              <MappingFragment StoreEntitySet="Courses_Table">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TargetGroupID" ColumnName="TargetGroupID" />
+                <ScalarProperty Name="Females" ColumnName="Females" />
+                <ScalarProperty Name="Males" ColumnName="Males" />
+                <ScalarProperty Name="TotalBeneficiaries" ColumnName="TotalBeneficiaries" />
+                <ScalarProperty Name="TrainingHours" ColumnName="TrainingHours" />
+                <ScalarProperty Name="CoursesEndDate" ColumnName="CoursesEndDate" />
+                <ScalarProperty Name="CoursesStartDate" ColumnName="CoursesStartDate" />
+                <ScalarProperty Name="CoursesName" ColumnName="CoursesName" />
+                <ScalarProperty Name="CoursesID" ColumnName="CoursesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courts_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Courts_Table">
+              <MappingFragment StoreEntitySet="Courts_Table">
+                <ScalarProperty Name="CourtsName" ColumnName="CourtsName" />
+                <ScalarProperty Name="CourtsID" ColumnName="CourtsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiligenceType_Table">
+            <EntityTypeMapping TypeName="LawyersModel.DiligenceType_Table">
+              <MappingFragment StoreEntitySet="DiligenceType_Table">
+                <ScalarProperty Name="DiligenceTypeName" ColumnName="DiligenceTypeName" />
+                <ScalarProperty Name="DiligenceTypeID" ColumnName="DiligenceTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilyForum_Table">
+            <EntityTypeMapping TypeName="LawyersModel.FamilyForum_Table">
+              <MappingFragment StoreEntitySet="FamilyForum_Table">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ViewingPlace" ColumnName="ViewingPlace" />
+                <ScalarProperty Name="ViewingHours" ColumnName="ViewingHours" />
+                <ScalarProperty Name="CaseType" ColumnName="CaseType" />
+                <ScalarProperty Name="ChildrenNumberFemale" ColumnName="ChildrenNumberFemale" />
+                <ScalarProperty Name="ChildrenNumberMale" ColumnName="ChildrenNumberMale" />
+                <ScalarProperty Name="CustodialAddress" ColumnName="CustodialAddress" />
+                <ScalarProperty Name="CustodialSocialStatus" ColumnName="CustodialSocialStatus" />
+                <ScalarProperty Name="CustodialPhone" ColumnName="CustodialPhone" />
+                <ScalarProperty Name="CustodialName" ColumnName="CustodialName" />
+                <ScalarProperty Name="ApplicantAddress" ColumnName="ApplicantAddress" />
+                <ScalarProperty Name="ApplicantSocialStatus" ColumnName="ApplicantSocialStatus" />
+                <ScalarProperty Name="ApplicantPhone" ColumnName="ApplicantPhone" />
+                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+                <ScalarProperty Name="ViewingDate" ColumnName="ViewingDate" />
+                <ScalarProperty Name="FamilyForumID" ColumnName="FamilyForumID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IssuesType_Table">
+            <EntityTypeMapping TypeName="LawyersModel.IssuesType_Table">
+              <MappingFragment StoreEntitySet="IssuesType_Table">
+                <ScalarProperty Name="IssuesTypename" ColumnName="IssuesTypename" />
+                <ScalarProperty Name="IssuesTypeID" ColumnName="IssuesTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lawyer_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Lawyer_Table">
+              <MappingFragment StoreEntitySet="Lawyer_Table">
+                <ScalarProperty Name="LawyerAddress" ColumnName="LawyerAddress" />
+                <ScalarProperty Name="LawyerPhone" ColumnName="LawyerPhone" />
+                <ScalarProperty Name="LawyerName" ColumnName="LawyerName" />
+                <ScalarProperty Name="LawyerID" ColumnName="LawyerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LegalIssues_Table">
+            <EntityTypeMapping TypeName="LawyersModel.LegalIssues_Table">
+              <MappingFragment StoreEntitySet="LegalIssues_Table">
+                <ScalarProperty Name="TypeOfCaseID" ColumnName="TypeOfCaseID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DateOfClosure" ColumnName="DateOfClosure" />
+                <ScalarProperty Name="LawyerID" ColumnName="LawyerID" />
+                <ScalarProperty Name="CourtsID" ColumnName="CourtsID" />
+                <ScalarProperty Name="AdversaryAddress" ColumnName="AdversaryAddress" />
+                <ScalarProperty Name="AdversaryPhone" ColumnName="AdversaryPhone" />
+                <ScalarProperty Name="AdversaryIDNumber" ColumnName="AdversaryIDNumber" />
+                <ScalarProperty Name="AdversaryName" ColumnName="AdversaryName" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+                <ScalarProperty Name="ClientGender" ColumnName="ClientGender" />
+                <ScalarProperty Name="ClientIDNumber" ColumnName="ClientIDNumber" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="DepositDate" ColumnName="DepositDate" />
+                <ScalarProperty Name="DateOfCase" ColumnName="DateOfCase" />
+                <ScalarProperty Name="CourtsNumber" ColumnName="CourtsNumber" />
+                <ScalarProperty Name="LegalIssuesID" ColumnName="LegalIssuesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Media_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Media_Table">
+              <MappingFragment StoreEntitySet="Media_Table">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="MediaTypeID" ColumnName="MediaTypeID" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="minutes" ColumnName="minutes" />
+                <ScalarProperty Name="MediaNumber" ColumnName="MediaNumber" />
+                <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+                <ScalarProperty Name="MediaDate" ColumnName="MediaDate" />
+                <ScalarProperty Name="MediaName" ColumnName="MediaName" />
+                <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mediation_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Mediation_Table">
+              <MappingFragment StoreEntitySet="Mediation_Table">
+                <ScalarProperty Name="DiligenceTypeID" ColumnName="DiligenceTypeID" />
+                <ScalarProperty Name="IssuesTypeID" ColumnName="IssuesTypeID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Agreement" ColumnName="Agreement" />
+                <ScalarProperty Name="MediatorPhone" ColumnName="MediatorPhone" />
+                <ScalarProperty Name="MediatorName" ColumnName="MediatorName" />
+                <ScalarProperty Name="SecondSideAddress" ColumnName="SecondSideAddress" />
+                <ScalarProperty Name="SecondSocialstatus" ColumnName="SecondSocialstatus" />
+                <ScalarProperty Name="SecondSidePhone" ColumnName="SecondSidePhone" />
+                <ScalarProperty Name="SecondSideIDNumber" ColumnName="SecondSideIDNumber" />
+                <ScalarProperty Name="SecondSideName" ColumnName="SecondSideName" />
+                <ScalarProperty Name="FirstSideAddress" ColumnName="FirstSideAddress" />
+                <ScalarProperty Name="FirstSocialstatus" ColumnName="FirstSocialstatus" />
+                <ScalarProperty Name="FirstSidePhone" ColumnName="FirstSidePhone" />
+                <ScalarProperty Name="FirstSideIDNumber" ColumnName="FirstSideIDNumber" />
+                <ScalarProperty Name="FirstSideAge" ColumnName="FirstSideAge" />
+                <ScalarProperty Name="FirstSideGender" ColumnName="FirstSideGender" />
+                <ScalarProperty Name="FirstSideName" ColumnName="FirstSideName" />
+                <ScalarProperty Name="MediationDate" ColumnName="MediationDate" />
+                <ScalarProperty Name="MediationID" ColumnName="MediationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MediaType_Table">
+            <EntityTypeMapping TypeName="LawyersModel.MediaType_Table">
+              <MappingFragment StoreEntitySet="MediaType_Table">
+                <ScalarProperty Name="MediaTypeName" ColumnName="MediaTypeName" />
+                <ScalarProperty Name="MediaTypeID" ColumnName="MediaTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Project_Table">
+              <MappingFragment StoreEntitySet="Project_Table">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartData" ColumnName="StartData" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectControl_Table">
+            <EntityTypeMapping TypeName="LawyersModel.ProjectControl_Table">
+              <MappingFragment StoreEntitySet="ProjectControl_Table">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ProjectControlID" ColumnName="ProjectControlID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemicIssues_Table">
+            <EntityTypeMapping TypeName="LawyersModel.SystemicIssues_Table">
+              <MappingFragment StoreEntitySet="SystemicIssues_Table">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DateOfClosure" ColumnName="DateOfClosure" />
+                <ScalarProperty Name="TypeOfCase_ID" ColumnName="TypeOfCase_ID" />
+                <ScalarProperty Name="LawyerID" ColumnName="LawyerID" />
+                <ScalarProperty Name="CourtsID" ColumnName="CourtsID" />
+                <ScalarProperty Name="AdversaryAddress" ColumnName="AdversaryAddress" />
+                <ScalarProperty Name="AdversaryPhone" ColumnName="AdversaryPhone" />
+                <ScalarProperty Name="AdversaryIDNumber" ColumnName="AdversaryIDNumber" />
+                <ScalarProperty Name="AdversaryName" ColumnName="AdversaryName" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+                <ScalarProperty Name="ClientGendr" ColumnName="ClientGendr" />
+                <ScalarProperty Name="ClientIDNumber" ColumnName="ClientIDNumber" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="DepositDate" ColumnName="DepositDate" />
+                <ScalarProperty Name="DateOfCase" ColumnName="DateOfCase" />
+                <ScalarProperty Name="CourtsNumber" ColumnName="CourtsNumber" />
+                <ScalarProperty Name="SystemicIssuesID" ColumnName="SystemicIssuesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TargetGroup_Table">
+            <EntityTypeMapping TypeName="LawyersModel.TargetGroup_Table">
+              <MappingFragment StoreEntitySet="TargetGroup_Table">
+                <ScalarProperty Name="TargetGroupName" ColumnName="TargetGroupName" />
+                <ScalarProperty Name="TargetGroupID" ColumnName="TargetGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfCase_Table">
+            <EntityTypeMapping TypeName="LawyersModel.TypeOfCase_Table">
+              <MappingFragment StoreEntitySet="TypeOfCase_Table">
+                <ScalarProperty Name="IssuesTypeID" ColumnName="IssuesTypeID" />
+                <ScalarProperty Name="TypeOfCaseName" ColumnName="TypeOfCaseName" />
+                <ScalarProperty Name="TypeOfCase_ID" ColumnName="TypeOfCase_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Users_Table">
+              <MappingFragment StoreEntitySet="Users_Table">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Versions_Table">
+            <EntityTypeMapping TypeName="LawyersModel.Versions_Table">
+              <MappingFragment StoreEntitySet="Versions_Table">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="TypesOfCopies" ColumnName="TypesOfCopies" />
+                <ScalarProperty Name="VersionsNumbers" ColumnName="VersionsNumbers" />
+                <ScalarProperty Name="VersionsDate" ColumnName="VersionsDate" />
+                <ScalarProperty Name="VersionsName" ColumnName="VersionsName" />
+                <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+                <ScalarProperty Name="VersionsID" ColumnName="VersionsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,119 @@
+﻿@model LawyersApp.Models.Consulting.ConsultingViewModel
+    <style type="text/css">
+        div.k-edit-form-container {
+            width: 100%;
+        }
+
+            div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+                width: 100%;
+                max-width: none;
+            }
+    </style>
+    <div class="k-edit-form-container" style="margin:auto;" >
+        
+            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ConsultingNumber)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ConsultingNumber)@Html.ValidationMessageFor(model => model.ConsultingNumber)
+                                        <i class="fa fa-barcode"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                    
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ConsultingDate)</label>
+                                    <div >
+                                        @Html.Kendo().DatePickerFor(model => model.ConsultingDate)@Html.ValidationMessageFor(model => model.ConsultingDate)
+                                    </div>
+                                </div>
+                            </div>
+
+                      
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ConsultantName)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ConsultantName)@Html.ValidationMessageFor(model => model.ConsultantName)
+                                        <i class="icon-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CounselingRequired)</label>
+                <div class="append-icon">
+                    @Html.Kendo().EditorFor(model => model.CounselingRequired)@Html.ValidationMessageFor(model => model.CounselingRequired)
+                    <i class="fa fa-map-marker"></i>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CounselingRendered)</label>
+                <div class="append-icon">
+                    @Html.Kendo().EditorFor(model => model.CounselingRendered)@Html.ValidationMessageFor(model => model.CounselingRendered)
+                    <i class="fa fa-map-marker"></i>
+                </div>
+            </div>
+        </div>
+
+             
+                     
+                          
+                       
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.ConsultingProvider)</label>
+                                    <div class="append-icon">
+                                        @Html.EditorFor(model => model.ConsultingProvider)@Html.ValidationMessageFor(model => model.ConsultingProvider)
+                                        <i class="icon-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">@Html.LabelFor(model => model.CounselingStatus)</label>
+                <div>
+
+                    @(Html.Kendo().DropDownListFor(model => model.CounselingStatus)
+          .Name("CounselingStatus")
+          .BindTo(new List<string>() {
+              "أغلقلت",
+             "انتهت",
+              "حولت",
+
+          })
+                    )
+                    @Html.ValidationMessageFor(model => model.CounselingStatus)
+                </div>
+            </div>
+        </div>
+
+         
+                  
+
+                         
+                           
+       
+                            
+                
+
+                    
+
+
+
+                        </div>
+
+      

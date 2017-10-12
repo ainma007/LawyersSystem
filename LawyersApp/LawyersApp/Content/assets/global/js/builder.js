@@ -65,7 +65,7 @@ function mainColor(){
             $('.sltl .theme-left').css('background-color', '#fff');
         }
         if ($(this).data('main') == 'primary'){
-            $('.theme-left').css('background-color', '#319DB5');
+            $('.theme-left').css('background-color', '#319db5');
             $('.theme-sidebar-dark, .theme-right-dark').css('background-color', '#164954');
             $('.theme-sidebar-light, .theme-right-light').css('background-color', '#DDE6E9');
         }
@@ -173,7 +173,7 @@ function handleCookie(){
             $('.sltl .theme-left').css('background-color', '#fff');
         }
         if (main_name == 'primary'){
-            $('.theme-left').css('background-color', '#319DB5');
+            $('.theme-left').css('background-color', '#319db5');
             $('.theme-sidebar-dark, .theme-right-dark').css('background-color', '#164954');
         }
         if (main_name == 'red'){

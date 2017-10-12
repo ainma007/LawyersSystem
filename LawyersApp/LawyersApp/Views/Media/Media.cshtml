@@ -1,0 +1,179 @@
+﻿@using LawyersApp.Models.Media
+@using System.Net;
+@{
+    ViewBag.Title = " الاعلام المرئي والمسموع";
+}
+
+<script>
+    kendo.culture("en-GB");
+</script>
+@if (Session["UserId"] == null)
+{
+    Response.Redirect("~/Account/Login");
+    return;
+}
+@if ((string)Session["UserType"]=="1")
+{
+
+
+    <div class="col-lg-12 portlets">
+        <div class="panel">
+            <div class="panel-header ">
+                <h2><i class="fa fa-list-alt"></i> <strong>إدارة</strong> الاعلام المرئي والمسموع</h2>
+                @(Html.Kendo().Grid<MediaViewControl>()
+
+
+
+     .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.MediaID).Width(50).Hidden();
+        columns.Bound(p => p.MediaName).Width(150).Title("اسم الاعلام");
+        columns.Bound(p => p.MediaDate).Width(170).HeaderHtmlAttributes(new { @title = "التاريخ   " }).Format("{0:dd/MM/yyyy}").Title("التاريخ  ");
+        columns.ForeignKey(p => p.MediaTypeID, (System.Collections.IEnumerable)ViewData["MediaType"], "MediaTypeID", "MediaTypeName").Title("النوع ").Width(200);
+        columns.Bound(p => p.PartnerName).Width(150).Title("اسم الشريك");
+        columns.Bound(p => p.MediaNumber).Width(150).Title("عدد الاصدارات");
+        columns.Bound(p => p.minutes).Width(150).Title("المدة بالدقائق");
+        columns.Bound(p => p.url).ClientTemplate(" <a href='#=url#' target='_blank'>تحميل</a> ").Title("رابط الملف").Width(100).Filterable(false);
+
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName").Title("مدخل البيانات").Width(200);
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(200);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة اعلام");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات الاعلام").Width(500).Height(500).Scrollable(true)).TemplateName("MediaEdit"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.MediaID);
+            model.Field(p => p.MediaTypeID).DefaultValue(1);
+
+            model.Field(p => p.MediaID).Editable(false);
+            model.Field(p => p.ProjectID).Editable(false);
+            model.Field(p => p.UserID).Editable(false);
+
+            model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"]
+.ToString()));
+            string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+            string[] words = currentUrlPage.Split('=');
+            string s = "";
+            foreach (string word in words)
+            {
+                s = word.ToString();
+            }
+            int x = int.Parse(s);
+            model.Field(p => p.ProjectID).DefaultValue(x);
+
+        })
+
+        .Read(read => read.Action("db_Read", "Media"))
+        .Update(update => update.Action("db_Update", "Media"))
+        .Create(create => create.Action("db_Create", "Media"))
+        .Destroy(destroy => destroy.Action("db_Destroy", "Media"))
+    )
+
+                )
+            </div>
+        </div>
+    </div>
+    
+}
+
+else if ((string)Session["UserType"]=="2")
+{
+
+    <div class="col-lg-12 portlets">
+        <div class="panel">
+            <div class="panel-header ">
+                <h2><i class="fa fa-list-alt"></i> <strong>إدارة</strong> الاعلام المرئي والمسموع</h2>
+                @(Html.Kendo().Grid<MediaViewControl>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+
+        columns.Bound(p => p.MediaID).Width(50).Hidden();
+        columns.Bound(p => p.MediaName).Width(150).Title("اسم الاعلام");
+        columns.Bound(p => p.MediaDate).Width(170).HeaderHtmlAttributes(new { @title = "التاريخ   " }).Format("{0:dd/MM/yyyy}").Title("التاريخ  ");
+        columns.ForeignKey(p => p.MediaTypeID, (System.Collections.IEnumerable)ViewData["MediaType"], "MediaTypeID", "MediaTypeName").Title("النوع ").Width(200);
+        columns.Bound(p => p.PartnerName).Width(150).Title("اسم الشريك");
+        columns.Bound(p => p.MediaNumber).Width(150).Title("عدد الاصدارات");
+        columns.Bound(p => p.minutes).Width(150).Title("المدة بالدقائق");
+        columns.Bound(p => p.url).ClientTemplate(" <a href='#=url#' target='_blank'>تحميل</a> ").Title("رابط الملف").Width(100).Filterable(false);
+
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName").Title("مدخل البيانات").Width(200);
+        columns.Command(command =>
+        {
+            command.Edit().UpdateText("حفظ").CancelText("الفاء").Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(200);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة اعلام");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات الاعلام").Width(500).Height(500).Scrollable(true)).TemplateName("MediaEdit"))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.MediaID);
+            model.Field(p => p.MediaTypeID).DefaultValue(1);
+
+            model.Field(p => p.MediaID).Editable(false);
+            model.Field(p => p.UserID).Editable(false);
+            model.Field(p => p.ProjectID).Editable(false);
+            model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"]
+.ToString()));
+            string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+            string[] words = currentUrlPage.Split('=');
+            string s = "";
+            foreach (string word in words)
+            {
+                s = word.ToString();
+            }
+            int x = int.Parse(s);
+            model.Field(p => p.ProjectID).DefaultValue(x);
+
+        })
+
+        .Read(read => read.Action("Userdb_Read", "Media"))
+        .Update(update => update.Action("db_Update", "Media"))
+        .Create(create => create.Action("db_Create", "Media"))
+        .Destroy(destroy => destroy.Action("db_Destroy", "Media"))
+    )
+
+                )
+
+           
+
+            </div>
+        </div>
+    </div>
+}

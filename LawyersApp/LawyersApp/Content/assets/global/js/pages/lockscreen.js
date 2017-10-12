@@ -12,11 +12,11 @@ $(function() {
         easing: 'easeInOut',
         duration: 2000,
         from: {
-            color: '#319DB5',
+            color: '#319db5',
             width: 3
         },
         to: {
-            color: '#319DB5',
+            color: '#319db5',
             width: 3
         },
         // Set default step function for all animate calls

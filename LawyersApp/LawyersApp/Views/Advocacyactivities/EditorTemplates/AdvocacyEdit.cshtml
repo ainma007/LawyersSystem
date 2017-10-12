@@ -1,0 +1,78 @@
+﻿@model LawyersApp.Models.Advocacyactivities.AdvocacyactivitiesViewModel
+<style type="text/css">
+    div.k-edit-form-container {
+        width: 100%;
+    }
+
+        div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+            width: 100%;
+            max-width: none;
+        }
+</style>
+<div class="k-edit-form-container" style="margin:auto;">
+
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.Name)</label>
+            <div class="append-icon">
+                @Html.EditorFor(model => model.Name)@Html.ValidationMessageFor(model => model.Name)
+                <i class="fa fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.AdvocacyDate)</label>
+            <div>
+                @Html.Kendo().DatePickerFor(model => model.AdvocacyDate)@Html.ValidationMessageFor(model => model.AdvocacyDate)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.executingagency)</label>
+            <div class="append-icon">
+                @Html.EditorFor(model => model.executingagency)@Html.ValidationMessageFor(model => model.executingagency)
+                <i class="fa fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+   
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.beneficiary)</label>
+            <div class="append-icon">
+                @Html.EditorFor(model => model.beneficiary)@Html.ValidationMessageFor(model => model.beneficiary)
+                <i class="fa fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.GeographicArea)</label>
+            <div class="append-icon">
+                @Html.EditorFor(model => model.GeographicArea)@Html.ValidationMessageFor(model => model.GeographicArea)
+                <i class="fa fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.url)</label>
+            <div class="append-icon">
+                @Html.EditorFor(model => model.url)@Html.ValidationMessageFor(model => model.url)
+                <i class="fa fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

@@ -1,0 +1,80 @@
+﻿@model LawyersApp.Models.Project.ProjectControlViewModel
+
+<style type="text/css">
+    div.k-edit-form-container {
+        width: 80%;
+    }
+
+        div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+            width: 100%;
+            max-width: none;
+        }
+</style>
+<div class="k-edit-form-container" style="margin:auto;">
+    <div class="grid-body no-border">
+
+        <div class="row">
+          
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProjectID)
+                @(Html.Kendo().DropDownListFor(model => model.ProjectID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+     .DataTextField("ProjectName")
+          .DataValueField("ProjectID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetProject", "ProjectUser");
+        })
+        .ServerFiltering(false);
+    })
+                )
+
+                @Html.ValidationMessageFor(model => model.ProjectID)
+
+
+            </div>
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.UserID)
+
+                @(Html.Kendo().DropDownListFor(model => model.UserID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+     .DataTextField("FullName")
+          .DataValueField("UserID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetUsers", "ProjectUser");
+        })
+        .ServerFiltering(false);
+    })
+                )
+
+                @Html.ValidationMessageFor(model => model.UserID)
+
+
+            </div>
+
+            <div class="form-group">
+
+
+                @Html.Kendo().CheckBoxFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+
+
+            </div>
+
+</div>
+</div>
+</div>

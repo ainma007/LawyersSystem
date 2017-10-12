@@ -1,0 +1,59 @@
+﻿@model LawyersApp.Models.Achievements.AchievementsViewModel
+<style type="text/css">
+    div.k-edit-form-container {
+        width: 100%;
+    }
+
+        div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+            width: 100%;
+            max-width: none;
+        }
+</style>
+<div class="k-edit-form-container" style="margin:auto;">
+
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.AchievementsName)</label>
+            <div class="append-icon">
+                @Html.EditorFor(model => model.AchievementsName)@Html.ValidationMessageFor(model => model.AchievementsName)
+                <i class="fa fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.AchievementsDate)</label>
+            <div>
+                @Html.Kendo().DatePickerFor(model => model.AchievementsDate)@Html.ValidationMessageFor(model => model.AchievementsDate)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.AchievementsAbstract)</label>
+            <div class="append-icon">
+                @Html.Kendo().EditorFor(model => model.AchievementsAbstract)@Html.ValidationMessageFor(model => model.AchievementsAbstract)
+                <i class="fa fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+   
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">@Html.LabelFor(model => model.url)</label>
+            <div class="append-icon">
+                @Html.EditorFor(model => model.url)@Html.ValidationMessageFor(model => model.url)
+                <i class="fa fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+
+   
+
+</div>
+
