@@ -7,11 +7,14 @@ using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
-namespace LawyersApp.Controllers
-{
+using LawyersApp.Models.Attributes;
+
+
     public class LawyerController : Controller
     {
         // GET: Lawyer
+        [SessionTimeout]
+        [HttpGet]
         public ActionResult Lawyer()
         {
             return View();
@@ -54,13 +57,25 @@ namespace LawyersApp.Controllers
 
         public ActionResult Lawyer_Destroy([DataSourceRequest] DataSourceRequest request, LawyerViewModel db)
         {
-            if (db != null)
+            if (ModelState.IsValid)
             {
-                LawyerService.Destroy(db);
+                try
+                {
+
+                    if (db != null)
+                    {
+                        LawyerService.Destroy(db);
+                    }
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("خطأ", "لا يمكن الحذف");
+                    return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+
+                }
             }
-
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));
-        }
 
+
+        }
     }
-}

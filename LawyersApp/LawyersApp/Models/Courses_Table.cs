@@ -25,6 +25,7 @@ namespace LawyersApp.Models
         public Nullable<int> TargetGroupID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> ProjectID { get; set; }
+        public Nullable<int> TotalSessions { get; set; }
     
         public virtual Users_Table Users_Table { get; set; }
         public virtual Project_Table Project_Table { get; set; }

@@ -8,12 +8,15 @@ using System.Web.Mvc;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
 using LawyersApp.Models.Foreignkey;
+using LawyersApp.Models.Attributes;
 
 namespace LawyersApp.Controllers
 {
     public class TypeOfCaseController : Controller
     {
         // GET: TypeOfCase
+        [SessionTimeout]
+        [HttpGet]
         public ActionResult TypeOfCases()
         {
             PopulateIssuesType();
@@ -74,9 +77,21 @@ namespace LawyersApp.Controllers
 
         public ActionResult TypeOfCases_Destroy([DataSourceRequest] DataSourceRequest request, TypeOfCaseViewModel db)
         {
-            if (db != null)
+            try
             {
-                TypeOfCaseService.Destroy(db);
+                if (ModelState.IsValid)
+                {
+                    if (db != null)
+                    {
+                        TypeOfCaseService.Destroy(db);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("خطأ", "لا يمكن الحذف");
+                return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+
             }
 
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));

@@ -8,12 +8,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LawyersApp.Models.Attributes;
 
 namespace LawyersApp.Controllers
 {
     public class ProjectUserController : Controller
     {
         // GET: ProjectUser
+        [SessionTimeout]
+        [HttpGet]
         public ActionResult ProjectUser()
         {
             PopulateProject();
@@ -67,12 +70,31 @@ namespace LawyersApp.Controllers
 
         public ActionResult db_Create([DataSourceRequest] DataSourceRequest request, ProjectControlViewModel db)
         {
-            if (db != null && ModelState.IsValid)
+           
+            try
             {
-                ProjectControlSerivce.Create(db);
-            }
 
+                LawyersEntities entities = new LawyersEntities();
+                var project = entities.ProjectControl_Table
+                             .Single(i => i.UserID == db.UserID
+                                         && i.ProjectID == db.ProjectID);
+                db.ProjectControlID = 0;
+                ModelState.AddModelError("خطأ", "المستخدم موجود مسبقا في المشروع");
+
+            }
+            catch (Exception)
+            {
+                if (db != null && ModelState.IsValid)
+                {
+                    ProjectControlSerivce.Create(db);
+                    return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+
+                }
+               
+               
+            }
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+
         }
         [AcceptVerbs(HttpVerbs.Post)]
 

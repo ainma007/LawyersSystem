@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 
+
 namespace LawyersApp.Models.Arbitration
 {
     public class ArbitrationService
@@ -23,13 +24,38 @@ namespace LawyersApp.Models.Arbitration
                 .Select(db => new ArbitrationViewModel
                 {
                     ArbitrationID = db.ArbitrationID,
-                    ArbitrationNumber = db.ArbitrationNumber,
+                    
                     ArbitrationDate = db.ArbitrationDate.HasValue ? db.ArbitrationDate.Value : default(DateTime),
-                    FirstSideName = db.FirstSideName,
-                    FirstSideIDNumber = db.FirstSideIDNumber,
-                    FirstSidePhone = db.FirstSidePhone,
+                    Beneficiaries_ID = db.Beneficiaries_ID,
+                    BeneficiariesName = db.Beneficiaries_Table.BeneficiariesName,
+                    BeneficiariesIDNumber = db.Beneficiaries_Table.BeneficiariesIDNumber,
+
+                    Gender = db.Beneficiaries_Table.Gender_Table.GenderName,
                     FirstSocialstatus = db.FirstSocialstatus,
-                    FirstSideAddress = db.FirstSideAddress,
+
+                    Beneficiaries = new BeneficiariesForeignkey()
+                    {
+                        Beneficiaries_ID = db.Beneficiaries_Table.Beneficiaries_ID,
+                        BeneficiariesName = db.Beneficiaries_Table.BeneficiariesName,
+                        BeneficiariesGender = db.Beneficiaries_Table.Gender_Table.GenderName,
+                        BeneficiariesPhone = db.Beneficiaries_Table.BeneficiariesPhone
+                    },
+
+                    Governorate_ID = db.Governorate_ID,
+
+                    Governorate = new GovernorateForeignkey()
+                    {
+                        Governorate_ID = db.Governorate_Table.Governorate_ID,
+                        Governorate_Name = db.Governorate_Table.Governorate_Name,
+                    },
+
+                    Area_ID = db.Area_ID,
+
+                    Area = new AreaForeignkey()
+                    {
+                        Area_ID = db.Area_Table.Area_ID,
+                        Area_Name = db.Area_Table.Area_Name,
+                    },
                     SecondSideName = db.SecondSideName,
                     SecondSideIDNumber = db.SecondSideIDNumber,
                     SecondSidePhone = db.SecondSidePhone,
@@ -56,13 +82,17 @@ namespace LawyersApp.Models.Arbitration
         {
             var entity = new Arbitration_Table();
 
-            entity.ArbitrationNumber = db.ArbitrationNumber;
+           
             entity.ArbitrationDate = (DateTime)db.ArbitrationDate.Date;
-            entity.FirstSideName = db.FirstSideName;
-            entity.FirstSideIDNumber = db.FirstSideIDNumber;
-            entity.FirstSidePhone = db.FirstSidePhone;
+            entity.Beneficiaries_ID = db.Beneficiaries_ID;
+            var q = entities.Beneficiaries_Table.Where(p => p.Beneficiaries_ID == db.Beneficiaries_ID).SingleOrDefault();
+            db.BeneficiariesIDNumber = q.BeneficiariesIDNumber;
+            db.BeneficiariesName = q.BeneficiariesName;
+            db.Gender = q.Gender_Table.GenderName;
+            entity.Area_ID = db.Area_ID;
+            entity.Governorate_ID = db.Governorate_ID;
             entity.FirstSocialstatus = db.FirstSocialstatus;
-            entity.FirstSideAddress = db.FirstSideAddress;
+
             entity.SecondSideName = db.SecondSideName;
             entity.SecondSideIDNumber = db.SecondSideIDNumber;
             entity.SecondSidePhone = db.SecondSidePhone;
@@ -84,13 +114,18 @@ namespace LawyersApp.Models.Arbitration
             var entity = new Arbitration_Table();
 
             entity.ArbitrationID = db.ArbitrationID;
-            entity.ArbitrationNumber = db.ArbitrationNumber;
+           
             entity.ArbitrationDate = (DateTime)db.ArbitrationDate.Date;
-            entity.FirstSideName = db.FirstSideName;
-            entity.FirstSideIDNumber = db.FirstSideIDNumber;
-            entity.FirstSidePhone = db.FirstSidePhone;
+            entity.Beneficiaries_ID = db.Beneficiaries_ID;
+            var q = entities.Beneficiaries_Table.Where(p => p.Beneficiaries_ID == db.Beneficiaries_ID).SingleOrDefault();
+            db.BeneficiariesIDNumber = q.BeneficiariesIDNumber;
+            db.BeneficiariesName = q.BeneficiariesName;
+            db.Gender = q.Gender_Table.GenderName;
+            //
+            entity.Area_ID = db.Area_ID;
+            entity.Governorate_ID = db.Governorate_ID;
             entity.FirstSocialstatus = db.FirstSocialstatus;
-            entity.FirstSideAddress = db.FirstSideAddress;
+
             entity.SecondSideName = db.SecondSideName;
             entity.SecondSideIDNumber = db.SecondSideIDNumber;
             entity.SecondSidePhone = db.SecondSidePhone;

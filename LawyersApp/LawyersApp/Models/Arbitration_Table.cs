@@ -15,13 +15,9 @@ namespace LawyersApp.Models
     public partial class Arbitration_Table
     {
         public int ArbitrationID { get; set; }
-        public string ArbitrationNumber { get; set; }
         public Nullable<System.DateTime> ArbitrationDate { get; set; }
-        public string FirstSideName { get; set; }
-        public string FirstSideIDNumber { get; set; }
-        public string FirstSidePhone { get; set; }
+        public Nullable<int> Beneficiaries_ID { get; set; }
         public string FirstSocialstatus { get; set; }
-        public string FirstSideAddress { get; set; }
         public string SecondSideName { get; set; }
         public string SecondSideIDNumber { get; set; }
         public string SecondSidePhone { get; set; }
@@ -32,7 +28,12 @@ namespace LawyersApp.Models
         public string ArbitrationDecision { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> ProjectID { get; set; }
+        public Nullable<int> Area_ID { get; set; }
+        public Nullable<int> Governorate_ID { get; set; }
     
+        public virtual Area_Table Area_Table { get; set; }
+        public virtual Beneficiaries_Table Beneficiaries_Table { get; set; }
+        public virtual Governorate_Table Governorate_Table { get; set; }
         public virtual Project_Table Project_Table { get; set; }
         public virtual Users_Table Users_Table { get; set; }
     }

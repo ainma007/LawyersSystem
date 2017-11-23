@@ -4244,7 +4244,7 @@
     this.attach = function (layoutInfo, options) {
       // handlers for editable
       if (options.shortcuts) {
-        this.bindKeyMap(layoutInfo, options.keyMap[agent.isMac ? 'mac' : 'pc']);
+        this.bindKeyMap(layoutInfo, options.keyMap.BeneficiariesAgent.isMac ? 'mac' : 'pc']);
       }
       layoutInfo.editable.on('mousedown', hMousedown);
       layoutInfo.editable.on('keyup mouseup', hToolbarAndPopoverUpdate);
@@ -5050,7 +5050,7 @@
      */
     this.createLayoutByAirMode = function ($holder, options) {
       var langInfo = options.langInfo;
-      var keyMap = options.keyMap[agent.isMac ? 'mac' : 'pc'];
+      var keyMap = options.keyMap.BeneficiariesAgent.isMac ? 'mac' : 'pc'];
       var id = func.uniqueId();
 
       $holder.addClass('note-air-editor note-editable');
@@ -5143,7 +5143,7 @@
       toolbarHTML = '<div class="note-toolbar btn-toolbar">' + toolbarHTML + '</div>';
 
       var $toolbar = $(toolbarHTML).prependTo($editor);
-      var keyMap = options.keyMap[agent.isMac ? 'mac' : 'pc'];
+      var keyMap = options.keyMap.BeneficiariesAgent.isMac ? 'mac' : 'pc'];
       createPalette($toolbar, options);
       createTooltip($toolbar, keyMap, 'bottom');
 

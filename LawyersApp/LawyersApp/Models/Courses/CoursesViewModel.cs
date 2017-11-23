@@ -12,14 +12,14 @@ namespace LawyersApp.Models.Courses
     public class CoursesViewModel
     {
 
-        [ScaffoldColumn(false)]
+       
         public int CoursesID
         {
             get;
             set;
         }
 
-        [Required(ErrorMessage = "من فضلك ادخل الرقم .")]
+        [Required(ErrorMessage = "من فضلك ادخل اسم الدورة .")]
 
         [DisplayName("اسم الدورة :")]
         public string CoursesName
@@ -47,31 +47,47 @@ namespace LawyersApp.Models.Courses
             get;
             set;
         }
+
+        [RegularExpression("^[0-9]*$", ErrorMessage = "من فضلك أدخل رقم صحيح ")]
+        [Required(ErrorMessage = "من فضلك رقم .")]
+        [DisplayName("عدد الجلسات :")]
+        public int? TotalSessions
+        {
+            get;
+            set;
+        }
+        [RegularExpression("^[0-9]*$", ErrorMessage = "من فضلك أدخل رقم صحيح ")]
+        [Required(ErrorMessage = "من فضلك رقم .")]
+
         [DisplayName("عدد ساعات التدريب:")]
-        [AllowHtml]
+      
         public int? TrainingHours
         {
             get;
             set;
         }
-
+       
         [DisplayName("اعداد المستفدين:")]
-        [AllowHtml]
-        public int? TotalBeneficiaries
+         public int? TotalBeneficiaries
         {
             get;
             set;
         }
+        [RegularExpression("^[0-9]*$", ErrorMessage = "من فضلك أدخل رقم صحيح ")]
+        [Required(ErrorMessage = "من فضلك رقم .")]
+
         [DisplayName("عدد الذكور:")]
-        [AllowHtml]
+       
         public int? Males
         {
             get;
             set;
         }
+        [RegularExpression("^[0-9]*$", ErrorMessage = "من فضلك أدخل رقم صحيح ")]
+        [Required(ErrorMessage = "من فضلك رقم .")]
 
         [DisplayName("عدد الاناث:")]
-        [AllowHtml]
+      
         public int? Females
         {
             get;

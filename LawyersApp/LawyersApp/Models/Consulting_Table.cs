@@ -16,20 +16,22 @@ namespace LawyersApp.Models
     {
         public int ConsultingID { get; set; }
         public Nullable<System.DateTime> ConsultingDate { get; set; }
-        public string ConsultantName { get; set; }
-        public string Gender { get; set; }
-        public Nullable<int> Age { get; set; }
+        public Nullable<int> Beneficiaries_ID { get; set; }
+        public Nullable<int> Area_ID { get; set; }
+        public Nullable<int> Governorate_ID { get; set; }
+        public Nullable<int> BeneficiariesAge { get; set; }
         public string CounselingRequired { get; set; }
         public string CounselingRendered { get; set; }
-        public Nullable<int> LawyerID { get; set; }
         public string CounselingStatus { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> TypeOfCaseID { get; set; }
         public Nullable<int> IssuesTypeID { get; set; }
         public Nullable<int> ProjectID { get; set; }
     
+        public virtual Area_Table Area_Table { get; set; }
+        public virtual Beneficiaries_Table Beneficiaries_Table { get; set; }
+        public virtual Governorate_Table Governorate_Table { get; set; }
         public virtual IssuesType_Table IssuesType_Table { get; set; }
-        public virtual Lawyer_Table Lawyer_Table { get; set; }
         public virtual Project_Table Project_Table { get; set; }
         public virtual TypeOfCase_Table TypeOfCase_Table { get; set; }
         public virtual Users_Table Users_Table { get; set; }

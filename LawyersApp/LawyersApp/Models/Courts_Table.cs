@@ -17,13 +17,17 @@ namespace LawyersApp.Models
         public Courts_Table()
         {
             this.LegalIssues_Table = new HashSet<LegalIssues_Table>();
+            this.Order_Table = new HashSet<Order_Table>();
             this.SystemicIssues_Table = new HashSet<SystemicIssues_Table>();
         }
     
         public int CourtsID { get; set; }
         public string CourtsName { get; set; }
+        public Nullable<int> IssuesTypeID { get; set; }
     
+        public virtual IssuesType_Table IssuesType_Table { get; set; }
         public virtual ICollection<LegalIssues_Table> LegalIssues_Table { get; set; }
+        public virtual ICollection<Order_Table> Order_Table { get; set; }
         public virtual ICollection<SystemicIssues_Table> SystemicIssues_Table { get; set; }
     }
 }

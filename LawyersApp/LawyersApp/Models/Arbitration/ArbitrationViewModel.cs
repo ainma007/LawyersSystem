@@ -12,21 +12,14 @@ namespace LawyersApp.Models.Arbitration
 {
     public class ArbitrationViewModel
     {
-        [ScaffoldColumn(false)]
+      
         public int ArbitrationID
         {
             get;
             set;
         }
 
-        [Required(ErrorMessage = "من فضلك ادخل الرقم .")]
-
-        [DisplayName("رقم المركز:")]
-        public string ArbitrationNumber
-        {
-            get;
-            set;
-        }
+       
 
 
 
@@ -41,28 +34,41 @@ namespace LawyersApp.Models.Arbitration
         }
 
 
+        [Required(ErrorMessage = "من فضلك اختر المستفيد")]
 
-        [DisplayName("اسم  الطرف الأول:")]
-        public string FirstSideName
+      
+        [DisplayName("رقم الهوية :")]
+        public string BeneficiariesIDNumber { get; set; }
+
+        [Required(ErrorMessage = "من فضلك اختر المستفيد")]
+
+        [UIHint("Beneficiaries_ID")]
+        [DisplayName("رقم الهوية :")]
+        public int? Beneficiaries_ID { get; set; }
+
+
+        [DisplayName("اسم المستفيد:")]
+        public string BeneficiariesName
         {
             get;
             set;
         }
 
-        [DisplayName("رقم هوية  الطرف الأول:")]
-        public string FirstSideIDNumber
+        [DisplayName("الجنس:")]
+        public string Gender
+        {
+            get;
+            set;
+        }
+
+        [UIHint("ClientBeneficiaries")]
+        public BeneficiariesForeignkey Beneficiaries
         {
             get;
             set;
         }
 
 
-        [DisplayName("رقم هاتف الطرف الأول:")]
-        public string FirstSidePhone
-        {
-            get;
-            set;
-        }
         [DisplayName("الحالة الاجتماعية للطرف الأول:")]
         public string FirstSocialstatus
         {
@@ -71,13 +77,38 @@ namespace LawyersApp.Models.Arbitration
         }
 
 
-        [DisplayName("عنوان الطرف الأول:")]
-        public string FirstSideAddress
+        [Required(ErrorMessage = "من فضلك اختر المحافظة")]
+
+        [UIHint("Governorate_ID")]
+        [DisplayName("المحافظة :")]
+        public int? Governorate_ID { get; set; }
+
+
+        [UIHint("ClientGovernorate")]
+        public GovernorateForeignkey Governorate
         {
             get;
             set;
         }
 
+
+
+        [Required(ErrorMessage = "من فضلك اختر المنطقة")]
+
+        [UIHint("Area_ID")]
+        [DisplayName("المنطقة :")]
+        public int? Area_ID { get; set; }
+
+
+        [UIHint("ClientArea")]
+        public AreaForeignkey Area
+        {
+            get;
+            set;
+        }
+      
+
+       
 
 
         [DisplayName("اسم الطرف الثاني:")]

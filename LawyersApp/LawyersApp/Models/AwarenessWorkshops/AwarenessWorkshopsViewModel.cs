@@ -11,7 +11,7 @@ namespace LawyersApp.Models.AwarenessWorkshops
 {
     public class AwarenessWorkshopsViewModel
     {
-        [ScaffoldColumn(false)]
+    
         public int AwarenessID
         {
             get;

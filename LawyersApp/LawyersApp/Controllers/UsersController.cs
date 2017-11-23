@@ -7,12 +7,15 @@ using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using LawyersApp.Models;
 using LawyersApp.Models.Users;
+using LawyersApp.Models.Attributes;
 
 namespace LawyersApp.Controllers
 {
     public class UsersController : Controller
     {
         // GET: Users
+        [SessionTimeout]
+        [HttpGet]
         public ActionResult UserManegment()
         {
            
@@ -57,12 +60,27 @@ namespace LawyersApp.Controllers
 
         public ActionResult User_Destroy([DataSourceRequest] DataSourceRequest request, UserViewModel user)
         {
-            if (user != null)
+            if (ModelState.IsValid)
             {
-                UserService.Destroy(user);
-            }
+                try
+                {
+                    if (user != null)
+                    {
+                        UserService.Destroy(user);
+                    }
+                   
+                }
+                catch (Exception)
+                {
 
+                    ModelState.AddModelError("خطأ", "لا يمكن الحذف");
+                    return Json(new[] { user }.ToDataSourceResult(request, ModelState));
+
+                }
+               
+            }
             return Json(new[] { user }.ToDataSourceResult(request, ModelState));
+
         }
 
     }

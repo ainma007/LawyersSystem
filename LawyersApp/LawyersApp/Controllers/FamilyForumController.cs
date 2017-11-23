@@ -8,17 +8,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LawyersApp.Models.Attributes;
+
 
 namespace LawyersApp.Controllers
 {
+    [SessionTimeout]
     public class FamilyForumController : Controller
     {
         // GET: FamilyForum
-        public ActionResult FamilyForum(string projectid)
+        
+        [HttpGet]
+        public ActionResult FamilyForum()
         {
-            Session["Projectid"] = int.Parse(projectid.ToString());
+         
+          
             PopulateUsers();
 
+            return View();
+
+        }
+        [HttpGet]
+        public ActionResult FamilyWatch( string familyformID)
+        {
+
+            Session["familyformID"] = int.Parse(familyformID.ToString());
+            FamilyInfo();
+            PopulateUsers();
             return View();
 
         }
@@ -43,15 +59,41 @@ namespace LawyersApp.Controllers
             ViewData["users"] = users;
             ViewData["defaultUser"] = users.First();
         }
+        public void FamilyInfo()
+        {
+            int h = 0;
+            h = int.Parse(Session["familyformID"].ToString());
+            try
+            {
+                using (LawyersEntities dc = new LawyersEntities())
+                {
+                    // Check If Existed Or Not : 
+                    var u = dc.FamilyForum_Table.Single(i => i.FamilyForumID == h
+                                                                );
+                    if (u != null)
+                    {
 
+                       ViewBag.ApplicantName = u.ApplicantName;
+                        ViewBag.CustodialName = u.CustodialName;
+                       
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                //اذا كان المستخدم اساسا مش موجود في جدول المستخدمين او كلمة المرور خطأ
+                ModelState.AddModelError("", "خطأ في الدخول للنظام");
+            }
+        }
         public ActionResult db_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(FamilyForumService.Read().Where(u => u.ProjectID == int.Parse(Session["Projectid"].ToString())).ToDataSourceResult(request));
+            
+                return Json(FamilyForumService.Read().ToDataSourceResult(request));
+
+           
         }
-        public ActionResult Userdb_Read([DataSourceRequest] DataSourceRequest request)
-        {
-            return Json(FamilyForumService.Read().Where(u => u.UserID == int.Parse(Session["UserID"].ToString()) && u.ProjectID == int.Parse(Session["Projectid"].ToString())).ToDataSourceResult(request));
-        }
+      
         // Insert New
         [AcceptVerbs(HttpVerbs.Post)]
 
@@ -84,6 +126,49 @@ namespace LawyersApp.Controllers
             if (db != null)
             {
                 FamilyForumService.Destroy(db);
+            }
+
+            return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+        }
+
+        // ملاحظات المشاهدات 
+        public ActionResult db_ReadWatch([DataSourceRequest] DataSourceRequest request)
+        {
+
+            return Json(FamilyForumService.ReadWatch().Where(f => f.FamilyForumID == int.Parse(Session["familyformID"].ToString())).ToDataSourceResult(request));
+
+
+        }
+
+        public ActionResult db_CreateWatch([DataSourceRequest] DataSourceRequest request, FamilyWatchViewModel db)
+        {
+            if (db != null && ModelState.IsValid)
+            {
+                FamilyForumService.CreateWatch(db);
+            }
+
+            return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        public ActionResult db_UpdateWatch([DataSourceRequest] DataSourceRequest request, FamilyWatchViewModel db)
+        {
+            if (db != null && ModelState.IsValid)
+            {
+                FamilyForumService.UpdateWatch(db);
+            }
+
+            return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+        }
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        public ActionResult db_DestroyWatch([DataSourceRequest] DataSourceRequest request, FamilyWatchViewModel db)
+        {
+            if (db != null)
+            {
+                FamilyForumService.DestroyWatch(db);
             }
 
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));

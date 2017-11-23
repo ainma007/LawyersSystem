@@ -12,7 +12,7 @@ namespace LawyersApp.Models.Advocacyactivities
     public class AdvocacyactivitiesViewModel
     {
        
-            [ScaffoldColumn(false)]
+          
             public int AdvocacyactivitiesID
         {
                 get;

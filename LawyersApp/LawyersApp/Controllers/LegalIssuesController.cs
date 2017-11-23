@@ -8,23 +8,76 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LawyersApp.Models.Attributes;
+using LawyersApp.Models.Beneficiaries;
 
 namespace LawyersApp.Controllers
 {
+    
     public class LegalIssuesController : Controller
     {
-        // GET: LegalIssues
+
+        [SessionTimeout]
+        [HttpGet]
+
         public ActionResult LegalIssues(string projectid)
         {
+            
             Session["Projectid"] = int.Parse(projectid.ToString());
+           int  proid = int.Parse(Session["Projectid"].ToString());
+           int  UserID = int.Parse(Session["UserID"].ToString());
+            if ((string)Session["UserType"] != "1") {
+                try
+                {
+                    using (LawyersEntities dc = new LawyersEntities())
+                    {
+                        // Check If Existed Or Not : 
+                        var u = dc.ProjectControl_Table.Single(i => i.UserID == UserID
+                                                                    && i.ProjectID == proid &&
+                                                                    i.Status == true);
+                        if (u != null)
+                        {
+                            ViewBag.CurrentUser = true;
+                        }
+
+                    }
+                }
+                catch (Exception)
+                {
+
+                    ViewBag.CurrentUser = false;
+                   
+                }
+               
+            }
+           
             PopulateUsers();
             PopulateTypeOfCase();
             PopulateCourts();
-            PopulateLawyer();
+            PopulateIssuesStatus();
+            PopulateGovernorate();
+            PopulateArea();
+           
             return View();
         
         }
+        public void PopulateIssuesStatus()
+        {
+            //  وهنا كمان لازم يكون نشيط حتى يتم ادراجه في المشاريع
+            var dataContext = new LawyersEntities();
+            var IssuesStatus = dataContext.IssuesStatus_Table
 
+
+                              .Select(c => new IssuesStatusForeignkey
+                              {
+                                  IssuesStatusID = c.IssuesStatusID,
+                                  IssuesStatusName = c.IssuesStatusName
+                              })
+                              .OrderBy(e => e.IssuesStatusID);
+
+            ViewData["IssuesStatus"] = IssuesStatus;
+            ViewData["defaultIssuesStatus"] = IssuesStatus.First();
+        }
         public void PopulateUsers()
         {
             //  وهنا كمان لازم يكون نشيط حتى يتم ادراجه في المشاريع
@@ -46,6 +99,7 @@ namespace LawyersApp.Controllers
         {
             var dataContext = new LawyersEntities();
             var typeOfcase = dataContext.TypeOfCase_Table
+                .Where(c=> c.IssuesTypeID==2)
 
                               .Select(c => new TypeOfCaseForeignkey
                               {
@@ -62,7 +116,7 @@ namespace LawyersApp.Controllers
         {
             var dataContext = new LawyersEntities();
             var Courts = dataContext.Courts_Table
-
+                .Where(c => c.IssuesTypeID == 2)
                               .Select(c => new CourtsForeignkey
                               {
                                   CourtsID = c.CourtsID,
@@ -74,21 +128,39 @@ namespace LawyersApp.Controllers
             ViewData["defaultCourts"] = Courts.First();
         }
 
-        public void PopulateLawyer()
+
+        public void PopulateGovernorate()
         {
             var dataContext = new LawyersEntities();
-            var Lawyer = dataContext.Lawyer_Table
+            var Governorate = dataContext.Governorate_Table
 
-                              .Select(c => new LawyerForeignkey
+                              .Select(c => new GovernorateForeignkey
                               {
-                                  LawyerID = c.LawyerID,
-                                  LawyerName = c.LawyerName
+                                  Governorate_ID = c.Governorate_ID,
+                                  Governorate_Name = c.Governorate_Name
                               })
-                              .OrderBy(e => e.LawyerID);
+                              .OrderBy(e => e.Governorate_ID);
 
-            ViewData["Lawyer"] = Lawyer;
-            ViewData["defaultLawyer"] = Lawyer.First();
+            ViewData["Governorate"] = Governorate;
+            ViewData["defaultGovernorate"] = Governorate.First();
         }
+
+        public void PopulateArea()
+        {
+            var dataContext = new LawyersEntities();
+            var Area = dataContext.Area_Table
+
+                              .Select(c => new AreaForeignkey
+                              {
+                                  Area_ID = c.Area_ID,
+                                  Area_Name = c.Area_Name
+                              })
+                              .OrderBy(e => e.Area_ID);
+
+            ViewData["Area"] = Area;
+            ViewData["defaultArea"] = Area.First();
+        }
+
 
 
         private LegalIssuesService LegalIssuesService;
@@ -98,13 +170,19 @@ namespace LawyersApp.Controllers
         }
         public ActionResult Legal_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(LegalIssuesService.Read().Where(i=> i.ProjectID== int.Parse(Session["Projectid"].ToString())).ToDataSourceResult(request));
+            if ((string)Session["UserType"] == "3") {
+
+                return Json(LegalIssuesService.Read().Where(u => u.UserID == int.Parse(Session["UserID"].ToString()) && u.ProjectID == int.Parse(Session["Projectid"].ToString())).ToDataSourceResult(request));
+
+            }
+            else
+            {
+                return Json(LegalIssuesService.Read().Where(i => i.ProjectID == int.Parse(Session["Projectid"].ToString())).ToDataSourceResult(request));
+
+            }
         }
 
-        public ActionResult UserLegal_Read([DataSourceRequest] DataSourceRequest request)
-        {
-            return Json(LegalIssuesService.Read().Where(u => u.UserID == int.Parse(Session["UserID"].ToString()) && u.ProjectID == int.Parse(Session["Projectid"].ToString())).ToDataSourceResult(request));
-        }
+      
         // Insert New
         [AcceptVerbs(HttpVerbs.Post)]
 
@@ -160,9 +238,88 @@ namespace LawyersApp.Controllers
             return Json(LegalIssuesService.GetCourts(), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetLawyer()
+        //public JsonResult GetBeneficiaries()
+        //{
+        //    return Json(LegalIssuesService.GetBeneficiaries(), JsonRequestBehavior.AllowGet);
+        //}
+        //public JsonResult GetGovernorate()
+        //{
+        //    return Json(LegalIssuesService.GetGovernorate(), JsonRequestBehavior.AllowGet);
+        //}
+        //public JsonResult GetArea(int Governorate_ID)
+        //{
+        //    return Json(LegalIssuesService.GetArea(Governorate_ID), JsonRequestBehavior.AllowGet);
+        //}
+
+
+
+        public JsonResult GetIssuesStatus()
         {
-            return Json(LegalIssuesService.GetLawyer(), JsonRequestBehavior.AllowGet);
+            return Json(LegalIssuesService.GetIssuesStatus(), JsonRequestBehavior.AllowGet);
         }
+
+
+
+        public ActionResult Virtualization_Read([DataSourceRequest] DataSourceRequest request)
+        {
+           
+
+            return Json(GetBeneficiaries().ToDataSourceResult(request));
+        }
+
+        
+
+        private static IEnumerable<BeneficiariesForeignkey> GetBeneficiaries()
+        {
+            var northwind = new LawyersEntities();
+
+            return northwind.Beneficiaries_Table.Select(order => new BeneficiariesForeignkey
+            {
+                BeneficiariesIDNumber = order.BeneficiariesIDNumber,
+                BeneficiariesName = order.BeneficiariesName,
+
+                Beneficiaries_ID = order.Beneficiaries_ID
+
+
+              
+            });
+        }
+
+
+        public JsonResult GetGovernorate()
+        {
+            var northwind = new LawyersEntities();
+
+
+            var province = northwind.Governorate_Table.Select(db => new GovernorateForeignkey
+            {
+                Governorate_ID = db.Governorate_ID,
+                Governorate_Name = db.Governorate_Name
+            });
+
+
+            return Json(province, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetArea(int Governorate_ID)
+        {
+            var northwind = new LawyersEntities();
+
+
+            var province = northwind.Area_Table.Where(m => m.Governorate_ID == Governorate_ID).Select(db => new AreaForeignkey
+            {
+                Area_ID = db.Area_ID,
+                Area_Name = db.Area_Name
+            });
+
+
+
+
+            return Json(province, JsonRequestBehavior.AllowGet);
+        }
+
+       
+
     }
 }
+

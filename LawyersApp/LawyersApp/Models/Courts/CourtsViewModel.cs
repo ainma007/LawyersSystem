@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LawyersApp.Models.Foreignkey;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -22,5 +23,17 @@ namespace LawyersApp.Models.Courts
             get;
             set;
         }
+
+        [UIHint("ClientIssuesType")]
+        public IssuesTypeForeingKey IssuesType
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = "من النوعية ")]
+
+        [UIHint("IssuesTypeID")]
+        [DisplayName("النوعية :")]
+        public int? IssuesTypeID { get; set; }
     }
 }

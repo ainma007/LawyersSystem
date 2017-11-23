@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LawyersApp.Models.Foreignkey;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -23,8 +24,12 @@ namespace LawyersApp.Models.Courts
                 {
                     CourtsID = db.CourtsID,
                     CourtsName = db.CourtsName,
-
-
+                    IssuesType = new IssuesTypeForeingKey()
+                    {
+                        IssuesTypeID = db.IssuesType_Table.IssuesTypeID,
+                        IssuesTypename = db.IssuesType_Table.IssuesTypename,
+                    },
+                    IssuesTypeID=db.IssuesTypeID
 
                 });
         }
@@ -33,6 +38,7 @@ namespace LawyersApp.Models.Courts
             var entity = new Courts_Table();
 
             entity.CourtsName = db.CourtsName;
+            entity.IssuesTypeID = db.IssuesTypeID;
             entities.Courts_Table.Add(entity);
             entities.SaveChanges();
 
@@ -45,6 +51,7 @@ namespace LawyersApp.Models.Courts
 
             entity.CourtsID = db.CourtsID;
             entity.CourtsName = db.CourtsName;
+            entity.IssuesTypeID = db.IssuesTypeID;
 
 
 
@@ -66,6 +73,17 @@ namespace LawyersApp.Models.Courts
             entities.SaveChanges();
         }
 
+        public IEnumerable<IssuesTypeForeingKey> GetIssuesType()
+        {
+            //  هنا كمان   تم التعديل على حالة المستخدم 
+            return entities.IssuesType_Table
+                .Select(user => new IssuesTypeForeingKey
+                {
+                    IssuesTypeID = user.IssuesTypeID,
+                    IssuesTypename = user.IssuesTypename,
+
+                });
+        }
         public void Dispose()
         {
             entities.Dispose();

@@ -16,6 +16,41 @@ namespace LawyersApp.Models.Courses
             this.entities = entities;
         }
 
+        private static IEnumerable<CoursesViewModel> GetOrders()
+        {
+            var entities = new LawyersEntities();
+            return entities.Courses_Table
+              .Select(db => new CoursesViewModel
+              {
+                  CoursesID = db.CoursesID,
+                  CoursesName = db.CoursesName,
+                  CoursesStartDate = db.CoursesStartDate.HasValue ? db.CoursesStartDate.Value : default(DateTime),
+                  CoursesEndDate = db.CoursesEndDate.HasValue ? db.CoursesEndDate.Value : default(DateTime),
+                  TotalSessions = db.TotalSessions,
+                  TrainingHours = db.TrainingHours,
+                  TotalBeneficiaries = db.TotalBeneficiaries,
+                  Males = db.Males,
+                  Females = db.Females,
+                  UserID = db.UserID,
+
+                  Users = new UsersForeignkey()
+                  {
+                      UserID = db.Users_Table.UserID,
+                      FullName = db.Users_Table.FullName,
+                  },
+                  TargetGroupID = db.TargetGroupID,
+
+                  TargetGroup = new TargetGroupFroingKey()
+                  {
+                      TargetGroupID = db.TargetGroup_Table.TargetGroupID,
+                      TargetGroupName = db.TargetGroup_Table.TargetGroupName,
+                  },
+
+                  ProjectID = db.ProjectID,
+
+              });
+        }
+
         public IEnumerable<CoursesViewModel> Read()
         {
             // هنا كمان تعديل على حالة المستخدم
@@ -26,18 +61,19 @@ namespace LawyersApp.Models.Courses
                     CoursesName = db.CoursesName,
                     CoursesStartDate = db.CoursesStartDate.HasValue ? db.CoursesStartDate.Value : default(DateTime),
                     CoursesEndDate = db.CoursesEndDate.HasValue ? db.CoursesEndDate.Value : default(DateTime),
+                    TotalSessions = db.TotalSessions,
                     TrainingHours = db.TrainingHours,
                     TotalBeneficiaries = db.TotalBeneficiaries,
                     Males = db.Males,
                     Females = db.Females,
                     UserID = db.UserID,
-                  
+
                     Users = new UsersForeignkey()
                     {
                         UserID = db.Users_Table.UserID,
                         FullName = db.Users_Table.FullName,
                     },
-                    TargetGroupID= db.TargetGroupID,
+                    TargetGroupID = db.TargetGroupID,
 
                     TargetGroup = new TargetGroupFroingKey()
                     {
@@ -59,12 +95,12 @@ namespace LawyersApp.Models.Courses
             entity.CoursesEndDate = (DateTime)db.CoursesEndDate.Date;
             entity.TotalBeneficiaries = db.TotalBeneficiaries;
             entity.TrainingHours = db.TrainingHours;
-
+            entity.TotalSessions = db.TotalSessions;
             entity.Males = db.Males;
             entity.Females = db.Females;
             entity.UserID = db.UserID;
             entity.TargetGroupID = db.TargetGroupID;
-            entity.ProjectID = db.ProjectID; 
+            entity.ProjectID = db.ProjectID;
             entities.Courses_Table.Add(entity);
             entities.SaveChanges();
 
@@ -81,7 +117,7 @@ namespace LawyersApp.Models.Courses
 
             entity.CoursesEndDate = (DateTime)db.CoursesEndDate.Date;
             entity.TrainingHours = db.TrainingHours;
-
+            entity.TotalSessions = db.TotalSessions;
             entity.TotalBeneficiaries = db.TotalBeneficiaries;
             entity.Males = db.Males;
             entity.Females = db.Females;
@@ -117,7 +153,7 @@ namespace LawyersApp.Models.Courses
 
             });
         }
-
+    
         public void Dispose()
         {
             entities.Dispose();

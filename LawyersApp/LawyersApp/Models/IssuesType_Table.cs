@@ -17,7 +17,10 @@ namespace LawyersApp.Models
         public IssuesType_Table()
         {
             this.Consulting_Table = new HashSet<Consulting_Table>();
+            this.Courts_Table = new HashSet<Courts_Table>();
+            this.Legal_Assistance_Table = new HashSet<Legal_Assistance_Table>();
             this.Mediation_Table = new HashSet<Mediation_Table>();
+            this.Order_Table = new HashSet<Order_Table>();
             this.TypeOfCase_Table = new HashSet<TypeOfCase_Table>();
         }
     
@@ -25,7 +28,10 @@ namespace LawyersApp.Models
         public string IssuesTypename { get; set; }
     
         public virtual ICollection<Consulting_Table> Consulting_Table { get; set; }
+        public virtual ICollection<Courts_Table> Courts_Table { get; set; }
+        public virtual ICollection<Legal_Assistance_Table> Legal_Assistance_Table { get; set; }
         public virtual ICollection<Mediation_Table> Mediation_Table { get; set; }
+        public virtual ICollection<Order_Table> Order_Table { get; set; }
         public virtual ICollection<TypeOfCase_Table> TypeOfCase_Table { get; set; }
     }
 }

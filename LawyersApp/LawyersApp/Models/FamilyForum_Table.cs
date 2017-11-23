@@ -14,6 +14,11 @@ namespace LawyersApp.Models
     
     public partial class FamilyForum_Table
     {
+        public FamilyForum_Table()
+        {
+            this.FamilyWatch_Table = new HashSet<FamilyWatch_Table>();
+        }
+    
         public int FamilyForumID { get; set; }
         public Nullable<System.DateTime> ViewingDate { get; set; }
         public string ApplicantName { get; set; }
@@ -30,9 +35,8 @@ namespace LawyersApp.Models
         public Nullable<double> ViewingHours { get; set; }
         public string ViewingPlace { get; set; }
         public Nullable<int> UserID { get; set; }
-        public Nullable<int> ProjectID { get; set; }
     
-        public virtual Project_Table Project_Table { get; set; }
         public virtual Users_Table Users_Table { get; set; }
+        public virtual ICollection<FamilyWatch_Table> FamilyWatch_Table { get; set; }
     }
 }

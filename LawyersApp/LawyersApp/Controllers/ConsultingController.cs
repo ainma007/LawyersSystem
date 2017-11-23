@@ -8,19 +8,53 @@ using System.Web.Mvc;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
 using LawyersApp.Models.Foreignkey;
+using LawyersApp.Models.Attributes;
+
 
 namespace LawyersApp.Controllers
 {
     public class ConsultingController : Controller
     {
         // GET: Consulting
+        [SessionTimeout]
+        [HttpGet]
         public ActionResult Consulting(string projectid)
         {
             Session["Projectid"] = int.Parse(projectid.ToString());
+            int proid = int.Parse(Session["Projectid"].ToString());
+            int UserID = int.Parse(Session["UserID"].ToString());
+            #region(تأكيد اذا كان المستخدم تابع لمشروع)
+            if ((string)Session["UserType"] != "1")
+            {
+                try
+                {
+                    using (LawyersEntities dc = new LawyersEntities())
+                    {
+                        // Check If Existed Or Not : 
+                        var u = dc.ProjectControl_Table.Single(i => i.UserID == UserID
+                                                                    && i.ProjectID == proid &&
+                                                                    i.Status == true);
+                        if (u != null)
+                        {
+                            ViewBag.CurrentUser = true;
+                        }
+
+                    }
+                }
+                catch (Exception)
+                {
+
+                    ViewBag.CurrentUser = false;
+
+                }
+
+            }
+            #endregion
             PopulateUsers();
             PopulateIssuesType();
             PopulateTypeOfCase();
-            PopulateLawyer();
+            PopulateGovernorate();
+            PopulateArea();
             return View();
         }
 
@@ -74,30 +108,52 @@ namespace LawyersApp.Controllers
             ViewData["typeOfcase"] = typeOfcase;
             ViewData["defaultTypeOfCase"] = typeOfcase.First();
         }
-        public void PopulateLawyer()
+        public void PopulateGovernorate()
         {
             var dataContext = new LawyersEntities();
-            var Lawyer = dataContext.Lawyer_Table
+            var Governorate = dataContext.Governorate_Table
 
-                              .Select(c => new LawyerForeignkey
+                              .Select(c => new GovernorateForeignkey
                               {
-                                  LawyerID = c.LawyerID,
-                                  LawyerName = c.LawyerName
+                                  Governorate_ID = c.Governorate_ID,
+                                  Governorate_Name = c.Governorate_Name
                               })
-                              .OrderBy(e => e.LawyerID);
+                              .OrderBy(e => e.Governorate_ID);
 
-            ViewData["Lawyer"] = Lawyer;
-            ViewData["defaultLawyer"] = Lawyer.First();
+            ViewData["Governorate"] = Governorate;
+            ViewData["defaultGovernorate"] = Governorate.First();
+        }
+
+        public void PopulateArea()
+        {
+            var dataContext = new LawyersEntities();
+            var Area = dataContext.Area_Table
+
+                              .Select(c => new AreaForeignkey
+                              {
+                                  Area_ID = c.Area_ID,
+                                  Area_Name = c.Area_Name
+                              })
+                              .OrderBy(e => e.Area_ID);
+
+            ViewData["Area"] = Area;
+            ViewData["defaultArea"] = Area.First();
         }
 
         public ActionResult db_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(ConsultingService.Read().Where(i => i.ProjectID == int.Parse(Session["Projectid"].ToString())).ToDataSourceResult(request));
+            if ((string)Session["UserType"] == "3")
+            {
+                return Json(ConsultingService.Read().Where(u => u.UserID == int.Parse(Session["UserID"].ToString()) && u.ProjectID == int.Parse(Session["Projectid"].ToString())).ToDataSourceResult(request));
+
+            }
+            else
+            {
+                return Json(ConsultingService.Read().Where(i => i.ProjectID == int.Parse(Session["Projectid"].ToString())).ToDataSourceResult(request));
+
+            }
         }
-        public ActionResult Userdb_Read([DataSourceRequest] DataSourceRequest request)
-        {
-            return Json(ConsultingService.Read().Where(u => u.UserID == int.Parse(Session["UserID"].ToString()) && u.ProjectID == int.Parse(Session["Projectid"].ToString())).ToDataSourceResult(request));
-        }
+     
         // Insert New
         [AcceptVerbs(HttpVerbs.Post)]
 
@@ -144,9 +200,6 @@ namespace LawyersApp.Controllers
         {
             return Json(ConsultingService.GetIssuesType(), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetLawyer()
-        {
-            return Json(ConsultingService.GetLawyer(), JsonRequestBehavior.AllowGet);
-        }
+      
     }
 }

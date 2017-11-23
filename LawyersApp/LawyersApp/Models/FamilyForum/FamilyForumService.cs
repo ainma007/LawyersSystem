@@ -45,7 +45,7 @@ namespace LawyersApp.Models.FamilyForum
                         UserID = db.Users_Table.UserID,
                         FullName = db.Users_Table.FullName,
                     },
-                    ProjectID = db.ProjectID,
+                 
 
                 });
         }
@@ -68,7 +68,7 @@ namespace LawyersApp.Models.FamilyForum
             entity.ViewingHours = db.ViewingHours;
             entity.ViewingPlace = db.ViewingPlace;
             entity.UserID = db.UserID;
-            entity.ProjectID = db.ProjectID;
+          
             entities.FamilyForum_Table.Add(entity);
             entities.SaveChanges();
 
@@ -96,7 +96,7 @@ namespace LawyersApp.Models.FamilyForum
             entity.ViewingHours = db.ViewingHours;
             entity.ViewingPlace = db.ViewingPlace;
             entity.UserID = db.UserID;
-            entity.ProjectID = db.ProjectID;
+          
             
 
             entities.Entry(entity).State = EntityState.Modified;
@@ -116,8 +116,96 @@ namespace LawyersApp.Models.FamilyForum
             entities.SaveChanges();
         }
 
-      
 
+        public IEnumerable<FamilyWatchViewModel> ReadWatch()
+        {
+            // هنا كمان تعديل على حالة المستخدم
+            return entities.FamilyWatch_Table
+                .Select(db => new FamilyWatchViewModel
+                {
+                    FamilyWatchID=db.FamilyWatchID,
+                   
+                    Date = db.Date.HasValue ? db.Date.Value : default(DateTime),
+                    timeFrom = db.timeFrom.HasValue ? db.timeFrom.Value : default(DateTime),
+                    TimeTo = db.TimeTo.HasValue ? db.TimeTo.Value : default(DateTime),
+                    Attendees = db.Attendees,
+                    HoursAttendance = db.HoursAttendance.HasValue ? db.HoursAttendance.Value : default(DateTime),
+                    hourDeparture = db.hourDeparture.HasValue ? db.hourDeparture.Value : default(DateTime),
+
+                    CustodialAttendees = db.CustodialAttendees,
+                    CustodialHoursAttendance = db.CustodialHoursAttendance.HasValue ? db.CustodialHoursAttendance.Value : default(DateTime),
+                    CustodialhourDeparture = db.CustodialhourDeparture.HasValue ? db.CustodialhourDeparture.Value : default(DateTime),
+                    Specialist = db.Specialist,
+                    Notes = db.Notes,
+                    UserID = db.UserID,
+
+                    Users = new UsersForeignkey()
+                    {
+                        UserID = db.Users_Table.UserID,
+                        FullName = db.Users_Table.FullName,
+                    },
+
+                    FamilyForumID = db.FamilyForumID,
+                });
+        }
+
+        public void CreateWatch(FamilyWatchViewModel db)
+        {
+            var entity = new FamilyWatch_Table();
+
+            
+            entity.Date = (DateTime)db.Date.Date;
+            entity.timeFrom = (DateTime)db.timeFrom;
+            entity.TimeTo = (DateTime)db.TimeTo;
+            entity.Attendees = db.Attendees;
+            entity.HoursAttendance = (DateTime)db.HoursAttendance;
+            entity.hourDeparture = (DateTime)db.hourDeparture;
+            entity.CustodialAttendees = db.CustodialAttendees;
+            entity.CustodialHoursAttendance = (DateTime)db.CustodialHoursAttendance;
+            entity.CustodialhourDeparture = (DateTime)db.CustodialhourDeparture;
+            entity.Specialist = db.Specialist;
+            entity.Notes = db.Notes;
+            entity.UserID = db.UserID;
+            entity.FamilyForumID = db.FamilyForumID;
+            entities.FamilyWatch_Table.Add(entity);
+            entities.SaveChanges();
+
+            db.FamilyWatchID = entity.FamilyWatchID;
+        }
+        public void UpdateWatch(FamilyWatchViewModel db)
+        {
+            var entity = new FamilyWatch_Table();
+            entity.FamilyWatchID = db.FamilyWatchID;
+            entity.FamilyForumID = db.FamilyForumID;
+            entity.Date = (DateTime)db.Date;
+            entity.timeFrom = (DateTime)db.timeFrom;
+            entity.TimeTo = (DateTime)db.TimeTo;
+            entity.Attendees = db.Attendees;
+            entity.HoursAttendance = (DateTime)db.HoursAttendance;
+            entity.hourDeparture = (DateTime)db.hourDeparture;
+            entity.CustodialAttendees = db.CustodialAttendees;
+            entity.CustodialHoursAttendance = (DateTime)db.CustodialHoursAttendance;
+            entity.CustodialhourDeparture = (DateTime)db.CustodialhourDeparture;
+            entity.Specialist = db.Specialist;
+            entity.Notes = db.Notes;
+            entity.UserID = db.UserID;
+            
+            entities.Entry(entity).State = EntityState.Modified;
+            entities.SaveChanges();
+        }
+
+        public void DestroyWatch(FamilyWatchViewModel db)
+        {
+            var entity = new FamilyWatch_Table();
+
+            entity.FamilyWatchID = db.FamilyWatchID;
+
+            entities.FamilyWatch_Table.Attach(entity);
+
+            entities.FamilyWatch_Table.Remove(entity);
+
+            entities.SaveChanges();
+        }
         public void Dispose()
         {
             entities.Dispose();

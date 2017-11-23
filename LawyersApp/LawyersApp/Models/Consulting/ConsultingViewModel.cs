@@ -12,7 +12,7 @@ namespace LawyersApp.Models.Consulting
     public class ConsultingViewModel
     {
 
-        [ScaffoldColumn(false)]
+       
         public int ConsultingID
         {
             get;
@@ -31,10 +31,22 @@ namespace LawyersApp.Models.Consulting
             set;
         }
 
-        [Required(ErrorMessage = "من فضلك ادخل اسم المستشير .")]
+        [Required(ErrorMessage = "من فضلك اختر المستفيد")]
 
-        [DisplayName("اسم المستشير:")]
-        public string ConsultantName
+  
+
+
+        [DisplayName("رقم الهوية :")]
+        public string BeneficiariesIDNumber { get; set; }
+
+        [Required(ErrorMessage = "من فضلك اختر المستفيد")]
+
+        [UIHint("Beneficiaries_ID")]
+        [DisplayName("رقم الهوية :")]
+        public int? Beneficiaries_ID { get; set; }
+
+        [DisplayName("اسم المستفيد:")]
+        public string BeneficiariesName
         {
             get;
             set;
@@ -46,9 +58,49 @@ namespace LawyersApp.Models.Consulting
             get;
             set;
         }
+        [UIHint("ClientBeneficiaries")]
+        public BeneficiariesForeignkey Beneficiaries
+        {
+            get;
+            set;
+        }
 
+        [Required(ErrorMessage = "من فضلك ادخل العمر .")]
         [DisplayName("العمر:")]
-        public int? Age
+        public int? BeneficiariesAge
+        {
+            get;
+            set;
+        }
+
+
+
+
+        [Required(ErrorMessage = "من فضلك اختر المحافظة")]
+
+        [UIHint("Governorate_ID")]
+        [DisplayName("المحافظة :")]
+        public int? Governorate_ID { get; set; }
+
+
+        [UIHint("ClientGovernorate")]
+        public GovernorateForeignkey Governorate
+        {
+            get;
+            set;
+        }
+
+
+
+        [Required(ErrorMessage = "من فضلك اختر المنطقة")]
+
+        [UIHint("Area_ID")]
+        [DisplayName("المنطقة :")]
+        public int? Area_ID { get; set; }
+
+
+        [UIHint("ClientArea")]
+        public AreaForeignkey Area
         {
             get;
             set;
@@ -70,21 +122,7 @@ namespace LawyersApp.Models.Consulting
             set;
         }
 
-        [DisplayName("مقدم الاستشارة:")]
-
-
-        [UIHint("ClientLawyer")]
-        public LawyerForeignkey Lawyer
-        {
-            get;
-            set;
-        }
-        [Required(ErrorMessage = "من فضلك اختر المحامي ")]
-
-        [UIHint("LawyerID")]
-        [DisplayName("مقدم الاستشارة :")]
-        public int? LawyerID { get; set; }
-
+    
         [DisplayName("مآل الاستشارة:")]
       
 

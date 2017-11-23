@@ -12,7 +12,7 @@ namespace LawyersApp.Models.FamilyForum
     public class FamilyForumViewModel
     {
 
-        [ScaffoldColumn(false)]
+       
         public int FamilyForumID
         {
             get;
@@ -20,7 +20,7 @@ namespace LawyersApp.Models.FamilyForum
         }
 
         [Required(ErrorMessage = "من فضلك ادخل التاريخ بشكل صحيح .")]
-        [DisplayName("تاريخ الزيارة:")]
+        [DisplayName("تاريخ الورود:")]
         [DataType(DataType.Date)]
         public DateTime ViewingDate
         {

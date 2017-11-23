@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using LawyersApp.Models;
 using System.Web.Security;
+using System.Net;
+using System.IO;
 
 namespace LawyersApp.Controllers
 {
@@ -14,11 +16,16 @@ namespace LawyersApp.Controllers
         public ActionResult Login()
         {
             ViewBag.PM = "© 1998-2016 PCDCR- Mohammed El-Habbash , All Rights Reserved";
-          
+
+            
+           
             return View();
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+
+
         public ActionResult Login(Users_Table user)
         {
 
@@ -30,7 +37,8 @@ namespace LawyersApp.Controllers
                     {
                         // Check If Existed Or Not : 
                         var u = dc.Users_Table.Single(i => i.UserName == user.UserName
-                                                                    && i.Password == user.Password && i.Status == true);
+                                                                    && i.Password == user.Password &&
+                                                                    i.Status == true);
                         if (u != null)
                         {
 
@@ -39,9 +47,16 @@ namespace LawyersApp.Controllers
                             Session["Password"] = u.Password;
                             Session["UserType"] = u.UserType;
 
+                            if ((string)Session["UserType"] == "1" || (string)Session["UserType"] == "2" || (string)Session["UserType"] == "3")
+                            {
 
+                                return RedirectToAction("Index", "Home");
+                            }
+                            else if ((string)Session["UserType"] == "4")
+                            {
+                                return RedirectToAction("FamilyForum", "FamilyForum");
+                            }
 
-                            return RedirectToAction("Index", "Home");
 
 
 
@@ -80,12 +95,27 @@ namespace LawyersApp.Controllers
 
             // to destroy the FormsAuthentication cookie 
             // حذف الكويكزز
-            Session["ID"] = null;
+            Session["UserID"] = null;
             Session.Clear();
             FormsAuthentication.SignOut();
 
             //----------------------------
             return RedirectToAction("Login", "Account");
         }
+
+
+
+      
+        public static string GetCompCode()  // Get Computer Name
+        {
+            string strHostName = "";
+            strHostName = Dns.GetHostName();
+            return strHostName;
+        }
+      
+
+       
+       
     }
 }
+

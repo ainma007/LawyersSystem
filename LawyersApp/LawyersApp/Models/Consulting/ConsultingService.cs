@@ -25,12 +25,37 @@ namespace LawyersApp.Models.Consulting
                     ConsultingID = db.ConsultingID,
                    
                     ConsultingDate = db.ConsultingDate.HasValue ? db.ConsultingDate.Value : default(DateTime),
-                    ConsultantName = db.ConsultantName,
-                    Gender=db.Gender,
-                    Age=db.Age,
+                    Beneficiaries_ID = db.Beneficiaries_ID,
+                    BeneficiariesIDNumber = db.Beneficiaries_Table.BeneficiariesIDNumber,
+
+                    BeneficiariesName = db.Beneficiaries_Table.BeneficiariesName,
+                    Gender = db.Beneficiaries_Table.Gender_Table.GenderName,
+                    Beneficiaries = new BeneficiariesForeignkey()
+                    {
+                        Beneficiaries_ID = db.Beneficiaries_Table.Beneficiaries_ID,
+                        BeneficiariesName = db.Beneficiaries_Table.BeneficiariesName,
+                        BeneficiariesGender = db.Beneficiaries_Table.Gender_Table.GenderName,
+                        BeneficiariesPhone = db.Beneficiaries_Table.BeneficiariesPhone
+                    },
+
+                    Governorate_ID = db.Governorate_ID,
+
+                    Governorate = new GovernorateForeignkey()
+                    {
+                        Governorate_ID = db.Governorate_Table.Governorate_ID,
+                        Governorate_Name = db.Governorate_Table.Governorate_Name,
+                    },
+
+                    Area_ID = db.Area_ID,
+
+                    Area = new AreaForeignkey()
+                    {
+                        Area_ID = db.Area_Table.Area_ID,
+                        Area_Name = db.Area_Table.Area_Name,
+                    },
+                    BeneficiariesAge =db.BeneficiariesAge,
                     CounselingRequired = db.CounselingRequired,
                     CounselingRendered = db.CounselingRendered,
-                    LawyerID = db.LawyerID,
                    CounselingStatus = db.CounselingStatus,
 
 
@@ -57,7 +82,8 @@ namespace LawyersApp.Models.Consulting
                         TypeOfCaseID = db.TypeOfCase_Table.TypeOfCase_ID,
                         TypeOfCase = db.TypeOfCase_Table.TypeOfCaseName,
                     },
-                    ProjectID=db.ProjectID
+
+                    ProjectID =db.ProjectID
                 });
 
         }
@@ -67,13 +93,18 @@ namespace LawyersApp.Models.Consulting
 
             
             entity.ConsultingDate = (DateTime)db.ConsultingDate.Date;
-            entity.ConsultantName = db.ConsultantName;
-            entity.Age = db.Age;
-            entity.Gender = db.Gender;
+            entity.Beneficiaries_ID = db.Beneficiaries_ID;
+            var q = entities.Beneficiaries_Table.Where(p => p.Beneficiaries_ID == db.Beneficiaries_ID).SingleOrDefault();
+            db.BeneficiariesIDNumber = q.BeneficiariesIDNumber;
+
+            db.BeneficiariesName = q.BeneficiariesName;
+            db.Gender = q.Gender_Table.GenderName;
+            entity.Area_ID = db.Area_ID;
+            entity.BeneficiariesAge = db.BeneficiariesAge;
+            entity.Governorate_ID = db.Governorate_ID;
 
             entity.CounselingRequired = HttpUtility.HtmlDecode(db.CounselingRequired);
             entity.CounselingRendered = HttpUtility.HtmlDecode(db.CounselingRendered);
-            entity.LawyerID = db.LawyerID;
             entity.CounselingStatus = db.CounselingStatus;
             entity.TypeOfCaseID = db.TypeOfCaseID;
             entity.IssuesTypeID = db.IssuesTypeID;
@@ -92,12 +123,16 @@ namespace LawyersApp.Models.Consulting
 
           
             entity.ConsultingDate = (DateTime)db.ConsultingDate.Date;
-            entity.ConsultantName = db.ConsultantName;
-            entity.Age = db.Age;
-            entity.Gender = db.Gender;
+            entity.Beneficiaries_ID = db.Beneficiaries_ID;
+            var q = entities.Beneficiaries_Table.Where(p => p.Beneficiaries_ID == db.Beneficiaries_ID).SingleOrDefault();
+            db.BeneficiariesIDNumber = q.BeneficiariesIDNumber;
+            db.BeneficiariesName = q.BeneficiariesName;
+            db.Gender = q.Gender_Table.GenderName;
+            entity.Area_ID = db.Area_ID;
+            entity.BeneficiariesAge = db.BeneficiariesAge;
+            entity.Governorate_ID = db.Governorate_ID;
             entity.CounselingRequired = HttpUtility.HtmlDecode(db.CounselingRequired);
             entity.CounselingRendered = HttpUtility.HtmlDecode(db.CounselingRendered);
-            entity.LawyerID = db.LawyerID;
             entity.CounselingStatus = db.CounselingStatus;
             entity.TypeOfCaseID = db.TypeOfCaseID;
             entity.IssuesTypeID = db.IssuesTypeID;
@@ -144,17 +179,7 @@ namespace LawyersApp.Models.Consulting
             });
         }
 
-        public IEnumerable<LawyerForeignkey> GetLawyer()
-        {
-            return entities.Lawyer_Table.Select(province => new LawyerForeignkey
-            {
-                LawyerID = province.LawyerID,
-                LawyerName = province.LawyerName
-
-
-            });
-            
-        }
+    
         public void Dispose()
         {
             entities.Dispose();

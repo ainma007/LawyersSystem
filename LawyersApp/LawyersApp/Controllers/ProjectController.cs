@@ -7,12 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using LawyersApp.Models.Attributes;
 namespace LawyersApp.Controllers
 {
     public class ProjectController : Controller
     {
         // GET: Project
+        [SessionTimeout]
+        [HttpGet]
         public ActionResult Projects()
         {
             return View();
@@ -59,12 +61,30 @@ namespace LawyersApp.Controllers
 
         public ActionResult Project_Destroy([DataSourceRequest] DataSourceRequest request, ProjectViewModel db)
         {
-            if (db != null)
+
+          
+            try
             {
-                ProjectService.Destroy(db);
+                if (ModelState.IsValid)
+                {
+                    if (db != null)
+                    {
+                        ProjectService.Destroy(db);
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError("Error", "لا يمكن حذف السجل لانه مرتبط بعدة سجلات اخرى");
+                return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+
             }
 
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+
+
         }
 
     }
